@@ -1,4 +1,4 @@
 sonodaumi
 =========
 
-A Love-Live "Babanuki" games. 
+A Love-Live "Babanuki" game. 
