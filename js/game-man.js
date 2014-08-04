@@ -14,10 +14,22 @@ function init() {
 	document.getElementById("toimencard1img").src="image/card/bk.jpg"
 	document.getElementById("toimencard2img").src="image/card/bk.jpg"
 	document.getElementById("toimencard3img").src="image/card/bk.jpg"
+	document.getElementById("toimencard4img").src="image/card/bk.jpg"
+	document.getElementById("toimencard5img").src="image/card/bk.jpg"
+	document.getElementById("toimencard6img").src="image/card/bk.jpg"
+	document.getElementById("toimencard7img").src="image/card/bk.jpg"
+	document.getElementById("toimencard8img").src="image/card/bk.jpg"
+	document.getElementById("toimencard9img").src="image/card/bk.jpg"
 	document.getElementById("shimochacard0img").src="image/card/bk.jpg"
 	document.getElementById("shimochacard1img").src="image/card/bk.jpg"
 	document.getElementById("shimochacard2img").src="image/card/bk.jpg"
 	document.getElementById("shimochacard3img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard4img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard5img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard6img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard7img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard8img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard9img").src="image/card/bk.jpg"
 
 	document.getElementById("selfavaimg").src="image/person/kotori/seijou.png"
 	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png"
@@ -74,12 +86,13 @@ function fcKamichaMouseOut(index) {
 }
 function fcKamichaClick(index) {
 	if (!makeda) {
+		document.getElementById("sndei").play();
 		if (index == 3) {
 			document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png"
 			document.getElementById("kamichacard"+index+"img").src="image/card/jk/2.jpg"
 		}
 		else {
-			document.getElementById("sndkaoge").play();
+			setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
 			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png"
 			document.getElementById("kamichacard"+index+"img").src="image/card/2/"+(index+1)+".jpg"
 		}
