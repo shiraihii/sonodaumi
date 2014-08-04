@@ -7,6 +7,8 @@ $cardheight:150px;
 $cardmargin:4px;
 $cardedgewidth:25px;
 
+$cardcas:20px;
+
 $selfcardareawidth:($cardwidth+$cardmargin)*10;
 $chacardareawidth:$cardedgewidth*9+$cardwidth+$cardmargin;
 
@@ -99,6 +101,13 @@ div.selfcard, div.kamichacard{
 	display:inline-block;
 	margin:0px 0px;
 	width:100px;
+	height:150px;
+}
+div.toimencard, div.shimochacard{
+	text-align:center;
+	float:left;
+	margin:0px 0px;
+	width:$cardcas;
 	height:150px;
 }
 

@@ -10,6 +10,15 @@ function init() {
 	document.getElementById("selfcard4img").src="image/card/jk/1.jpg"
 	document.getElementById("selfcard5img").src="image/card/jk/2.jpg"
 
+	document.getElementById("toimencard0img").src="image/card/bk.jpg"
+	document.getElementById("toimencard1img").src="image/card/bk.jpg"
+	document.getElementById("toimencard2img").src="image/card/bk.jpg"
+	document.getElementById("toimencard3img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard0img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard1img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard2img").src="image/card/bk.jpg"
+	document.getElementById("shimochacard3img").src="image/card/bk.jpg"
+
 	document.getElementById("selfavaimg").src="image/person/kotori/seijou.png"
 	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png"
 	document.getElementById("shimochaavaimg").src="image/person/nico/seijou.png"
