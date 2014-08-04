@@ -43,7 +43,8 @@ div.cardarea {
 
 div.selfcard, div.kamichacard {
   text-align: center;
-  float: left;
+  display: inline-block;
+  margin: 0px 0px;
   width: 100px;
   height: 150px; }
 
