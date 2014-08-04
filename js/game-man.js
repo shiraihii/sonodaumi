@@ -1,6 +1,8 @@
 // Trying
 var i = 0;
 var makeda = false;
+var sndplayreq = true;
+var lastkamichacardsel = 0;
 function init() {
 	preLoadImg();	
 	document.getElementById("selfcard0img").src="image/card/jk/1.jpg"
@@ -68,11 +70,21 @@ function timer()
 function fcKamichaMouseOver(index) {
 	if (!makeda) {
 		if (index == 3) {
-			document.getElementById("sndureshi").play();
+			sndplayreq = true;
+			lastkamichacardsel = index;
+			setTimeout(function() {
+				if (sndplayreq && lastkamichacardsel == index)
+					document.getElementById("sndureshi").play();
+			}, 400);
 			document.getElementById("kamichaavaimg").src="image/person/umi/ureshi.png"
 		}
 		else {
-			document.getElementById("sndeee").play();
+			sndplayreq = true;
+			lastkamichacardsel = index;
+			setTimeout(function() {
+				if (sndplayreq && lastkamichacardsel == index)
+					document.getElementById("sndeee").play();
+			}, 400);
 			document.getElementById("kamichaavaimg").src="image/person/umi/eee.png"
 		}
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.jpg"
@@ -80,12 +92,14 @@ function fcKamichaMouseOver(index) {
 }
 function fcKamichaMouseOut(index) {
 	if (!makeda) {
+		sndplayreq = false;
 		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png"
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk.jpg"
 	}
 }
 function fcKamichaClick(index) {
 	if (!makeda) {
+		sndplayreq = false;
 		document.getElementById("sndei").play();
 		if (index == 3) {
 			document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png"
