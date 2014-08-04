@@ -1,0 +1,55 @@
+body {
+  text-align: center; }
+
+div {
+  border: 1px solid red; }
+
+#gamediv {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  width: 1280px;
+  height: 640px;
+  background-color: #dddddd; }
+
+#selfcarddiv {
+  position: absolute;
+  bottom: 26.66667px;
+  left: 346.66667px;
+  text-align: center;
+  width: 426.66667px;
+  height: 160px;
+  background-color: #00ff33; }
+
+#toimencarddiv {
+  position: absolute;
+  top: 26.66667px;
+  right: 346.66667px;
+  text-align: center;
+  width: 426.66667px;
+  height: 160px;
+  background-color: #0033ff; }
+
+#kamichacarddiv {
+  position: absolute;
+  top: 26.66667px;
+  left: 53.33333px;
+  text-align: center;
+  width: 160px;
+  height: 426.66667px;
+  background-color: #0033ff; }
+
+#shimochacarddiv {
+  position: absolute;
+  bottom: 26.66667px;
+  right: 53.33333px;
+  text-align: center;
+  width: 160px;
+  height: 426.66667px;
+  background-color: #0033ff; }
+
+.cellol {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }

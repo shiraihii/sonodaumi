@@ -1,0 +1,92 @@
+// position
+$gamewidth:1280px;
+$gameheight:640px;	
+
+$avatorsqrwidth:128px;
+$avatormargin:$avatorsqrwidth/4;
+
+$selfcardwidth:$gamewidth/3;
+$selfcardheight:$gameheight/4;
+$selfcardbottom:$gameheight/24;
+$selfcardleft:($gamewidth - $selfcardwidth - $avatormargin -$avatorsqrwidth)/2;
+
+$toimencardwidth:$selfcardwidth;
+$toimencardheight:$selfcardheight;
+$toimencardtop:$selfcardbottom;
+$toimencardright:$selfcardleft;
+
+$kamichacardwidth:$selfcardheight;
+$kamichacardheight:$selfcardwidth;
+$kamichacardtop:($gameheight - $kamichacardheight - $avatormargin -$avatorsqrwidth)/2;
+$kamichacardleft:$gamewidth/24;
+
+$shimochacardwidth:$kamichacardwidth;
+$shimochacardheight:$kamichacardheight;
+$shimochacardbottom:$kamichacardtop;
+$shimochacardright:$kamichacardleft;
+
+// color
+// for debug
+$gamedivbk:#DDD;
+$selfdivbk:#0F3;
+$otherplayerdivbk:#03F;
+// =====================
+
+body {
+	text-align:center;
+}
+div {
+	border:1px solid #F00 // for debug
+}
+
+// main div for game
+#gamediv {
+	position:relative;
+	text-align:center;
+	margin:0 auto; // for FF Chr, no IE6 or before, hhhh
+	width:$gamewidth;
+	height:$gameheight;
+	background-color:$gamedivbk;
+}
+#selfcarddiv {
+	position:absolute;
+	bottom:$selfcardbottom;
+	left:$selfcardleft;
+	text-align:center;
+	width:$selfcardwidth;
+	height:$selfcardheight;
+	background-color:$selfdivbk;
+}
+#toimencarddiv {
+	position:absolute;
+	top:$toimencardtop;
+	right:$toimencardright;
+	text-align:center;
+	width:$toimencardwidth;
+	height:$toimencardheight;
+	background-color:$otherplayerdivbk;
+}
+#kamichacarddiv {
+	position:absolute;
+	top:$kamichacardtop;
+	left:$kamichacardleft;
+	text-align:center;
+	width:$kamichacardwidth;
+	height:$kamichacardheight;
+	background-color:$otherplayerdivbk;
+}
+#shimochacarddiv {
+	position:absolute;
+	bottom:$shimochacardbottom;
+	right:$shimochacardright;
+	text-align:center;
+	width:$shimochacardwidth;
+	height:$shimochacardheight;
+	background-color:$otherplayerdivbk;
+}
+.cellol {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+	user-select:none;
+}
