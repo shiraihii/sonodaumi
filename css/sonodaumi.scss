@@ -2,32 +2,40 @@
 $gamewidth:1200px;
 $gameheight:600px;	
 
-$avatorsqrwidth:$gameheight/4;
-$avatormargin:$avatorsqrwidth/4;
+$cardwidth:96px;
+$cardheight:150px;
+$cardmargin:4px;
+$cardedgewidth:25px;
 
-$selfcardwidth:$gamewidth/3;
-$selfcardheight:$gameheight/4;
+$selfcardareawidth:($cardwidth+$cardmargin)*10;
+$chacardareawidth:$cardedgewidth*9+$cardwidth+$cardmargin;
+
+$avatorsqrwidth:$gameheight/4;
+$avatormargin:$avatorsqrwidth/5;
+
+$selfcardwidth:$selfcardareawidth;
+$selfcardheight:$cardheight;
 $selfcardbottom:$gameheight/24;
 $selfcardleft:($gamewidth - $selfcardwidth - $avatormargin -$avatorsqrwidth)/2;
 $selfavaleft:$selfcardleft + $avatormargin + $selfcardwidth;
 
-$toimencardwidth:$selfcardwidth;
-$toimencardheight:$selfcardheight;
+$toimencardwidth:$chacardareawidth;
+$toimencardheight:$cardheight;
 $toimencardtop:$selfcardbottom;
-$toimencardright:$selfcardleft;
-$toimenavaright:$toimencardright + $avatormargin + $toimencardwidth;
+$toimenavaleft:$selfcardleft;
+$toimencardleft:$toimenavaleft + $avatormargin + $avatorsqrwidth;
 
-$kamichacardwidth:$selfcardheight;
-$kamichacardheight:$selfcardwidth;
-$kamichacardtop:($gameheight - $kamichacardheight - $avatormargin -$avatorsqrwidth)/2;
-$kamichacardleft:$gamewidth/24;
-$kamichaavatop:$kamichacardtop + $avatormargin + $kamichacardheight;
+$kamichacardwidth:$selfcardareawidth;
+$kamichacardheight:$cardheight;
+$kamichacardtop:($gameheight - $cardheight)/2;
+$kamichacardleft:$selfcardleft + $avatormargin + $avatorsqrwidth;
+$kamichaavaleft:$selfcardleft;
 
-$shimochacardwidth:$kamichacardwidth;
-$shimochacardheight:$kamichacardheight;
-$shimochacardbottom:$kamichacardtop;
-$shimochacardright:$kamichacardleft;
-$shimochaavabottom:$shimochacardbottom + $avatormargin + $shimochacardheight;
+$shimochacardwidth:$chacardareawidth;
+$shimochacardheight:$cardheight;
+$shimochacardright:$selfcardleft;
+$shimochacardtop:$selfcardbottom;
+$shimochaavaright:$selfcardleft + $avatormargin + $chacardareawidth;
 
 // color
 // for debug
@@ -66,7 +74,7 @@ div.cardarea {
 }
 #toimencarddiv {
 	top:$toimencardtop;
-	right:$toimencardright;
+	left:$toimencardleft;
 	width:$toimencardwidth;
 	height:$toimencardheight;
 	background-color:$otherplayerdivbk;
@@ -79,7 +87,7 @@ div.cardarea {
 	background-color:$otherplayerdivbk;
 }
 #shimochacarddiv {
-	bottom:$shimochacardbottom;
+	top:$shimochacardtop;
 	right:$shimochacardright;
 	width:$shimochacardwidth;
 	height:$shimochacardheight;
@@ -99,17 +107,17 @@ div.avatar {
 }
 #toimenavadiv {
 	top:$toimencardtop;
-	right:$toimenavaright;
+	left:$toimenavaleft;
 	background-color:$otherplayerdivbk;
 }
 #kamichaavadiv {
-	top:$kamichaavatop;
-	left:$kamichacardleft;
+	top:$kamichacardtop;
+	left:$kamichaavaleft;
 	background-color:$otherplayerdivbk;
 }
 #shimochaavadiv {
-	bottom:$shimochaavabottom;
-	right:$shimochacardright;
+	top:$shimochacardtop;
+	right:$shimochaavaright;
 	background-color:$otherplayerdivbk;
 }
 

@@ -18,30 +18,30 @@ div.cardarea {
 
 #selfcarddiv {
   bottom: 25px;
-  left: 306.25px;
-  width: 400px;
+  left: 10px;
+  width: 1000px;
   height: 150px;
   background-color: #00ff33; }
 
 #toimencarddiv {
   top: 25px;
-  right: 306.25px;
-  width: 400px;
+  left: 190px;
+  width: 325px;
   height: 150px;
   background-color: #0033ff; }
 
 #kamichacarddiv {
-  top: 6.25px;
-  left: 50px;
-  width: 150px;
-  height: 400px;
+  top: 225px;
+  left: 190px;
+  width: 1000px;
+  height: 150px;
   background-color: #0033ff; }
 
 #shimochacarddiv {
-  bottom: 6.25px;
-  right: 50px;
-  width: 150px;
-  height: 400px;
+  top: 25px;
+  right: 10px;
+  width: 325px;
+  height: 150px;
   background-color: #0033ff; }
 
 div.avatar {
@@ -52,22 +52,22 @@ div.avatar {
 
 #selfavadiv {
   bottom: 25px;
-  left: 743.75px;
+  left: 1040px;
   background-color: #00ff33; }
 
 #toimenavadiv {
   top: 25px;
-  right: 743.75px;
+  left: 10px;
   background-color: #0033ff; }
 
 #kamichaavadiv {
-  top: 443.75px;
-  left: 50px;
+  top: 225px;
+  left: 10px;
   background-color: #0033ff; }
 
 #shimochaavadiv {
-  bottom: 443.75px;
-  right: 50px;
+  top: 25px;
+  right: 365px;
   background-color: #0033ff; }
 
 .cellol {
