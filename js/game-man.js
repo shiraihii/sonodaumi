@@ -6,6 +6,11 @@ document.selfcard2img.src="image/null.png"
 document.selfcard3img.src="image/null.png"
 document.selfcard4img.src="image/null.png"
 document.selfcard5img.src="image/null.png"
+
+document.selfavaimg.src="image/person/kotori/make.png"
+document.toimenavaimg.src="image/person/honoka/make.png"
+document.shimochaavaimg.src="image/person/nico/make.png"
+document.kamichaavaimg.src="image/person/umi/make.png"
 window.setInterval(timer, 1000);
 function timer()
 {
