@@ -35,15 +35,19 @@ function timer()
 }
 
 function fcKamichaMouseOver(index) {
-	if (!makeda)
+	if (!makeda) {
 		if (index == 3)
 			document.getElementById("kamichaavaimg").src="image/person/umi/ureshi.png"
 		else
 			document.getElementById("kamichaavaimg").src="image/person/umi/eee.png"
+		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.jpg"
+	}
 }
 function fcKamichaMouseOut(index) {
-	if (!makeda)
+	if (!makeda) {
 		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png"
+		document.getElementById("kamichacard"+index+"img").src="image/card/bk.jpg"
+	}
 }
 function fcKamichaClick(index) {
 	if (!makeda) {
