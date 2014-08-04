@@ -1,9 +1,6 @@
 body {
   text-align: center; }
 
-div {
-  border: 1px solid red; }
-
 #gamediv {
   position: relative;
   text-align: center;
@@ -43,6 +40,12 @@ div.cardarea {
   width: 325px;
   height: 150px;
   background-color: #0033ff; }
+
+div.selfcard, div.kamichacard {
+  text-align: center;
+  float: left;
+  width: 100px;
+  height: 150px; }
 
 div.avatar {
   position: absolute;
