@@ -2,6 +2,7 @@
 var i = 0;
 var makeda = false;
 function init() {
+	preLoadImg();	
 	document.getElementById("selfcard0img").src="image/card/jk/1.jpg"
 	document.getElementById("selfcard1img").src="image/card/jk/2.jpg"
 	document.getElementById("selfcard2img").src="image/card/jk/1.jpg"
@@ -22,6 +23,15 @@ function init() {
 	document.getElementById("kamichacard8").style.display="none";
 	document.getElementById("kamichacard9").style.display="none";
 	window.setInterval(timer, 1000);
+}
+function preLoadImg()
+{
+	for (var imgi = 1; imgi < 4; imgi ++)
+		for (var imgj = 1; imgj < 9; imgj ++)
+		{
+			var img = new Image();
+			img = "image/card/" + imgi + "/" + imgj + ".jpg";
+		}
 }
 function timer()
 {
