@@ -25,14 +25,14 @@ function timer()
 }
 
 function fcKamichaMouseOver(index) {
-	if (!makeda);
+	if (!makeda)
 		if (index == 3)
 			document.kamichaavaimg.src="image/person/umi/ureshi.png"
 		else
 			document.kamichaavaimg.src="image/person/umi/eee.png"
 }
 function fcKamichaMouseOut(index) {
-	if (!makeda);
+	if (!makeda)
 		document.kamichaavaimg.src="image/person/umi/seijou.png"
 }
 function fcKamichaClick(index) {
