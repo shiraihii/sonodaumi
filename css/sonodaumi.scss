@@ -1,29 +1,33 @@
 // position
-$gamewidth:1280px;
-$gameheight:640px;	
+$gamewidth:1200px;
+$gameheight:600px;	
 
-$avatorsqrwidth:128px;
+$avatorsqrwidth:$gameheight/4;
 $avatormargin:$avatorsqrwidth/4;
 
 $selfcardwidth:$gamewidth/3;
 $selfcardheight:$gameheight/4;
 $selfcardbottom:$gameheight/24;
 $selfcardleft:($gamewidth - $selfcardwidth - $avatormargin -$avatorsqrwidth)/2;
+$selfavaleft:$selfcardleft + $avatormargin + $selfcardwidth;
 
 $toimencardwidth:$selfcardwidth;
 $toimencardheight:$selfcardheight;
 $toimencardtop:$selfcardbottom;
 $toimencardright:$selfcardleft;
+$toimenavaright:$toimencardright + $avatormargin + $toimencardwidth;
 
 $kamichacardwidth:$selfcardheight;
 $kamichacardheight:$selfcardwidth;
 $kamichacardtop:($gameheight - $kamichacardheight - $avatormargin -$avatorsqrwidth)/2;
 $kamichacardleft:$gamewidth/24;
+$kamichaavatop:$kamichacardtop + $avatormargin + $kamichacardheight;
 
 $shimochacardwidth:$kamichacardwidth;
 $shimochacardheight:$kamichacardheight;
 $shimochacardbottom:$kamichacardtop;
 $shimochacardright:$kamichacardleft;
+$shimochaavabottom:$shimochacardbottom + $avatormargin + $shimochacardheight;
 
 // color
 // for debug
@@ -48,42 +52,67 @@ div {
 	height:$gameheight;
 	background-color:$gamedivbk;
 }
-#selfcarddiv {
+// cardarea
+div.cardarea {
 	position:absolute;
+	text-align:center;
+}
+#selfcarddiv {
 	bottom:$selfcardbottom;
 	left:$selfcardleft;
-	text-align:center;
 	width:$selfcardwidth;
 	height:$selfcardheight;
 	background-color:$selfdivbk;
 }
 #toimencarddiv {
-	position:absolute;
 	top:$toimencardtop;
 	right:$toimencardright;
-	text-align:center;
 	width:$toimencardwidth;
 	height:$toimencardheight;
 	background-color:$otherplayerdivbk;
 }
 #kamichacarddiv {
-	position:absolute;
 	top:$kamichacardtop;
 	left:$kamichacardleft;
-	text-align:center;
 	width:$kamichacardwidth;
 	height:$kamichacardheight;
 	background-color:$otherplayerdivbk;
 }
 #shimochacarddiv {
-	position:absolute;
 	bottom:$shimochacardbottom;
 	right:$shimochacardright;
-	text-align:center;
 	width:$shimochacardwidth;
 	height:$shimochacardheight;
 	background-color:$otherplayerdivbk;
 }
+// div for avatar
+div.avatar {
+	position:absolute;
+	text-align:center;
+	width:$avatorsqrwidth;
+	height:$avatorsqrwidth;
+}
+#selfavadiv {
+	bottom:$selfcardbottom;
+	left:$selfavaleft;
+	background-color:$selfdivbk;
+}
+#toimenavadiv {
+	top:$toimencardtop;
+	right:$toimenavaright;
+	background-color:$otherplayerdivbk;
+}
+#kamichaavadiv {
+	top:$kamichaavatop;
+	left:$kamichacardleft;
+	background-color:$otherplayerdivbk;
+}
+#shimochaavadiv {
+	bottom:$shimochaavabottom;
+	right:$shimochacardright;
+	background-color:$otherplayerdivbk;
+}
+
 .cellol {
 	-moz-user-select: none;
 	-webkit-user-select: none;
