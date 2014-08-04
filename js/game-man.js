@@ -46,10 +46,14 @@ function timer()
 
 function fcKamichaMouseOver(index) {
 	if (!makeda) {
-		if (index == 3)
+		if (index == 3) {
+			document.getElementById("sndureshi").play();
 			document.getElementById("kamichaavaimg").src="image/person/umi/ureshi.png"
-		else
+		}
+		else {
+			document.getElementById("sndeee").play();
 			document.getElementById("kamichaavaimg").src="image/person/umi/eee.png"
+		}
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.jpg"
 	}
 }
@@ -66,6 +70,7 @@ function fcKamichaClick(index) {
 			document.getElementById("kamichacard"+index+"img").src="image/card/jk/2.jpg"
 		}
 		else {
+			document.getElementById("sndkaoge").play();
 			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png"
 			document.getElementById("kamichacard"+index+"img").src="image/card/2/"+(index+1)+".jpg"
 		}
