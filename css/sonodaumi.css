@@ -5,8 +5,8 @@ body {
   position: relative;
   text-align: center;
   margin: 0 auto;
-  width: 1200px;
-  height: 600px;
+  width: 1240px;
+  height: 620px;
   background-color: #dddddd;
   overflow: hidden;
   border-radius: 30px; }
@@ -18,72 +18,79 @@ div.cardavaarea {
   overflow: hidden; }
 
 #selfareadiv {
-  left: 5px;
-  bottom: 20px;
+  left: 22px;
+  bottom: 20.83333px;
   height: 160px;
-  width: 1190px;
-  background-color: #111111; }
+  width: 1196px;
+  background-color: #222222; }
 
 #toimenareadiv {
-  left: 5px;
-  top: 20px;
+  left: 22px;
+  top: 20.83333px;
   height: 160px;
-  width: 515px;
-  background-color: #111111; }
+  width: 521px;
+  background-color: #222222; }
 
 #kamichaareadiv {
-  left: 5px;
-  top: 220px;
+  left: 22px;
+  top: 230px;
   height: 160px;
-  width: 1190px;
-  background-color: #111111; }
+  width: 1196px;
+  background-color: #222222; }
 
 #shimochaareadiv {
-  right: 5px;
-  top: 20px;
+  right: 22px;
+  top: 20.83333px;
   height: 160px;
-  width: 515px;
-  background-color: #111111; }
+  width: 521px;
+  background-color: #222222; }
+
+#kubariareadiv {
+  top: 20.83333px;
+  left: 565px;
+  width: 110px;
+  height: 160px;
+  background-color: #222222; }
 
 div.cardarea {
   position: absolute;
   text-align: center; }
 
 #selfcarddiv {
-  bottom: 25px;
-  left: 10px;
+  bottom: 25.83333px;
+  left: 27px;
   width: 1000px;
   height: 150px; }
 
 #toimencarddiv {
-  top: 25px;
-  left: 190px;
+  top: 25.83333px;
+  left: 213px;
   width: 325px;
   height: 150px; }
 
 #kamichacarddiv {
-  top: 225px;
-  left: 190px;
+  top: 235px;
+  left: 213px;
   width: 1000px;
   height: 150px; }
 
 #shimochacarddiv {
-  top: 25px;
-  right: 10px;
+  top: 25.83333px;
+  right: 27px;
   width: 325px;
   height: 150px; }
 
 #kubariarea {
-  top: 25px;
-  left: 550px;
+  top: 25.83333px;
+  left: 570px;
   width: 100px;
   height: 150px; }
 
 div.kubariareadyn {
   position: absolute;
   text-align: center;
-  top: 25px;
-  left: 550px;
+  top: 25.83333px;
+  left: 570px;
   width: 100px;
   height: 150px;
   z-index: 9; }
@@ -112,26 +119,26 @@ div.toimencard, div.shimochacard {
 div.avatar {
   position: absolute;
   text-align: center;
-  width: 150px;
-  height: 150px;
+  width: 155px;
+  height: 155px;
   border-radius: 25px;
   overflow: hidden; }
 
 #selfavadiv {
-  bottom: 25px;
-  left: 1040px; }
+  bottom: 25.83333px;
+  left: 1058px; }
 
 #toimenavadiv {
-  top: 25px;
-  left: 10px; }
+  top: 25.83333px;
+  left: 27px; }
 
 #kamichaavadiv {
-  top: 225px;
-  left: 10px; }
+  top: 235px;
+  left: 27px; }
 
 #shimochaavadiv {
-  top: 25px;
-  right: 365px; }
+  top: 25.83333px;
+  right: 383px; }
 
 .avatarimg {
   width: 150px;
@@ -180,23 +187,23 @@ div.avatar {
 
 @-webkit-keyframes webkitcardkubari1 {
   to {
-    top: 425px;
-    left: 550px -75px;
+    top: 444.16667px;
+    left: 570px -75px;
     opacity: 0.3; } }
 @-moz-keyframes mozcardkubari1 {
   to {
-    top: 425px;
-    left: 475px;
+    top: 444.16667px;
+    left: 495px;
     opacity: 0.3; } }
 @-webkit-keyframes webkitcardkubari2 {
   to {
-    top: 225px;
-    left: 625px;
+    top: 235px;
+    left: 645px;
     opacity: 0.3; } }
 @-moz-keyframes mozcardkubari2 {
   to {
-    top: 225px;
-    left: 625px;
+    top: 235px;
+    left: 645px;
     opacity: 0.3; } }
 .cardkubari1 {
   -webkit-animation: webkitcardkubari1 .4s ease-in-out 0s 10 normal;

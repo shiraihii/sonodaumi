@@ -1,6 +1,6 @@
 // position
-$gamewidth:1200px;
-$gameheight:600px;	
+$gamewidth:1240px;
+$gameheight:620px;	
 
 $cardwidth:96px;
 $cardheight:150px;
@@ -62,7 +62,7 @@ $shimochaareaheight:$selfareaheight;
 $gamedivbk:#DDD;
 $selfdivbk:#0F3;
 $otherplayerdivbk:#03F;
-$areadivbk:#111;
+$areadivbk:#222;
 // =====================
 
 body {
@@ -119,6 +119,13 @@ div.cardavaarea{
 	width:$shimochaareawidth;
 	background-color:$areadivbk;
 }
+#kubariareadiv{
+	top:$toimencardtop - $areamargin;
+	left:$gamewidth / 2 - 50px - $areamargin;
+	width:100px+$areamargin*2;
+	height:$cardheight+$areamargin*2;
+	background-color:$areadivbk;
+}
 
 // cardarea
 div.cardarea {
@@ -153,7 +160,7 @@ div.cardarea {
 	top:$toimencardtop;
 	left:$gamewidth / 2 - 50px;
 	width:100px;
-	height:150px;
+	height:$cardheight;
 }
 div.kubariareadyn {
 	position:absolute;
@@ -161,7 +168,7 @@ div.kubariareadyn {
 	top:$toimencardtop;
 	left:$gamewidth / 2 - 50px;
 	width:100px;
-	height:150px;
+	height:$cardheight;
 	z-index:9;
 }
 .kubariareadynimg
