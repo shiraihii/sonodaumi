@@ -11,33 +11,39 @@ body {
   overflow: hidden;
   border-radius: 30px; }
 
+div.cardavaarea {
+  position: absolute;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden; }
+
 #selfareadiv {
   left: 5px;
   bottom: 20px;
   height: 160px;
   width: 1190px;
-  background-color: white; }
+  background-color: #111111; }
 
 #toimenareadiv {
   left: 5px;
   top: 20px;
   height: 160px;
-  width: 1190px;
-  background-color: white; }
+  width: 515px;
+  background-color: #111111; }
 
 #kamichaareadiv {
   left: 5px;
-  top: 20px;
+  top: 220px;
   height: 160px;
   width: 1190px;
-  background-color: white; }
+  background-color: #111111; }
 
 #shimochaareadiv {
   right: 5px;
   top: 20px;
-  height: 150px;
-  width: 325px;
-  background-color: white; }
+  height: 160px;
+  width: 515px;
+  background-color: #111111; }
 
 div.cardarea {
   position: absolute;

@@ -33,7 +33,7 @@ $toimenavaleft:$selfcardleft;
 $toimencardleft:$toimenavaleft + $avatormargin + $avatorsqrwidth;
 $toimenarealeft:$selfarealeft;
 $toimenareatop:$toimencardtop -$areamargin;
-$toimenareawidth:$selfareawidth;
+$toimenareawidth:$toimencardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
 $toimenareaheight:$selfareaheight;
 
 $kamichacardwidth:$selfcardareawidth;
@@ -42,7 +42,7 @@ $kamichacardtop:($gameheight - $cardheight)/2;
 $kamichacardleft:$selfcardleft + $avatormargin + $avatorsqrwidth;
 $kamichaavaleft:$selfcardleft;
 $kamichaarealeft:$selfarealeft;
-$kamichaareatop:$selfcardbottom -$areamargin;
+$kamichaareatop:$kamichacardtop -$areamargin;
 $kamichaareawidth:$kamichacardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
 $kamichaareaheight:$selfareaheight;
 
@@ -52,7 +52,7 @@ $shimochacardright:$selfcardleft;
 $shimochacardtop:$selfcardbottom;
 $shimochaavaright:$selfcardleft + $avatormargin + $chacardareawidth;
 $shimochaarearight:$selfarealeft;
-$shimochaareatop:$kamichaareatop;
+$shimochaareatop:$toimenareatop;
 $shimochaareawidth:$shimochacardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
 $shimochaareaheight:$selfareaheight;
 
@@ -62,7 +62,7 @@ $shimochaareaheight:$selfareaheight;
 $gamedivbk:#DDD;
 $selfdivbk:#0F3;
 $otherplayerdivbk:#03F;
-$areadivbk:#fff;
+$areadivbk:#111;
 // =====================
 
 body {
@@ -85,6 +85,12 @@ div {
 }
 
 //area
+div.cardavaarea{
+	position:absolute;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+}
 #selfareadiv{
 	left:$selfarealeft;
 	bottom:$selfareabottom;
@@ -109,10 +115,11 @@ div {
 #shimochaareadiv{
 	right:$shimochaarearight;
 	top:$shimochaareatop;
-	height:$shimochacardheight;
-	width:$shimochacardwidth;
+	height:$shimochaareaheight;
+	width:$shimochaareawidth;
 	background-color:$areadivbk;
 }
+
 // cardarea
 div.cardarea {
 	position:absolute;
@@ -160,6 +167,7 @@ div.cardarea {
 	height:150px;
 	background-color:#999;
 }
+
 div.selfcard, div.kamichacard{
 	text-align:center;
 	float:left;
