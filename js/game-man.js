@@ -45,6 +45,9 @@ function init() {
 	document.getElementById("kamichacard7").style.display="none";
 	document.getElementById("kamichacard8").style.display="none";
 	document.getElementById("kamichacard9").style.display="none";
+	document.getElementById("selfavaimg").addEventListener("click", function(e) {
+		document.getElementById("selfavaimg").classList.add("change-size");
+	});
 	window.setInterval(timer, 1000);
 }
 function preLoadImg()

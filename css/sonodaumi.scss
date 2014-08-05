@@ -136,7 +136,29 @@ div.avatar {
 	right:$shimochaavaright;
 	background-color:$otherplayerdivbk;
 }
-
+// animation for avatar image
+.avatarimg
+{
+	width: 150px;
+	height: 150px;
+	display:inline-block;
+}
+@-webkit-keyframes webkitbigBox {
+	to {
+		width: 300px;
+		height: 300px;
+	}
+}
+@keyframes bigBox {
+	to {
+		width: 300px;
+		height: 300px;
+	}
+}
+.change-size {
+	-webkit-animation: webkitbigBox 3s linear 1s 3 normal;
+	animation: bigBox 3s linear 1s 3 normal;
+}
 .cellol {
 	-moz-user-select: none;
 	-webkit-user-select: none;
