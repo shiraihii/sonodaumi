@@ -47,6 +47,9 @@ function init() {
 	document.getElementById("kamichacard9").style.display="none";
 	document.getElementById("selfavaimg").addEventListener("click", function(e) {
 		document.getElementById("selfavaimg").classList.add("change-size");
+		setTimeout(function() {
+			document.getElementById("selfavaimg").classList.remove("change-size");
+		} ,1000);
 	});
 	window.setInterval(timer, 1000);
 }
