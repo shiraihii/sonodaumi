@@ -9,13 +9,17 @@ body {
   height: 620px;
   background-color: #dddddd;
   overflow: hidden;
-  border-radius: 30px; }
+  border-radius: 25px; }
 
 div.cardavaarea {
   position: absolute;
   text-align: center;
   border-radius: 10px;
-  overflow: hidden; }
+  overflow: hidden;
+  filter: alpha(opacity=60);
+  -moz-opacity: 0.6;
+  -khtml-opacity: 0.6;
+  opacity: 0.6; }
 
 #selfareadiv {
   left: 22px;
