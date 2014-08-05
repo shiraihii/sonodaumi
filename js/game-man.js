@@ -17,26 +17,26 @@ function init() {
 	document.getElementById("selfcard8img").src="image/card/3/3.jpg"
 	document.getElementById("selfcard9img").src="image/card/3/9.jpg"
 
-	document.getElementById("toimencard0img").src="image/card/bk.jpg"
-	document.getElementById("toimencard1img").src="image/card/bk.jpg"
-	document.getElementById("toimencard2img").src="image/card/bk.jpg"
-	document.getElementById("toimencard3img").src="image/card/bk.jpg"
-	document.getElementById("toimencard4img").src="image/card/bk.jpg"
-	document.getElementById("toimencard5img").src="image/card/bk.jpg"
-	document.getElementById("toimencard6img").src="image/card/bk.jpg"
-	document.getElementById("toimencard7img").src="image/card/bk.jpg"
-	document.getElementById("toimencard8img").src="image/card/bk.jpg"
-	document.getElementById("toimencard9img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard0img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard1img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard2img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard3img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard4img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard5img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard6img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard7img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard8img").src="image/card/bk.jpg"
-	document.getElementById("shimochacard9img").src="image/card/bk.jpg"
+	document.getElementById("toimencard0img").src="image/card/bk.png"
+	document.getElementById("toimencard1img").src="image/card/bk.png"
+	document.getElementById("toimencard2img").src="image/card/bk.png"
+	document.getElementById("toimencard3img").src="image/card/bk.png"
+	document.getElementById("toimencard4img").src="image/card/bk.png"
+	document.getElementById("toimencard5img").src="image/card/bk.png"
+	document.getElementById("toimencard6img").src="image/card/bk.png"
+	document.getElementById("toimencard7img").src="image/card/bk.png"
+	document.getElementById("toimencard8img").src="image/card/bk.png"
+	document.getElementById("toimencard9img").src="image/card/bk.png"
+	document.getElementById("shimochacard0img").src="image/card/bk.png"
+	document.getElementById("shimochacard1img").src="image/card/bk.png"
+	document.getElementById("shimochacard2img").src="image/card/bk.png"
+	document.getElementById("shimochacard3img").src="image/card/bk.png"
+	document.getElementById("shimochacard4img").src="image/card/bk.png"
+	document.getElementById("shimochacard5img").src="image/card/bk.png"
+	document.getElementById("shimochacard6img").src="image/card/bk.png"
+	document.getElementById("shimochacard7img").src="image/card/bk.png"
+	document.getElementById("shimochacard8img").src="image/card/bk.png"
+	document.getElementById("shimochacard9img").src="image/card/bk.png"
 
 	document.getElementById("selfavaimg").src="image/person/kotori/seijou.png"
 	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png"
@@ -109,14 +109,14 @@ function fcKamichaMouseOver(index) {
 			}, 400);
 			document.getElementById("kamichaavaimg").src="image/person/umi/eee.png"
 		}
-		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.jpg"
+		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.png"
 	}
 }
 function fcKamichaMouseOut(index) {
 	if (!makeda) {
 		sndplayreq = false;
 		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png"
-		document.getElementById("kamichacard"+index+"img").src="image/card/bk.jpg"
+		document.getElementById("kamichacard"+index+"img").src="image/card/bk.png"
 	}
 }
 function fcKamichaClick(index) {
