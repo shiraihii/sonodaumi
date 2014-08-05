@@ -11,6 +11,34 @@ body {
   overflow: hidden;
   border-radius: 30px; }
 
+#selfareadiv {
+  left: 5px;
+  bottom: 20px;
+  height: 160px;
+  width: 1190px;
+  background-color: white; }
+
+#toimenareadiv {
+  left: 5px;
+  top: 20px;
+  height: 160px;
+  width: 1190px;
+  background-color: white; }
+
+#kamichaareadiv {
+  left: 5px;
+  top: 20px;
+  height: 160px;
+  width: 1190px;
+  background-color: white; }
+
+#shimochaareadiv {
+  right: 5px;
+  top: 20px;
+  height: 150px;
+  width: 325px;
+  background-color: white; }
+
 div.cardarea {
   position: absolute;
   text-align: center; }
