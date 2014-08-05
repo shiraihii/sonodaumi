@@ -1,5 +1,6 @@
 body {
-  text-align: center; }
+  text-align: center;
+  background-color: black; }
 
 #gamediv {
   position: relative;
@@ -9,7 +10,8 @@ body {
   height: 620px;
   background-color: #dddddd;
   overflow: hidden;
-  border-radius: 25px; }
+  border-radius: 25px;
+  background-image: url("image/background.png"); }
 
 div.cardavaarea {
   position: absolute;
@@ -22,31 +24,31 @@ div.cardavaarea {
   opacity: 0.6; }
 
 #selfareadiv {
-  left: 22px;
+  left: 25px;
   bottom: 20.83333px;
   height: 160px;
-  width: 1196px;
+  width: 1190px;
   background-color: #222222; }
 
 #toimenareadiv {
-  left: 22px;
+  left: 25px;
   top: 20.83333px;
   height: 160px;
-  width: 521px;
+  width: 515px;
   background-color: #222222; }
 
 #kamichaareadiv {
-  left: 22px;
+  left: 25px;
   top: 230px;
   height: 160px;
-  width: 1196px;
+  width: 1190px;
   background-color: #222222; }
 
 #shimochaareadiv {
-  right: 22px;
+  right: 25px;
   top: 20.83333px;
   height: 160px;
-  width: 521px;
+  width: 515px;
   background-color: #222222; }
 
 #kubariareadiv {
@@ -62,25 +64,25 @@ div.cardarea {
 
 #selfcarddiv {
   bottom: 25.83333px;
-  left: 27px;
+  left: 30px;
   width: 1000px;
   height: 150px; }
 
 #toimencarddiv {
   top: 25.83333px;
-  left: 213px;
+  left: 210px;
   width: 325px;
   height: 150px; }
 
 #kamichacarddiv {
   top: 235px;
-  left: 213px;
+  left: 210px;
   width: 1000px;
   height: 150px; }
 
 #shimochacarddiv {
   top: 25.83333px;
-  right: 27px;
+  right: 30px;
   width: 325px;
   height: 150px; }
 
@@ -123,26 +125,26 @@ div.toimencard, div.shimochacard {
 div.avatar {
   position: absolute;
   text-align: center;
-  width: 155px;
-  height: 155px;
+  width: 150px;
+  height: 150px;
   border-radius: 25px;
   overflow: hidden; }
 
 #selfavadiv {
   bottom: 25.83333px;
-  left: 1058px; }
+  left: 1060px; }
 
 #toimenavadiv {
   top: 25.83333px;
-  left: 27px; }
+  left: 30px; }
 
 #kamichaavadiv {
   top: 235px;
-  left: 27px; }
+  left: 30px; }
 
 #shimochaavadiv {
   top: 25.83333px;
-  right: 383px; }
+  right: 385px; }
 
 .avatarimg {
   width: 150px;

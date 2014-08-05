@@ -12,7 +12,7 @@ $areamargin:5px;
 $selfcardareawidth:($cardwidth+$cardmargin)*10;
 $chacardareawidth:$cardedgewidth*9+$cardwidth+$cardmargin;
 
-$avatorsqrwidth:$gameheight/4;
+$avatorsqrwidth:$cardheight;
 $avatormargin:$avatorsqrwidth/5;
 $avatorborderradius:25px;
 
@@ -63,10 +63,12 @@ $gamedivbk:#DDD;
 $selfdivbk:#0F3;
 $otherplayerdivbk:#03F;
 $areadivbk:#222;
+$bodyback:#000;
 // =====================
 
 body {
 	text-align:center;
+	background-color:$bodyback;
 }
 div {
 	// border:1px solid #F00 // for debug
@@ -82,6 +84,7 @@ div {
 	background-color:$gamedivbk;
 	overflow:hidden;
 	border-radius:25px;
+	background-image:url('image/background.png');
 }
 
 //area
