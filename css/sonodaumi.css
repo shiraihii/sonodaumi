@@ -19,47 +19,49 @@ div.cardarea {
   bottom: 25px;
   left: 10px;
   width: 1000px;
-  height: 150px;
-  background-color: #00ff33; }
+  height: 150px; }
 
 #toimencarddiv {
   top: 25px;
   left: 190px;
   width: 325px;
-  height: 150px;
-  background-color: #0033ff; }
+  height: 150px; }
 
 #kamichacarddiv {
   top: 225px;
   left: 190px;
   width: 1000px;
-  height: 150px;
-  background-color: #0033ff; }
+  height: 150px; }
 
 #shimochacarddiv {
   top: 25px;
   right: 10px;
   width: 325px;
-  height: 150px;
-  background-color: #0033ff; }
+  height: 150px; }
 
 #kubariarea {
   top: 25px;
   left: 550px;
   width: 100px;
-  height: 150px;
-  background-color: #999; }
+  height: 150px; }
 
-#kubariareadyn {
+div.kubariareadyn {
+  position: absolute;
+  text-align: center;
   top: 25px;
   left: 550px;
   width: 100px;
   height: 150px;
-  background-color: #999; }
+  z-index: 9; }
+
+.kubariareadynimg {
+  width: 100px;
+  height: 150px;
+  display: inline-block; }
 
 div.selfcard, div.kamichacard {
   text-align: center;
-  float: left;
+  display: none;
   margin: 0px 0px;
   width: 100px;
   height: 150px; }
@@ -81,23 +83,19 @@ div.avatar {
 
 #selfavadiv {
   bottom: 25px;
-  left: 1040px;
-  background-color: #00ff33; }
+  left: 1040px; }
 
 #toimenavadiv {
   top: 25px;
-  left: 10px;
-  background-color: #0033ff; }
+  left: 10px; }
 
 #kamichaavadiv {
   top: 225px;
-  left: 10px;
-  background-color: #0033ff; }
+  left: 10px; }
 
 #shimochaavadiv {
   top: 25px;
-  right: 365px;
-  background-color: #0033ff; }
+  right: 365px; }
 
 .avatarimg {
   width: 150px;
@@ -143,6 +141,34 @@ div.avatar {
 .cardmeguri {
   -webkit-animation: webkitcardmeguri .3s ease-in-out 0s 1 normal;
   -moz-animation: mozcardmeguri .3s ease-in-out 0s 1 normal; }
+
+@-webkit-keyframes webkitcardkubari1 {
+  to {
+    top: 425px;
+    left: 550px -75px;
+    opacity: 0.3; } }
+@-moz-keyframes mozcardkubari1 {
+  to {
+    top: 425px;
+    left: 475px;
+    opacity: 0.3; } }
+@-webkit-keyframes webkitcardkubari2 {
+  to {
+    top: 225px;
+    left: 625px;
+    opacity: 0.3; } }
+@-moz-keyframes mozcardkubari2 {
+  to {
+    top: 225px;
+    left: 625px;
+    opacity: 0.3; } }
+.cardkubari1 {
+  -webkit-animation: webkitcardkubari1 .4s ease-in-out 0s 10 normal;
+  -moz-animation: mozcardkubari1 .4s ease-in-out 0s 10 normal; }
+
+.cardkubari2 {
+  -webkit-animation: webkitcardkubari2 .4s ease-in-out .1s 10 normal;
+  -moz-animation: mozcardkubari2 .4s ease-in-out .1s 10 normal; }
 
 .cellol {
   -moz-user-select: none;
