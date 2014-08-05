@@ -7,6 +7,8 @@ $cardheight:150px;
 $cardmargin:4px;
 $cardedgewidth:25px;
 
+$areamargin:10px;
+
 $selfcardareawidth:($cardwidth+$cardmargin)*10;
 $chacardareawidth:$cardedgewidth*9+$cardwidth+$cardmargin;
 
@@ -19,6 +21,10 @@ $selfcardheight:$cardheight;
 $selfcardbottom:$gameheight/24;
 $selfcardleft:($gamewidth - $selfcardwidth - $avatormargin -$avatorsqrwidth)/2;
 $selfavaleft:$selfcardleft + $avatormargin + $selfcardwidth;
+$selfarealeft:$selfcardleft-$areamargin;
+$selfareabottom:$selfcardbottom-$areamargin;
+$selfareawidth:$selfcardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
+$selfareaheight:$cardheight+$areamargin*2;
 
 $toimencardwidth:$chacardareawidth;
 $toimencardheight:$cardheight;
@@ -38,11 +44,13 @@ $shimochacardright:$selfcardleft;
 $shimochacardtop:$selfcardbottom;
 $shimochaavaright:$selfcardleft + $avatormargin + $chacardareawidth;
 
+
 // color
 // for debug
 $gamedivbk:#DDD;
 $selfdivbk:#0F3;
 $otherplayerdivbk:#03F;
+$areadivbk:#022;
 // =====================
 
 body {
@@ -146,6 +154,36 @@ div.avatar {
 	width: 150px;
 	height: 150px;
 	display:inline-block;
+}
+
+//area
+#selfareadiv{
+	left:$selfarealeft;
+	bottom:$selfareabottom;
+	height:$selfareaheight;
+	width:$selfareawidth;
+	background-color:$areadivbk;
+}
+#toimenareadiv{
+	left:$selfarealeft;
+	top:$selfareabottom;
+	height:$selfareaheight;
+	width:$selfareawidth;
+	background-color:$areadivbk;
+}
+#kamichaareadiv{
+	left:$selfarealeft;
+	top:$selfareabottom;
+	height:$selfareaheight;
+	width:$selfareawidth;
+	background-color:$areadivbk;
+}
+#shimochaareadiv{
+	right:$selfarealeft;
+	top:$selfareabottom;
+	height:$selfareaheight;
+	width:$selfareawidth;
+	background-color:$areadivbk;
 }
 
 
