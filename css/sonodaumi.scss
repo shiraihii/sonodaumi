@@ -81,10 +81,10 @@ div {
 	margin:0 auto; // for FF Chr, no IE6 or before, hhhh
 	width:$gamewidth;
 	height:$gameheight;
-	background-color:$gamedivbk;
+	//background-color:$gamedivbk;
 	overflow:hidden;
 	border-radius:25px;
-	background-image:url('image/background.png');
+	background-image:url("../image/background.png");
 }
 
 //area

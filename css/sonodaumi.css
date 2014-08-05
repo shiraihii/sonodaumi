@@ -8,10 +8,9 @@ body {
   margin: 0 auto;
   width: 1240px;
   height: 620px;
-  background-color: #dddddd;
   overflow: hidden;
   border-radius: 25px;
-  background-image: url("image/background.png"); }
+  background-image: url("../image/background.png"); }
 
 div.cardavaarea {
   position: absolute;
