@@ -1,6 +1,8 @@
 // Trying
 var tm1 = 0;
 var tm2 = 0;
+var tm3 = 0;
+var tm4 = 0;
 var makeda = false;
 var sndplayreq = true;
 var lastkamichacardsel = 0;
@@ -27,6 +29,7 @@ function init() {
 	document.getElementById("toimencard7img").src="image/card/bk.png"
 	document.getElementById("toimencard8img").src="image/card/bk.png"
 	document.getElementById("toimencard9img").src="image/card/bk.png"
+
 	document.getElementById("shimochacard0img").src="image/card/bk.png"
 	document.getElementById("shimochacard1img").src="image/card/bk.png"
 	document.getElementById("shimochacard2img").src="image/card/bk.png"
@@ -42,14 +45,7 @@ function init() {
 	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png"
 	document.getElementById("shimochaavaimg").src="image/person/nico/seijou.png"
 	document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png"
-	document.getElementById("selfcard0").style.display="none";
-	document.getElementById("selfcard1").style.display="none";
-	document.getElementById("selfcard2").style.display="none";
-	document.getElementById("selfcard3").style.display="none";
-	document.getElementById("kamichacard6").style.display="none";
-	document.getElementById("kamichacard7").style.display="none";
-	document.getElementById("kamichacard8").style.display="none";
-	document.getElementById("kamichacard9").style.display="none";
+
 	document.getElementById("selfavaimg").addEventListener("click", function(e) {
 		document.getElementById("selfavaimg").classList.add("change-size");
 		setTimeout(function() {
@@ -59,8 +55,12 @@ function init() {
 	setTimeout(function () {
 		document.getElementById("kubariareadyn1").classList.add("cardkubari1");
 		document.getElementById("kubariareadyn2").classList.add("cardkubari2");
+		document.getElementById("kubariareadyn3").classList.add("cardkubari3");
+		document.getElementById("kubariareadyn4").classList.add("cardkubari4");
 		window.setInterval(function(){timer1()}, 400);
 		setTimeout(function(){window.setInterval(timer2, 400)}, 100);
+		setTimeout(function(){window.setInterval(timer3, 400)}, 200);
+		setTimeout(function(){window.setInterval(timer4, 400)}, 300);
 	}, 1000);
 }
 function preLoadImg()
@@ -75,7 +75,7 @@ function preLoadImg()
 function timer1()
 {
 	if (tm1 < 10)
-		document.getElementById("selfcard"+tm1).style.display="inline-block";
+		document.getElementById("kamichacard"+tm1).style.display="inline-block";
 	else
 		tm1 = 11;
 	tm1 ++;
@@ -83,10 +83,26 @@ function timer1()
 function timer2()
 {
 	if (tm2 < 10)
-		document.getElementById("kamichacard"+tm2).style.display="inline-block";
+		document.getElementById("selfcard"+tm2).style.display="inline-block";
 	else
 		tm2 = 11;
 	tm2 ++;
+}
+function timer3()
+{
+	if (tm3 < 10)
+		document.getElementById("shimochacard"+tm3).style.display="block";
+	else
+		tm3 = 11;
+	tm3 ++;
+}
+function timer4()
+{
+	if (tm4 < 10)
+		document.getElementById("toimencard"+tm4).style.display="block";
+	else
+		tm4 = 11;
+	tm4 ++;
 }
 
 function fcKamichaMouseOver(index) {
