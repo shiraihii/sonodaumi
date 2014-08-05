@@ -43,9 +43,23 @@ div.cardarea {
   height: 150px;
   background-color: #0033ff; }
 
+#kubariarea {
+  top: 25px;
+  left: 550px;
+  width: 100px;
+  height: 150px;
+  background-color: #999; }
+
+#kubariareadyn {
+  top: 25px;
+  left: 550px;
+  width: 100px;
+  height: 150px;
+  background-color: #999; }
+
 div.selfcard, div.kamichacard {
   text-align: center;
-  display: inline-block;
+  float: left;
   margin: 0px 0px;
   width: 100px;
   height: 150px; }
@@ -127,8 +141,8 @@ div.avatar {
     width: 100px;
     height: 150px; } }
 .cardmeguri {
-  -webkit-animation: webkitcardmeguri .2s ease-in-out 0s 1 normal;
-  -moz-animation: mozcardmeguri .2s ease-in-out 0s 1 normal; }
+  -webkit-animation: webkitcardmeguri .3s ease-in-out 0s 1 normal;
+  -moz-animation: mozcardmeguri .3s ease-in-out 0s 1 normal; }
 
 .cellol {
   -moz-user-select: none;

@@ -96,10 +96,24 @@ div.cardarea {
 	height:$shimochacardheight;
 	background-color:$otherplayerdivbk;
 }
+#kubariarea {
+	top:$toimencardtop;
+	left:$gamewidth / 2 - 50px;
+	width:100px;
+	height:150px;
+	background-color:#999;
+}
+#kubariareadyn {
+	top:$toimencardtop;
+	left:$gamewidth / 2 - 50px;
+	width:100px;
+	height:150px;
+	background-color:#999;
+}
 div.selfcard, div.kamichacard{
 	text-align:center;
-	// float:left;
-	display:inline-block;
+	float:left;
+	//display:inline-block;
 	margin:0px 0px;
 	width:100px;
 	height:150px;
