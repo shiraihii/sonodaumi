@@ -12,6 +12,7 @@ $chacardareawidth:$cardedgewidth*9+$cardwidth+$cardmargin;
 
 $avatorsqrwidth:$gameheight/4;
 $avatormargin:$avatorsqrwidth/5;
+$avatorborderradius:25px;
 
 $selfcardwidth:$selfcardareawidth;
 $selfcardheight:$cardheight;
@@ -59,6 +60,8 @@ div {
 	width:$gamewidth;
 	height:$gameheight;
 	background-color:$gamedivbk;
+	overflow:hidden;
+	border-radius:30px;
 }
 // cardarea
 div.cardarea {
@@ -115,6 +118,8 @@ div.avatar {
 	text-align:center;
 	width:$avatorsqrwidth;
 	height:$avatorsqrwidth;
+	border-radius:$avatorborderradius;
+	overflow:hidden;
 }
 #selfavadiv {
 	bottom:$selfcardbottom;
@@ -136,29 +141,68 @@ div.avatar {
 	right:$shimochaavaright;
 	background-color:$otherplayerdivbk;
 }
-// animation for avatar image
 .avatarimg
 {
 	width: 150px;
 	height: 150px;
 	display:inline-block;
 }
+
+
+// animation for avatar image
+// try
 @-webkit-keyframes webkitbigBox {
 	to {
 		width: 300px;
 		height: 300px;
 	}
 }
-@keyframes bigBox {
+@-moz-keyframes mozbigBox {
 	to {
 		width: 300px;
 		height: 300px;
 	}
 }
 .change-size {
-	-webkit-animation: webkitbigBox 3s linear 1s 3 normal;
-	animation: bigBox 3s linear 1s 3 normal;
+	-webkit-animation: webkitbigBox 1s linear 0s 1 normal;
+	-moz-animation: mozbigBox 1s linear 0s 1 normal;
 }
+
+
+// animation for cardmeguri
+@-webkit-keyframes webkitcardmeguri {
+	0% {
+		width: 100px;
+		height: 150px;
+	}
+	50% {
+		width: 5px;
+		height: 150px;
+	}
+	100% {
+		width: 100px;
+		height: 150px;
+	}
+}
+@-moz-keyframes mozcardmeguri {
+	0% {
+		width: 100px;
+		height: 150px;
+	}
+	50% {
+		width: 5px;
+		height: 150px;
+	}
+	100% {
+		width: 100px;
+		height: 150px;
+	}
+}
+.cardmeguri {
+	-webkit-animation: webkitcardmeguri .3s ease-in-out 0s 1 normal;
+	-moz-animation: mozcardmeguri .3s ease-in-out 0s 1 normal;
+}
+
 .cellol {
 	-moz-user-select: none;
 	-webkit-user-select: none;

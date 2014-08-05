@@ -104,14 +104,19 @@ function fcKamichaClick(index) {
 	if (!makeda) {
 		sndplayreq = false;
 		document.getElementById("sndei").play();
+		document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
 		if (index == 3) {
-			document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png"
-			document.getElementById("kamichacard"+index+"img").src="image/card/jk/2.jpg"
+			setTimeout(function(varindex) {
+				document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png"
+				document.getElementById("kamichacard"+varindex+"img").src="image/card/jk/2.jpg"
+			}, 150, index);
 		}
 		else {
 			setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
-			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png"
-			document.getElementById("kamichacard"+index+"img").src="image/card/2/"+(index+1)+".jpg"
+			setTimeout(function(varindex) {
+				document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png"
+				document.getElementById("kamichacard"+varindex+"img").src="image/card/2/"+(varindex+1)+".jpg"
+			}, 150, index);
 		}
 	}
 	makeda = true;
