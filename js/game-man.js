@@ -6,6 +6,31 @@ var tm4 = 0;
 var makeda = false;
 var sndplayreq = true;
 var lastkamichacardsel = 0;
+
+var card; 
+var cardkamicha;
+var cardself;
+var cardshimocha;
+var cardtoimen;
+function randomInt(num) {
+	return Math.floor(Math.random() * num);
+}
+function shufflesw() {
+	card = [];
+	for (var i = 0; i < 37; i++)
+		card.push(i);
+	for (var i = 0; i < 500; i++) {
+		var swpi = randomInt(37);
+		var swpj = randomInt(37);
+		var tmpswp = card[swpj];
+		card[swpj] = card[swpi];
+		card[swpi] = tmpswp;
+	}
+	cardkamicha = card.slice(0,9);
+	cardself = card.slice(10,18);
+	cardshimocha = card.slice(19,27);
+	cardtoimen = card.slice(28,36);
+}
 function init() {
 	preLoadImg();	
 	document.getElementById("selfcard0img").src="image/card/jk/1.jpg"
@@ -52,6 +77,7 @@ function init() {
 			document.getElementById("selfavaimg").classList.remove("change-size");
 		} ,1000);
 	});
+	shufflesw();
 	setTimeout(function () {
 		document.getElementById("kubariareadyn1").classList.add("cardkubari1");
 		document.getElementById("kubariareadyn2").classList.add("cardkubari2");
