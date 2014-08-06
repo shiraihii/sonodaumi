@@ -100,7 +100,7 @@ div.kubariareadyn {
   height: 150px;
   z-index: 9; }
 
-.kubariareadynimg {
+.kamichacardimg, .selfcardimg, .shimochacardimg, .toimencardimg, .kubariareadynimg {
   width: 100px;
   height: 150px;
   display: inline-block; }
@@ -266,6 +266,26 @@ div.avatar {
 .cardkubari4 {
   -webkit-animation: webkitcardkubari4 .4s ease-in-out .3s 9 normal;
   -moz-animation: mozcardkubari4 .4s ease-in-out .3s 9 normal; }
+
+@-webkit-keyframes webkitcardremove {
+  75% {
+    opacity: 1.0;
+    width: 75px; }
+
+  100% {
+    opacity: 0.2;
+    width: 0px; } }
+@-moz-keyframes mozcardremove {
+  75% {
+    opacity: 1.0;
+    width: 75px; }
+
+  100% {
+    opacity: 0.2;
+    width: 0px; } }
+.cardremove {
+  -webkit-animation: webkitcardremove .4s linear 0s 1 normal;
+  -moz-animation: mozcardremove .4s linear 0s 1 normal; }
 
 .cellol {
   -moz-user-select: none;

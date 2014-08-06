@@ -166,6 +166,15 @@ function fcKamichaClick(index) {
 		sndplayreq = false;
 		document.getElementById("sndei").play();
 		document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
+		setTimeout(function(varindex) {
+			document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
+			document.getElementById("kamichacard"+varindex).classList.add("cardremove");
+		}, 1500, index);
+		setTimeout(function(varindex) {
+			document.getElementById("kamichacard"+varindex).style.display="none";
+			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
+			document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
+		}, 1900, index);
 		if (index == 3) {
 			setTimeout(function(varindex) {
 				document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png"
