@@ -1,23 +1,31 @@
-// Trying
+// Counter of Discarding Interval Timers
 var tm1 = 0;
 var tm2 = 0;
 var tm3 = 0;
 var tm4 = 0;
+
 var makeda = false;
 var sndplayreq = true;
 var lastkamichacardsel = 0;
 
+// Array of shuffling Cards
+// Values Ranges from 0 to 36
 var card; 
+// Arrays of Hand Cards
 var cardkamicha;
 var cardself;
 var cardshimocha;
 var cardtoimen;
 
+// Handlers of Discarding Interval Timers
 var timerhandler1;
 var timerhandler2;
 var timerhandler3;
 var timerhandler4;
 
+// Func: To Compare which Card is After
+// Para: a (CardIndex of Card A), b (CardIndex of Card B)
+// Ret : whether Card A is after
 function isCardGreatThan(a, b) {
 	var suita = Math.floor(a / 9);
 	var numa = a % 9;
@@ -37,9 +45,17 @@ function isCardGreatThan(a, b) {
 		return false;
 	return false; // default: for error;
 }
+
+// Func: Generate a Random Integer Ranges from {0, num - 1}
+// Para: num (Sup-Limit of Random Integer)
+// Ret : the Random Integer
 function randomInt(num) {
 	return Math.floor(Math.random() * num);
 }
+
+// Func: Sort Cards According to function "isCardGreatThan()"
+// Para: array (Array of Cards)
+// Ret : Sorted Array;
 function sort(array) {
 	var length = array.length;
 	for (var i = 0; i < length; i++) {
@@ -53,6 +69,12 @@ function sort(array) {
 	}
 	return array;
 }
+
+// Func: Shuffled Card by Swapping Cards,
+//     Generating Arrays of 3 COM-Players and a Sorted Array of Player's Hand,
+//     Storing in Global Variables
+// Para: Null
+// Ret : Null
 function shufflesw() {
 	card = [];
 	for (var i = 0; i < 37; i++)
@@ -69,15 +91,23 @@ function shufflesw() {
 	cardshimocha = card.slice(19,28);
 	cardtoimen = card.slice(28,37);
 }
+
+// Func: Get A Card's image's url
+// Para: cardnum (CardIndex Ranging from 0 to 36)
+// Ret : Url of Iimage
 function getcardimgurl(cardnum) {
 	var suit = Math.floor(cardnum / 9) + 1;
 	var num = cardnum % 9 + 1;
 	if (suit == 5) {
 		suit = "jk";
-		num = 2;
+		num = 2; // the "white alpaca" as JOKER
 	}
 	return "image/card/" + suit + "/" + num + ".jpg";
 }
+
+// Func: Add an Animation of Drawing on Player's Hand
+// Para: Null
+// Ret : Null
 function showselfcard() {
 	for (var num = 0; num < 9; num++) {
 		document.getElementById("selfcard" + num + "img").classList.add("cardmeguri");
@@ -86,6 +116,10 @@ function showselfcard() {
 		}, 150, num);
 	}
 }
+
+// Func: Add an Animation of Discarding Cards
+// Para: Null
+// Ret : Null
 function animateDiscard() {
 	document.getElementById("kubariareadyn1").classList.add("cardkubari1");
 	document.getElementById("kubariareadyn2").classList.add("cardkubari2");
@@ -104,6 +138,10 @@ function animateDiscard() {
 		timerhandler4 = window.setInterval(timer4, 400);
 	}, 300);
 }
+
+// Func: Initialization
+// Para: Null
+// Ret : Null
 function init() {
 	preLoadImg();	
 
@@ -161,6 +199,10 @@ function init() {
 		showselfcard();
 	}, 1000 + 10 * 400)
 }
+
+// Func: Load Image for Speeding Up
+// Para: Null
+// Ret : Null
 function preLoadImg()
 {
 	for (var imgi = 1; imgi < 4; imgi ++)
@@ -170,6 +212,10 @@ function preLoadImg()
 			img = "image/card/" + imgi + "/" + imgj + ".jpg";
 		}
 }
+
+// Func: Interval Timer for Discarding Cards to Kamicha (Umi Sonoda)
+// Para: Null
+// Ret : Null
 function timer1()
 {
 	if (tm1 < 10)
@@ -182,6 +228,10 @@ function timer1()
 	}
 	tm1 ++;
 }
+
+// Func: Interval Timer for Discarding Cards to Player Self (Kotori Minami)
+// Para: Null
+// Ret : Null
 function timer2()
 {
 	if (tm2 < 9)
@@ -195,6 +245,10 @@ function timer2()
 	}
 	tm2 ++;
 }
+
+// Func: Interval Timer for Discarding Cards to Shimocha (Nico Yazawa)
+// Para: Null
+// Ret : Null
 function timer3()
 {
 	if (tm3 < 9)
@@ -207,6 +261,10 @@ function timer3()
 	}
 	tm3 ++;
 }
+
+// Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
+// Para: Null
+// Ret : Null
 function timer4()
 {
 	if (tm4 < 9)
@@ -220,6 +278,9 @@ function timer4()
 	tm4 ++;
 }
 
+// Func: Kamicha MouserOver Listener
+// Para: Null
+// Ret : Null
 function fcKamichaMouseOver(index) {
 	if (!makeda) {
 		if (index == 3) {
@@ -243,6 +304,10 @@ function fcKamichaMouseOver(index) {
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.png";
 	}
 }
+
+// Func: Kamicha MouserOut Listener
+// Para: Null
+// Ret : Null
 function fcKamichaMouseOut(index) {
 	if (!makeda) {
 		sndplayreq = false;
@@ -250,6 +315,10 @@ function fcKamichaMouseOut(index) {
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk.png";
 	}
 }
+
+// Func: Kamicha Click Listener
+// Para: Null
+// Ret : Null
 function fcKamichaClick(index) {
 	if (!makeda) {
 		sndplayreq = false;
