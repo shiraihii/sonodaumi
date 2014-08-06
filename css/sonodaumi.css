@@ -106,9 +106,16 @@ div.kubariareadyn {
   display: inline-block; }
 
 div.selfcard, div.kamichacard {
+  position: relative;
   text-align: center;
   display: none;
   margin: 0px 0px;
+  width: 100px;
+  height: 150px; }
+
+div.selfcardin, div.kamichacardin {
+  position: absolute;
+  text-align: center;
   width: 100px;
   height: 150px;
   border-radius: 5px;
