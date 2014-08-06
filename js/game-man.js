@@ -107,45 +107,45 @@ function animateDiscard() {
 function init() {
 	preLoadImg();	
 
-	document.getElementById("toimencard0img").src="image/card/bk.png"
-	document.getElementById("toimencard1img").src="image/card/bk.png"
-	document.getElementById("toimencard2img").src="image/card/bk.png"
-	document.getElementById("toimencard3img").src="image/card/bk.png"
-	document.getElementById("toimencard4img").src="image/card/bk.png"
-	document.getElementById("toimencard5img").src="image/card/bk.png"
-	document.getElementById("toimencard6img").src="image/card/bk.png"
-	document.getElementById("toimencard7img").src="image/card/bk.png"
-	document.getElementById("toimencard8img").src="image/card/bk.png"
-	document.getElementById("toimencard9img").src="image/card/bk.png"
+	document.getElementById("toimencard0img").src="image/card/bk.png";
+	document.getElementById("toimencard1img").src="image/card/bk.png";
+	document.getElementById("toimencard2img").src="image/card/bk.png";
+	document.getElementById("toimencard3img").src="image/card/bk.png";
+	document.getElementById("toimencard4img").src="image/card/bk.png";
+	document.getElementById("toimencard5img").src="image/card/bk.png";
+	document.getElementById("toimencard6img").src="image/card/bk.png";
+	document.getElementById("toimencard7img").src="image/card/bk.png";
+	document.getElementById("toimencard8img").src="image/card/bk.png";
+	document.getElementById("toimencard9img").src="image/card/bk.png";
 
-	document.getElementById("shimochacard0img").src="image/card/bk.png"
-	document.getElementById("shimochacard1img").src="image/card/bk.png"
-	document.getElementById("shimochacard2img").src="image/card/bk.png"
-	document.getElementById("shimochacard3img").src="image/card/bk.png"
-	document.getElementById("shimochacard4img").src="image/card/bk.png"
-	document.getElementById("shimochacard5img").src="image/card/bk.png"
-	document.getElementById("shimochacard6img").src="image/card/bk.png"
-	document.getElementById("shimochacard7img").src="image/card/bk.png"
-	document.getElementById("shimochacard8img").src="image/card/bk.png"
-	document.getElementById("shimochacard9img").src="image/card/bk.png"
+	document.getElementById("shimochacard0img").src="image/card/bk.png";
+	document.getElementById("shimochacard1img").src="image/card/bk.png";
+	document.getElementById("shimochacard2img").src="image/card/bk.png";
+	document.getElementById("shimochacard3img").src="image/card/bk.png";
+	document.getElementById("shimochacard4img").src="image/card/bk.png";
+	document.getElementById("shimochacard5img").src="image/card/bk.png";
+	document.getElementById("shimochacard6img").src="image/card/bk.png";
+	document.getElementById("shimochacard7img").src="image/card/bk.png";
+	document.getElementById("shimochacard8img").src="image/card/bk.png";
+	document.getElementById("shimochacard9img").src="image/card/bk.png";
 
-	document.getElementById("selfcard0img").src="image/card/bk.png"
-	document.getElementById("selfcard1img").src="image/card/bk.png"
-	document.getElementById("selfcard2img").src="image/card/bk.png"
-	document.getElementById("selfcard3img").src="image/card/bk.png"
-	document.getElementById("selfcard4img").src="image/card/bk.png"
-	document.getElementById("selfcard5img").src="image/card/bk.png"
-	document.getElementById("selfcard6img").src="image/card/bk.png"
-	document.getElementById("selfcard7img").src="image/card/bk.png"
-	document.getElementById("selfcard8img").src="image/card/bk.png"
-	document.getElementById("selfcard9img").src="image/card/bk.png"
+	document.getElementById("selfcard0img").src="image/card/bk.png";
+	document.getElementById("selfcard1img").src="image/card/bk.png";
+	document.getElementById("selfcard2img").src="image/card/bk.png";
+	document.getElementById("selfcard3img").src="image/card/bk.png";
+	document.getElementById("selfcard4img").src="image/card/bk.png";
+	document.getElementById("selfcard5img").src="image/card/bk.png";
+	document.getElementById("selfcard6img").src="image/card/bk.png";
+	document.getElementById("selfcard7img").src="image/card/bk.png";
+	document.getElementById("selfcard8img").src="image/card/bk.png";
+	document.getElementById("selfcard9img").src="image/card/bk.png";
 
-	document.getElementById("kubariareaimg").src="image/card/bk.png"
+	document.getElementById("kubariareaimg").src="image/card/bk.png";
 
-	document.getElementById("selfavaimg").src="image/person/kotori/seijou.png"
-	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png"
-	document.getElementById("shimochaavaimg").src="image/person/nico/seijou.png"
-	document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png"
+	document.getElementById("selfavaimg").src="image/person/kotori/seijou.png";
+	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png";
+	document.getElementById("shimochaavaimg").src="image/person/nico/seijou.png";
+	document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png";
 
 	document.getElementById("selfavaimg").addEventListener("click", function(e) {
 		document.getElementById("selfavaimg").classList.add("change-size");
@@ -215,7 +215,6 @@ function timer4()
 		window.clearInterval(timerhandler4);
 	}
 	tm4 ++;
-	if (tm4 > 14) alert("abing")
 }
 
 function fcKamichaMouseOver(index) {
@@ -227,7 +226,7 @@ function fcKamichaMouseOver(index) {
 				if (sndplayreq && lastkamichacardsel == index)
 					document.getElementById("sndureshi").play();
 			}, 400);
-			document.getElementById("kamichaavaimg").src="image/person/umi/ureshi.png"
+			document.getElementById("kamichaavaimg").src="image/person/umi/ureshi.png";
 		}
 		else {
 			sndplayreq = true;
@@ -236,16 +235,16 @@ function fcKamichaMouseOver(index) {
 				if (sndplayreq && lastkamichacardsel == index)
 					document.getElementById("sndeee").play();
 			}, 400);
-			document.getElementById("kamichaavaimg").src="image/person/umi/eee.png"
+			document.getElementById("kamichaavaimg").src="image/person/umi/eee.png";
 		}
-		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.png"
+		document.getElementById("kamichacard"+index+"img").src="image/card/bk-hover.png";
 	}
 }
 function fcKamichaMouseOut(index) {
 	if (!makeda) {
 		sndplayreq = false;
-		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png"
-		document.getElementById("kamichacard"+index+"img").src="image/card/bk.png"
+		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png";
+		document.getElementById("kamichacard"+index+"img").src="image/card/bk.png";
 	}
 }
 function fcKamichaClick(index) {
@@ -264,15 +263,15 @@ function fcKamichaClick(index) {
 		}, 1900, index);
 		if (index == 3) {
 			setTimeout(function(varindex) {
-				document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png"
-				document.getElementById("kamichacard"+varindex+"img").src="image/card/jk/2.jpg"
+				document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png";
+				document.getElementById("kamichacard"+varindex+"img").src="image/card/jk/2.jpg";
 			}, 150, index);
 		}
 		else {
 			setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
 			setTimeout(function(varindex) {
-				document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png"
-				document.getElementById("kamichacard"+varindex+"img").src="image/card/2/"+(varindex+1)+".jpg"
+				document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
+				document.getElementById("kamichacard"+varindex+"img").src="image/card/2/"+(varindex+1)+".jpg";
 			}, 150, index);
 		}
 	}
