@@ -12,8 +12,40 @@ var cardkamicha;
 var cardself;
 var cardshimocha;
 var cardtoimen;
+function isCardGreatThan(a, b) {
+	var suita = Math.floor(a / 9);
+	var numa = a % 9;
+	var suitb = Math.floor(b / 9);
+	var numb = b % 9;
+	if (suita == 4) // A is the only Joker
+		return true;
+	if (suitb == 4) // B is the only Joker
+		return false;
+	if (numa > numb) // sort by number
+		return true;
+	if (numa < numb)
+		return false;
+	if (suita > suitb) // then by suit
+		return true;
+	if (suita < suitb)
+		return false;
+	return false; // default: for error;
+}
 function randomInt(num) {
 	return Math.floor(Math.random() * num);
+}
+function sort(array) {
+	var length = array.length;
+	for (var i = 0; i < length; i++) {
+		for (var j = i + 1; j < length; j++) {
+			if (isCardGreatThan(array[i], array[j])) {
+				var tmp = array[j];
+				array[j] = array[i];
+				array[i] = tmp;
+			}
+		}
+	}
+	return array;
 }
 function shufflesw() {
 	card = [];
@@ -26,23 +58,30 @@ function shufflesw() {
 		card[swpj] = card[swpi];
 		card[swpi] = tmpswp;
 	}
-	cardkamicha = card.slice(0,9);
-	cardself = card.slice(10,18);
-	cardshimocha = card.slice(19,27);
-	cardtoimen = card.slice(28,36);
+	cardkamicha = card.slice(0,10);
+	cardself = sort(card.slice(10,19));
+	cardshimocha = card.slice(19,28);
+	cardtoimen = card.slice(28,37);
+}
+function getcardimgurl(cardnum) {
+	var suit = Math.floor(cardnum / 9) + 1;
+	var num = cardnum % 9 + 1;
+	if (suit == 5) {
+		suit = "jk";
+		num = 2;
+	}
+	return "image/card/" + suit + "/" + num + ".jpg";
+}
+function showselfcard() {
+	for (var num = 0; num < 9; num++) {
+		document.getElementById("selfcard" + num + "img").classList.add("cardmeguri");
+		setTimeout(function (varnum) {
+			document.getElementById("selfcard" + varnum + "img").src = getcardimgurl(cardself[varnum]);
+		}, 150, num);
+	}
 }
 function init() {
 	preLoadImg();	
-	document.getElementById("selfcard0img").src="image/card/jk/1.jpg"
-	document.getElementById("selfcard1img").src="image/card/2/1.jpg"
-	document.getElementById("selfcard2img").src="image/card/1/1.jpg"
-	document.getElementById("selfcard3img").src="image/card/3/2.jpg"
-	document.getElementById("selfcard4img").src="image/card/4/3.jpg"
-	document.getElementById("selfcard5img").src="image/card/1/5.jpg"
-	document.getElementById("selfcard6img").src="image/card/2/3.jpg"
-	document.getElementById("selfcard7img").src="image/card/4/9.jpg"
-	document.getElementById("selfcard8img").src="image/card/3/3.jpg"
-	document.getElementById("selfcard9img").src="image/card/3/9.jpg"
 
 	document.getElementById("toimencard0img").src="image/card/bk.png"
 	document.getElementById("toimencard1img").src="image/card/bk.png"
@@ -66,6 +105,17 @@ function init() {
 	document.getElementById("shimochacard8img").src="image/card/bk.png"
 	document.getElementById("shimochacard9img").src="image/card/bk.png"
 
+	document.getElementById("selfcard0img").src="image/card/bk.png"
+	document.getElementById("selfcard1img").src="image/card/bk.png"
+	document.getElementById("selfcard2img").src="image/card/bk.png"
+	document.getElementById("selfcard3img").src="image/card/bk.png"
+	document.getElementById("selfcard4img").src="image/card/bk.png"
+	document.getElementById("selfcard5img").src="image/card/bk.png"
+	document.getElementById("selfcard6img").src="image/card/bk.png"
+	document.getElementById("selfcard7img").src="image/card/bk.png"
+	document.getElementById("selfcard8img").src="image/card/bk.png"
+	document.getElementById("selfcard9img").src="image/card/bk.png"
+
 	document.getElementById("selfavaimg").src="image/person/kotori/seijou.png"
 	document.getElementById("toimenavaimg").src="image/person/honoka/seijou.png"
 	document.getElementById("shimochaavaimg").src="image/person/nico/seijou.png"
@@ -88,6 +138,9 @@ function init() {
 		setTimeout(function(){window.setInterval(timer3, 400)}, 200);
 		setTimeout(function(){window.setInterval(timer4, 400)}, 300);
 	}, 1000);
+	setTimeout(function () {
+		showselfcard();
+	}, 1000 + 10 * 400)
 }
 function preLoadImg()
 {
@@ -108,7 +161,7 @@ function timer1()
 }
 function timer2()
 {
-	if (tm2 < 10)
+	if (tm2 < 9)
 		document.getElementById("selfcard"+tm2).style.display="inline-block";
 	else
 		tm2 = 11;
@@ -116,7 +169,7 @@ function timer2()
 }
 function timer3()
 {
-	if (tm3 < 10)
+	if (tm3 < 9)
 		document.getElementById("shimochacard"+tm3).style.display="block";
 	else
 		tm3 = 11;
@@ -124,7 +177,7 @@ function timer3()
 }
 function timer4()
 {
-	if (tm4 < 10)
+	if (tm4 < 9)
 		document.getElementById("toimencard"+tm4).style.display="block";
 	else
 		tm4 = 11;
