@@ -157,6 +157,9 @@ function init() {
 	setTimeout(function () {
 		animateDiscard();
 	}, 1000);
+	setTimeout(function () {
+		showselfcard();
+	}, 1000 + 10 * 400)
 }
 function preLoadImg()
 {
