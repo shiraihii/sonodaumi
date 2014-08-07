@@ -12,10 +12,10 @@ var lastkamichacardsel = 0;
 // Values Ranges from 0 to 36
 var card; 
 // Arrays of Hand Cards
-var cardkamicha;
+var cardumi;
 var cardself;
-var cardshimocha;
-var cardtoimen;
+var cardnico;
+var cardhonoka;
 
 // Handlers of Discarding Interval Timers
 var timerhandler1;
