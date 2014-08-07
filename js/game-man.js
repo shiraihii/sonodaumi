@@ -25,6 +25,11 @@ var qHandUmi = 0;
 var qHandNico = 0;
 var qHandHonoka = 0;
 var qHandKotori = 0;
+// Array Indicates wheter Hand of Player is Selected to Discard
+var isSelHandSelf = new Array(false, false, false, false, false, false, false, false, false, false);
+// Previous Select of Player's Hand
+var qCardSel = 0; // Quantity of Selected Hand
+var seqCardSel = new Array(null, null, null); //[2] for last;
 
 // Handlers of Discarding Interval Timers
 var timerhandler1;
@@ -416,5 +421,44 @@ function fcKamichaClick(index) {
 	makeda = true;
 	setTimeout("makeda = false;", 2000);
 			
+}
+function fcSelfClick(index) {
+	if (isSelHandSelf[index]) {
+		document.getElementById("selfcard"+index+"in").classList.add("cardselectdown");
+		setTimeout(function(varindex) {
+			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
+			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
+		}, 100, index);
+		isSelHandSelf[index] = false;
+		if (seqCardSel[0] == index) {
+			seqCardSel[0] = seqCardSel[1];
+			seqCardSel[1] = seqCardSel[2];
+		}
+		if (seqCardSel[1] == index) {
+			seqCardSel[1] = seqCardSel[2];
+		}
+		qCardSel --;
+	}
+	else {
+		document.getElementById("selfcard"+index+"in").classList.add("cardselectup");
+		setTimeout(function(varindex) {
+			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectup");
+			document.getElementById("selfcard"+varindex+"in").classList.add("cardselectupstatic");
+		}, 100, index);
+		seqCardSel[qCardSel] = index;
+		qCardSel ++;
+		if (qCardSel == 3) {
+			document.getElementById("selfcard"+seqCardSel[0]+"in").classList.add("cardselectdown");
+			setTimeout(function(varindex) {
+				document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
+				document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
+			}, 100, seqCardSel[0]);
+			isSelHandSelf[seqCardSel[0]] = false;
+			seqCardSel[0] = seqCardSel[1];
+			seqCardSel[1] = seqCardSel[2];
+			qCardSel = 2;
+		}
+		isSelHandSelf[index] = true;
+	}
 }
 

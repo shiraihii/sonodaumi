@@ -119,7 +119,8 @@ div.selfcardin, div.kamichacardin {
   width: 100px;
   height: 150px;
   border-radius: 5px;
-  overflow: hidden; }
+  overflow: hidden;
+  left: 0px; }
 
 div.toimencard, div.shimochacard {
   text-align: center;
@@ -258,20 +259,20 @@ div.avatar {
     left: 444px;
     opacity: 0.2; } }
 .cardkubari1 {
-  -webkit-animation: webkitcardkubari1 .4s ease-in-out 0s 10 normal;
-  -moz-animation: mozcardkubari1 .4s ease-in-out 0s 10 normal; }
+  -webkit-animation: webkitcardkubari1 .4s ease-in 0s 10 normal;
+  -moz-animation: mozcardkubari1 .4s ease-in 0s 10 normal; }
 
 .cardkubari2 {
-  -webkit-animation: webkitcardkubari2 .4s ease-in-out .1s 9 normal;
-  -moz-animation: mozcardkubari2 .4s ease-in-out .1s 9 normal; }
+  -webkit-animation: webkitcardkubari2 .4s ease-in .1s 9 normal;
+  -moz-animation: mozcardkubari2 .4s ease-in .1s 9 normal; }
 
 .cardkubari3 {
-  -webkit-animation: webkitcardkubari3 .4s ease-in-out .2s 9 normal;
-  -moz-animation: mozcardkubari3 .4s ease-in-out .2s 9 normal; }
+  -webkit-animation: webkitcardkubari3 .4s ease-in .2s 9 normal;
+  -moz-animation: mozcardkubari3 .4s ease-in .2s 9 normal; }
 
 .cardkubari4 {
-  -webkit-animation: webkitcardkubari4 .4s ease-in-out .3s 9 normal;
-  -moz-animation: mozcardkubari4 .4s ease-in-out .3s 9 normal; }
+  -webkit-animation: webkitcardkubari4 .4s ease-in .3s 9 normal;
+  -moz-animation: mozcardkubari4 .4s ease-in .3s 9 normal; }
 
 @-webkit-keyframes webkitcardremove {
   75% {
@@ -292,6 +293,41 @@ div.avatar {
 .cardremove {
   -webkit-animation: webkitcardremove .4s linear 0s 1 normal;
   -moz-animation: mozcardremove .4s linear 0s 1 normal; }
+
+@-webkit-keyframes webkitcardselectup {
+  from {
+    top: 0px; }
+
+  to {
+    top: -25px; } }
+@-moz-keyframes mozcardselectup {
+  from {
+    top: 0px; }
+
+  to {
+    top: -25px; } }
+.cardselectup {
+  -webkit-animation: webkitcardselectup .1s ease-in 0s 1 normal;
+  -moz-animation: mozcardselectup .1s ease-in 0s 1 normal; }
+
+.cardselectupstatic {
+  top: -25px; }
+
+@-webkit-keyframes webkitcardselectdown {
+  from {
+    top: -25px; }
+
+  to {
+    top: 0px; } }
+@-moz-keyframes mozcardselectdown {
+  from {
+    top: -25px; }
+
+  to {
+    top: 0px; } }
+.cardselectdown {
+  -webkit-animation: webkitcardselectdown .1s ease-in 0s 1 normal;
+  -moz-animation: mozcardselectdown .1s ease-in 0s 1 normal; }
 
 .cellol {
   -moz-user-select: none;
