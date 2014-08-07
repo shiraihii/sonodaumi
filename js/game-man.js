@@ -265,6 +265,7 @@ function timer1()
 {
 	if (tm1 < 10) {
 		document.getElementById("sndcard1").play();
+		document.getElementById("sndcard1").volume = "0.3";
 		qHandUmi = tm1;
 		document.getElementById("kamichacard"+tm1).style.display="inline-block";
 		recal();
@@ -285,6 +286,7 @@ function timer2()
 {
 	if (tm2 < 9) {
 		document.getElementById("sndcard2").play();
+		document.getElementById("sndcard2").volume = "0.3";
 		qHandKotori = tm2;
 		document.getElementById("selfcard"+tm2).style.display="inline-block";
 	}
@@ -305,6 +307,7 @@ function timer3()
 {
 	if (tm3 < 9) {
 		document.getElementById("sndcard3").play();
+		document.getElementById("sndcard3").volume = "0.3";
 		qHandNico = tm3;
 		document.getElementById("shimochacard"+tm3).style.display="block";
 		recal();
@@ -325,6 +328,7 @@ function timer4()
 {
 	if (tm4 < 9) {
 		document.getElementById("sndcard4").play();
+		document.getElementById("sndcard4").volume = "0.3";
 		qHandHonoka = tm4;
 		document.getElementById("toimencard"+tm4).style.display="block";
 		recal();
