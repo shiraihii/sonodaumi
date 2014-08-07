@@ -176,10 +176,12 @@ function animateDiscard() {
 	setTimeout(function() {
 		timerhandler4 = window.setInterval(timer4, 400);
 	}, 300);
-	document.getElementById("kubariareadyn1").classList.add("cardkubari1");
-	document.getElementById("kubariareadyn2").classList.add("cardkubari2");
-	document.getElementById("kubariareadyn3").classList.add("cardkubari3");
-	document.getElementById("kubariareadyn4").classList.add("cardkubari4");
+	setTimeout(function() {
+		document.getElementById("kubariareadyn1").classList.add("cardkubari1");
+		document.getElementById("kubariareadyn2").classList.add("cardkubari2");
+		document.getElementById("kubariareadyn3").classList.add("cardkubari3");
+		document.getElementById("kubariareadyn4").classList.add("cardkubari4");
+	}, 10);
 }
 
 // Func: Initialization
@@ -262,6 +264,7 @@ function preLoadImg()
 function timer1()
 {
 	if (tm1 < 10) {
+		document.getElementById("sndcard1").play();
 		qHandUmi = tm1;
 		document.getElementById("kamichacard"+tm1).style.display="inline-block";
 		recal();
@@ -281,6 +284,7 @@ function timer1()
 function timer2()
 {
 	if (tm2 < 9) {
+		document.getElementById("sndcard2").play();
 		qHandKotori = tm2;
 		document.getElementById("selfcard"+tm2).style.display="inline-block";
 	}
@@ -300,6 +304,7 @@ function timer2()
 function timer3()
 {
 	if (tm3 < 9) {
+		document.getElementById("sndcard3").play();
 		qHandNico = tm3;
 		document.getElementById("shimochacard"+tm3).style.display="block";
 		recal();
@@ -319,6 +324,7 @@ function timer3()
 function timer4()
 {
 	if (tm4 < 9) {
+		document.getElementById("sndcard4").play();
 		qHandHonoka = tm4;
 		document.getElementById("toimencard"+tm4).style.display="block";
 		recal();
