@@ -16,6 +16,15 @@ var cardumi;
 var cardself;
 var cardnico;
 var cardhonoka;
+// Mapping of Players
+var pKamicha = "Umi";
+var pShimocha = "Nico";
+var pToimen = "Honoka";
+// Quantity of Hand of Player;
+var qHandUmi = 0;
+var qHandNico = 0;
+var qHandHonoka = 0;
+var qHandKotori = 0;
 
 // Handlers of Discarding Interval Timers
 var timerhandler1;
@@ -114,6 +123,40 @@ function showselfcard() {
 		setTimeout(function (varnum) {
 			document.getElementById("selfcard" + varnum + "img").src = getcardimgurl(cardself[varnum]);
 		}, 150, num);
+	}
+}
+
+// Func: Recalculate the Width of Card-Div of Shimocha and Toimen
+// Para: Null
+// Ret : Null
+function recal() {
+	var divwShimocha;
+	var divwToimen;
+	switch (pShimocha) {
+		case "Nico":
+			if (qHandNico <= 2)
+				divwShimocha = 100;
+			else
+				divwShimocha = (325 - 100) / (qHandNico);
+			break;
+		default:
+			divwShimocha = 100;
+			break;
+	}
+	switch (pToimen) {
+		case "Honoka":
+			if (qHandHonoka <= 2)
+				divwToimen = 100;
+			else
+				divwToimen = (325 - 100) / (qHandHonoka);
+			break;
+		default:
+			divwToimen = 100;
+			break;
+	}
+	for (var ii = 0; ii < 10; ii++) {
+		document.getElementById("toimencard" + ii).style.width = divwToimen + "px";
+		document.getElementById("shimochacard" + ii).style.width = divwShimocha + "px";
 	}
 }
 
@@ -218,8 +261,11 @@ function preLoadImg()
 // Ret : Null
 function timer1()
 {
-	if (tm1 < 10)
+	if (tm1 < 10) {
+		qHandUmi = tm1;
 		document.getElementById("kamichacard"+tm1).style.display="inline-block";
+		recal();
+	}
 	if (tm1 == 9)
 	{
 		document.getElementById("kubariareadyn1").style.display="none";
@@ -234,8 +280,10 @@ function timer1()
 // Ret : Null
 function timer2()
 {
-	if (tm2 < 9)
+	if (tm2 < 9) {
+		qHandKotori = tm2;
 		document.getElementById("selfcard"+tm2).style.display="inline-block";
+	}
 	if (tm2 == 8)
 	{
 		document.getElementById("kubariareadyn2").style.display="none";
@@ -251,8 +299,11 @@ function timer2()
 // Ret : Null
 function timer3()
 {
-	if (tm3 < 9)
+	if (tm3 < 9) {
+		qHandNico = tm3;
 		document.getElementById("shimochacard"+tm3).style.display="block";
+		recal();
+	}
 	if (tm3 == 8)
 	{
 		document.getElementById("kubariareadyn3").style.display="none";
@@ -267,8 +318,11 @@ function timer3()
 // Ret : Null
 function timer4()
 {
-	if (tm4 < 9)
+	if (tm4 < 9) {
+		qHandHonoka = tm4;
 		document.getElementById("toimencard"+tm4).style.display="block";
+		recal();
+	}
 	if (tm4 == 8)
 	{
 		document.getElementById("kubariareadyn4").style.display="none";
