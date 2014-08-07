@@ -164,10 +164,6 @@ function recal() {
 // Para: Null
 // Ret : Null
 function animateDiscard() {
-	document.getElementById("kubariareadyn1").classList.add("cardkubari1");
-	document.getElementById("kubariareadyn2").classList.add("cardkubari2");
-	document.getElementById("kubariareadyn3").classList.add("cardkubari3");
-	document.getElementById("kubariareadyn4").classList.add("cardkubari4");
 	// Timeout
 		timerhandler1 = window.setInterval(timer1, 400);
 	// 0	
@@ -180,6 +176,10 @@ function animateDiscard() {
 	setTimeout(function() {
 		timerhandler4 = window.setInterval(timer4, 400);
 	}, 300);
+	document.getElementById("kubariareadyn1").classList.add("cardkubari1");
+	document.getElementById("kubariareadyn2").classList.add("cardkubari2");
+	document.getElementById("kubariareadyn3").classList.add("cardkubari3");
+	document.getElementById("kubariareadyn4").classList.add("cardkubari4");
 }
 
 // Func: Initialization
