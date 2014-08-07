@@ -208,7 +208,7 @@ div.toimencard, div.shimochacard{
 	float:left;
 	display:none;
 	margin:0px 0px;
-	width:$cardedgewidth;
+	//width:$cardedgewidth;
 	height:150px;
 }
 
@@ -345,7 +345,7 @@ div.avatar {
 		opacity:1.0;
 	}
 	to {
-		left:$gamewidth - $shimochaarearight - $shimochaareawidth / 2;
+		left:$gamewidth - $shimochaarearight - $cardwidth;
 		opacity:0.2;
 	}
 }
@@ -354,7 +354,7 @@ div.avatar {
 		opacity:1.0;
 	}
 	to {
-		left:$gamewidth - $shimochaarearight - $shimochaareawidth / 2;
+		left:$gamewidth - $shimochaarearight - $cardwidth;
 		opacity:0.2;
 	}
 }
@@ -363,7 +363,7 @@ div.avatar {
 		opacity:1.0;
 	}
 	to {
-		left:$toimenarealeft + $toimenareawidth / 2;
+		left:$toimenarealeft + $toimenareawidth - $cardwidth;
 		opacity:0.2;
 	}
 }
@@ -372,7 +372,7 @@ div.avatar {
 		opacity:1.0;
 	}
 	to {
-		left:$toimenarealeft + $toimenareawidth / 2;
+		left:$toimenarealeft + $toimenareawidth - $cardwidth;
 		opacity:0.2;
 	}
 }
