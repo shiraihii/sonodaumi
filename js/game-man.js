@@ -273,12 +273,15 @@ function init() {
 // Ret : Null
 function preLoadImg()
 {
-	for (var imgi = 1; imgi < 4; imgi ++)
-		for (var imgj = 1; imgj < 9; imgj ++)
+	for (var imgi = 1; imgi < 5; imgi ++) {
+		for (var imgj = 1; imgj < 10; imgj ++)
 		{
 			var img = new Image();
-			img = "image/card/" + imgi + "/" + imgj + ".jpg";
+			img.src = "image/card/" + imgi + "/" + imgj + ".jpg";
 		}
+	}
+	var img = new Image();
+	img.src = "image/card/jk/2.jpg";
 }
 
 // Func: Interval Timer for Discarding Cards to Kamicha (Umi Sonoda)
