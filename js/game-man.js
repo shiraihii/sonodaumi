@@ -60,6 +60,23 @@ function isCardGreatThan(a, b) {
 	return false; // default: for error;
 }
 
+// Func: To Compare whether 2 Cards's Num is the Same, i.e., They Can Make A Pair
+// Para: a (CardIndex of Card A), b (CardIndex of Card B)
+// Ret : whether 2 Card's Num is the Same
+function isCardPair(a, b) {
+	var suita = Math.floor(a / 9);
+	var numa = a % 9;
+	var suitb = Math.floor(b / 9);
+	var numb = b % 9;
+	if (suita == 4) // A is the only Joker
+		return false;
+	if (suitb == 4) // B is the only Joker
+		return false;
+	if (numa == numb)
+		return true;
+	return false;
+}
+
 // Func: Generate a Random Integer Ranges from {0, num - 1}
 // Para: num (Sup-Limit of Random Integer)
 // Ret : the Random Integer
