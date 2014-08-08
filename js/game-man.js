@@ -74,7 +74,8 @@ function isCardPair(a, b) {
 		return false;
 	if (numa == numb)
 		return true;
-	return false;
+	else
+		return false;
 }
 
 // Func: Generate a Random Integer Ranges from {0, num - 1}
@@ -418,7 +419,7 @@ function fcKamichaClick(index) {
 		setTimeout(function(varindex) {
 			document.getElementById("kamichacard"+varindex).style.display="none";
 			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
-			document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
+			document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
 			document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
 		}, 1900, index);
 		if (index == 3) {
@@ -439,6 +440,7 @@ function fcKamichaClick(index) {
 	setTimeout("makeda = false;", 2000);
 			
 }
+
 function fcSelfClick(index) {
 	if (isSelHandSelf[index]) {
 		document.getElementById("selfcard"+index+"in").classList.add("cardselectdown");
@@ -457,6 +459,7 @@ function fcSelfClick(index) {
 		qCardSel --;
 	}
 	else {
+		var removed = false;
 		document.getElementById("selfcard"+index+"in").classList.add("cardselectup");
 		setTimeout(function(varindex) {
 			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectup");
@@ -464,6 +467,43 @@ function fcSelfClick(index) {
 		}, 100, index);
 		seqCardSel[qCardSel] = index;
 		qCardSel ++;
+		for (var i = 0; i < qCardSel; i++) {
+			for (var j = i + 1; j < qCardSel; j++) {
+				if (isCardPair(cardself[seqCardSel[i]], cardself[seqCardSel[j]])) {
+					setTimeout(function(varindexi, varindexj) {
+						document.getElementById("selfcard"+varindexi+"img").classList.add("cardremove");
+						document.getElementById("selfcard"+varindexi+"in").classList.add("cardremove");
+						document.getElementById("selfcard"+varindexi).classList.add("cardremove");
+						document.getElementById("selfcard"+varindexj+"img").classList.add("cardremove");
+						document.getElementById("selfcard"+varindexj+"in").classList.add("cardremove");
+						document.getElementById("selfcard"+varindexj).classList.add("cardremove");
+					}, 500, seqCardSel[i], seqCardSel[j]);
+					setTimeout(function(varindexi, varindexj) {
+						document.getElementById("selfcard"+varindexi).style.display="none";
+						document.getElementById("selfcard"+varindexi+"img").classList.remove("cardremove");
+						document.getElementById("selfcard"+varindexi+"in").classList.remove("cardremove");
+						document.getElementById("selfcard"+varindexi).classList.remove("cardremove");
+						document.getElementById("selfcard"+varindexj).style.display="none";
+						document.getElementById("selfcard"+varindexj+"img").classList.remove("cardremove");
+						document.getElementById("selfcard"+varindexj+"in").classList.remove("cardremove");
+						document.getElementById("selfcard"+varindexj).classList.remove("cardremove");
+					}, 900, seqCardSel[i], seqCardSel[j]);
+					if (qCardSel == 3) {
+						document.getElementById("selfcard"+seqCardSel[3-i-j]+"in").classList.add("cardselectdown");
+						setTimeout(function(varindex) {
+							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
+							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
+						}, 100, seqCardSel[3-i-j]); // if 3 cards selected, putdown the other.
+					}
+					removed = true;
+					for (var x in isSelHandSelf)
+						isSelHandSelf[x] = false;
+					for (var x in seqCardSel)
+						seqCardSel[x] = null;
+					qCardSel = 0;
+				}
+			}
+		}
 		if (qCardSel == 3) {
 			document.getElementById("selfcard"+seqCardSel[0]+"in").classList.add("cardselectdown");
 			setTimeout(function(varindex) {
@@ -475,7 +515,8 @@ function fcSelfClick(index) {
 			seqCardSel[1] = seqCardSel[2];
 			qCardSel = 2;
 		}
-		isSelHandSelf[index] = true;
+		if (!removed)
+			isSelHandSelf[index] = true;
 	}
 }
 
