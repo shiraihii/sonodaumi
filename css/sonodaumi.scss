@@ -395,30 +395,70 @@ div.avatar {
 	-moz-animation: mozcardkubari4 .4s ease-in .3s 9 normal;
 }
 
-// animation for cardremove
+// animation for cardremove and cardcreate
 @-webkit-keyframes webkitcardremove { 
+	0% {
+		opacity:1.0;
+		width:100px;
+	}
 	75% {
 		opacity:1.0;
 		width:75px;
 	}
 	100% {
-		opacity:0.2;
+		opacity:0.0;
 		width:0px;
 	}
 }
 @-moz-keyframes mozcardremove { 
+	0% {
+		opacity:1.0;
+		width:100px;
+	}
 	75% {
 		opacity:1.0;
 		width:75px;
 	}
 	100% {
-		opacity:0.2;
+		opacity:0.0;
 		width:0px;
+	}
+}
+@-webkit-keyframes webkitcardcreate {
+	0% {
+		opacity:0.0;
+		width:0px;
+	}
+	75% {
+		opacity:0.0;
+		width:75px;
+	}
+	100% {
+		opacity:1.0;
+		width:100px;
+	}
+}
+@-moz-keyframes mozcardcreate {
+	0% {
+		opacity:0.0;
+		width:0px;
+	}
+	75% {
+		opacity:0.0;
+		width:75px;
+	}
+	100% {
+		opacity:1.0;
+		width:100px;
 	}
 }
 .cardremove {//for carddiv and cardimg
 	-webkit-animation: webkitcardremove .4s linear 0s 1 normal;
 	-moz-animation: mozcardremove .4s linear 0s 1 normal;
+}
+.cardcreate {//for carddiv and cardimg
+	-webkit-animation: webkitcardcreate .4s linear 0s 1 normal;
+	-moz-animation: mozcardcreate .4s linear 0s 1 normal;
 }
 
 // animation for cardselectup
