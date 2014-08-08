@@ -498,6 +498,7 @@ function fcSelfClick(index) {
 							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
 						}, 100, seqCardSel[3-i-j]); // if 3 cards selected, putdown the other.
 					}
+					setTimeout("document.getElementById(\"sndyatta\").play()", 200);
 					removed = true;
 					for (var x in isSelHandSelf)
 						isSelHandSelf[x] = false;
