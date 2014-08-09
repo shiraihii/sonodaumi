@@ -107,25 +107,25 @@ function sort(array) {
 // Ret : Null
 function del1CardSelf(deli)
 {
-	if (deli >= 0 and deli < CardSelf.length)
-		CardSelf.splice(deli, 1);
+	if (deli >= 0 && deli < cardself.length)
+		cardself.splice(deli, 1);
 }
 
 // Func: Delete 2 Cards in CardSelf
 // Para: deli, delj(the index of card to delete in CardSelf)
 // Ret : Null
-function del1CardSelf(deli, delj)
+function del2cardself(deli, delj)
 {
 	if (deli == delj) {
-		del1CardSelf(deli);
+		del1cardself(deli);
 	}
 	else {
 		var delF = (deli > delj) ? delj : deli;
 		var delL = ((deli > delj) ? deli : delj) - 1;
-		if (delF >= 0 and delF < CardSelf.length)
-			CardSelf.splice(delF, 1);
-		if (delL >= 0 and delL < CardSelf.length)
-			CardSelf.splice(delL, 1);
+		if (delF >= 0 && delF < cardself.length)
+			cardself.splice(delF, 1);
+		if (delL >= 0 && delL < cardself.length)
+			cardself.splice(delL, 1);
 	}
 }
 
