@@ -129,16 +129,62 @@ function del2CardSelf(deli, delj)
 	}
 }
 
-// Func: Update Render of Card Self
+// Func: Remove Select on Hand
 // Para: Null
 // Ret : Null
-function reshowCardSelf()
+function rmSelectCardSelf()
+{
+	for (var x in isSelHandSelf)
+		isSelHandSelf[x] = false;
+	for (var x in seqCardSel)
+		seqCardSel[x] = null;
+	qCardSel = 0;
+}
+
+// Func: Insert a new card into Hand, including the Animation of that
+// Para: insi(the index of card to delete in CardSelf)
+// Ret : Null
+function ins1CardSelf(insi)
+{
+	if (cardself.length >= 10)
+		return;
+	var pos2ins = cardself.length;
+	for (var i = 0; i < cardself.length; i++) {
+		if (isCardGreatThan(cardself[i], insi)) {
+			pos2ins = i;
+			break;
+		}
+	}
+	cardself.splice(pos2ins, 0, insi);
+	rmSelectCardSelf();
+	reshowCardSelf(-1); // Rerender Hand Card Self, but Hide the One which Inserted just now;
+	// Add Animation
+	document.getElementById("selfcard"+pos2ins+"img").classList.add("cardcreate");
+	document.getElementById("selfcard"+pos2ins+"in").classList.add("cardcreate");
+	document.getElementById("selfcard"+pos2ins).classList.add("cardcreate");
+	document.getElementById("selfcard"+pos2ins).style.display="inline-block";
+	setTimeout(function(varindex) {
+		document.getElementById("selfcard"+varindex+"img").classList.remove("cardcreate");
+		document.getElementById("selfcard"+varindex+"in").classList.remove("cardcreate");
+		document.getElementById("selfcard"+varindex).classList.remove("cardcreate");
+	}, 400, pos2ins);
+}
+
+// Func: Update Render of Card Self
+// Para: mask(to Mask One Card, Hidden, set -1 to Show All Cards)
+// Ret : Null
+function reshowCardSelf(mask)
 {
 	for (var i = 0; i < 10; i++) {
 		document.getElementById("selfcard" + i + "in").classList.remove("cardselectupstatic");
 		if (i < cardself.length) {
 			document.getElementById("selfcard" + i + "img").src = getcardimgurl(cardself[i]);
-			document.getElementById("selfcard" + i).style.display = "inline-block";
+			if (i != mask) {
+				document.getElementById("selfcard" + i).style.display = "inline-block";
+			}
+			else {
+				document.getElementById("selfcard" + i).style.display = "none";
+			}
 		}
 		else {
 			document.getElementById("selfcard" + i).style.display = "none";
@@ -162,10 +208,10 @@ function shufflesw() {
 		card[swpj] = card[swpi];
 		card[swpi] = tmpswp;
 	}
-	cardkamicha = card.slice(0,10);
+	cardumi = card.slice(0,10);
 	cardself = sort(card.slice(10,19));
-	cardshimocha = card.slice(19,28);
-	cardtoimen = card.slice(28,37);
+	cardnico = card.slice(19,28);
+	cardhonoka = card.slice(28,37);
 }
 
 // Func: Get A Card's image's url
@@ -465,26 +511,20 @@ function fcKamichaClick(index) {
 			document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
 			document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
 			document.getElementById("kamichacard"+varindex).classList.add("cardremove");
+			ins1CardSelf(cardumi[varindex]);
 		}, 1500, index);
 		setTimeout(function(varindex) {
 			document.getElementById("kamichacard"+varindex).style.display="none";
 			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
+			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
 			document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
 			document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
 		}, 1900, index);
-		if (index == 3) {
-			setTimeout(function(varindex) {
-				document.getElementById("kamichaavaimg").src="image/person/umi/kachi.png";
-				document.getElementById("kamichacard"+varindex+"img").src="image/card/jk/2.jpg";
-			}, 150, index);
-		}
-		else {
-			setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
-			setTimeout(function(varindex) {
-				document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
-				document.getElementById("kamichacard"+varindex+"img").src="image/card/2/"+(varindex+1)+".jpg";
-			}, 150, index);
-		}
+		setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
+		setTimeout(function(varindex) {
+			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
+			document.getElementById("kamichacard"+varindex+"img").src=getcardimgurl(cardumi[varindex]);
+		}, 150, index);
 	}
 	makeda = true;
 	setTimeout("makeda = false;", 2000);
@@ -540,7 +580,7 @@ function fcSelfClick(index) {
 					}, 900, seqCardSel[i], seqCardSel[j]);
 					setTimeout(function(varindexi, varindexj) {
 						del2CardSelf(varindexi, varindexj);
-						reshowCardSelf();
+						reshowCardSelf(-1);
 					}, 900, seqCardSel[i], seqCardSel[j]);
 					if (qCardSel == 3) {
 						document.getElementById("selfcard"+seqCardSel[3-i-j]+"in").classList.add("cardselectdown");
@@ -551,11 +591,7 @@ function fcSelfClick(index) {
 					}
 					setTimeout("document.getElementById(\"sndyatta\").play()", 200);
 					removed = true;
-					for (var x in isSelHandSelf)
-						isSelHandSelf[x] = false;
-					for (var x in seqCardSel)
-						seqCardSel[x] = null;
-					qCardSel = 0;
+					rmSelectCardSelf();
 				}
 			}
 		}
