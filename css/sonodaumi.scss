@@ -1,0 +1,517 @@
+// position
+$gamewidth:1240px;
+$gameheight:620px;	
+
+$cardwidth:96px;
+$cardheight:150px;
+$cardmargin:4px;
+$cardedgewidth:25px;
+$cardselectupdis:25px;
+
+$areamargin:5px;
+
+$selfcardareawidth:($cardwidth+$cardmargin)*10;
+$chacardareawidth:$cardedgewidth*9+$cardwidth+$cardmargin;
+
+$avatorsqrwidth:$cardheight;
+$avatormargin:$avatorsqrwidth/5;
+$avatorborderradius:25px;
+
+$selfcardwidth:$selfcardareawidth;
+$selfcardheight:$cardheight;
+$selfcardbottom:$gameheight/24;
+$selfcardleft:($gamewidth - $selfcardwidth - $avatormargin -$avatorsqrwidth)/2;
+$selfavaleft:$selfcardleft + $avatormargin + $selfcardwidth;
+$selfarealeft:$selfcardleft - $areamargin;
+$selfareabottom:$selfcardbottom -$areamargin;
+$selfareawidth:$selfcardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
+$selfareaheight:$cardheight+$areamargin*2;
+
+$toimencardwidth:$chacardareawidth;
+$toimencardheight:$cardheight;
+$toimencardtop:$selfcardbottom;
+$toimenavaleft:$selfcardleft;
+$toimencardleft:$toimenavaleft + $avatormargin + $avatorsqrwidth;
+$toimenarealeft:$selfarealeft;
+$toimenareatop:$toimencardtop -$areamargin;
+$toimenareawidth:$toimencardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
+$toimenareaheight:$selfareaheight;
+
+$kamichacardwidth:$selfcardareawidth;
+$kamichacardheight:$cardheight;
+$kamichacardtop:($gameheight - $cardheight)/2;
+$kamichacardleft:$selfcardleft + $avatormargin + $avatorsqrwidth;
+$kamichaavaleft:$selfcardleft;
+$kamichaarealeft:$selfarealeft;
+$kamichaareatop:$kamichacardtop -$areamargin;
+$kamichaareawidth:$kamichacardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
+$kamichaareaheight:$selfareaheight;
+
+$shimochacardwidth:$chacardareawidth;
+$shimochacardheight:$cardheight;
+$shimochacardright:$selfcardleft;
+$shimochacardtop:$selfcardbottom;
+$shimochaavaright:$selfcardleft + $avatormargin + $chacardareawidth;
+$shimochaarearight:$selfarealeft;
+$shimochaareatop:$toimenareatop;
+$shimochaareawidth:$shimochacardwidth+$avatormargin+$avatorsqrwidth+$areamargin*2;
+$shimochaareaheight:$selfareaheight;
+
+
+// color
+// for debug
+$gamedivbk:#DDD;
+$selfdivbk:#0F3;
+$otherplayerdivbk:#03F;
+$areadivbk:#222;
+$bodyback:#000;
+// =====================
+
+body {
+	text-align:center;
+	background-color:$bodyback;
+}
+div {
+	// border:1px solid #F00 // for debug
+}
+
+// main div for game
+#gamediv {
+	position:relative;
+	text-align:center;
+	margin:0 auto; // for FF Chr, no IE6 or before, hhhh
+	width:$gamewidth;
+	height:$gameheight;
+	//background-color:$gamedivbk;
+	overflow:hidden;
+	border-radius:25px;
+	background-image:url("../image/background.png");
+}
+
+//area
+div.cardavaarea{
+	position:absolute;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+	filter:alpha(opacity=60); 
+	-moz-opacity:0.6;  
+    -khtml-opacity: 0.6;  
+    opacity: 0.6;  
+}
+#selfareadiv{
+	left:$selfarealeft;
+	bottom:$selfareabottom;
+	height:$selfareaheight;
+	width:$selfareawidth;
+	background-color:$areadivbk;
+}
+#toimenareadiv{
+	left:$toimenarealeft;
+	top:$toimenareatop;
+	height:$toimenareaheight;
+	width:$toimenareawidth;
+	background-color:$areadivbk;
+}
+#kamichaareadiv{
+	left:$kamichaarealeft;
+	top:$kamichaareatop;
+	height:$kamichaareaheight;
+	width:$kamichaareawidth;
+	background-color:$areadivbk;
+}
+#shimochaareadiv{
+	right:$shimochaarearight;
+	top:$shimochaareatop;
+	height:$shimochaareaheight;
+	width:$shimochaareawidth;
+	background-color:$areadivbk;
+}
+#kubariareadiv{
+	top:$toimencardtop - $areamargin;
+	left:$gamewidth / 2 - 50px - $areamargin;
+	width:100px+$areamargin*2;
+	height:$cardheight+$areamargin*2;
+	background-color:$areadivbk;
+}
+
+// cardarea
+div.cardarea {
+	position:absolute;
+	text-align:center;
+}
+#selfcarddiv {
+	bottom:$selfcardbottom;
+	left:$selfcardleft;
+	width:$selfcardwidth;
+	height:$selfcardheight;
+}
+#toimencarddiv {
+	top:$toimencardtop;
+	left:$toimencardleft;
+	width:$toimencardwidth;
+	height:$toimencardheight;
+}
+#kamichacarddiv {
+	top:$kamichacardtop;
+	left:$kamichacardleft;
+	width:$kamichacardwidth;
+	height:$kamichacardheight;
+}
+#shimochacarddiv {
+	top:$shimochacardtop;
+	right:$shimochacardright;
+	width:$shimochacardwidth;
+	height:$shimochacardheight;
+}
+#kubariarea {
+	top:$toimencardtop;
+	left:$gamewidth / 2 - 50px;
+	width:100px;
+	height:$cardheight;
+}
+div.kubariareadyn {
+	position:absolute;
+	text-align:center;
+	top:$toimencardtop;
+	left:$gamewidth / 2 - 50px;
+	width:100px;
+	height:$cardheight;
+	z-index:9;
+}
+.kamichacardimg, .selfcardimg, .shimochacardimg, .toimencardimg, .kubariareadynimg
+{
+	width: 100px;
+	height: 150px;
+	display:inline-block;
+}
+
+div.selfcard, div.kamichacard{
+	position:relative;
+	text-align:center;
+	display:none;
+	margin:0px 0px;
+	width:100px;
+	height:150px;
+}
+
+div.selfcardin, div.kamichacardin{
+	position:absolute;
+	text-align:center;
+	width:100px;
+	height:150px;
+	border-radius:5px;
+	overflow:hidden;
+	left:0px;
+}
+
+div.toimencard, div.shimochacard{
+	text-align:center;
+	float:left;
+	display:none;
+	margin:0px 0px;
+	//width:$cardedgewidth;
+	height:150px;
+}
+
+// div for avatar
+div.avatar {
+	position:absolute;
+	text-align:center;
+	width:$avatorsqrwidth;
+	height:$avatorsqrwidth;
+	border-radius:$avatorborderradius;
+	overflow:hidden;
+}
+#selfavadiv {
+	bottom:$selfcardbottom;
+	left:$selfavaleft;
+}
+#toimenavadiv {
+	top:$toimencardtop;
+	left:$toimenavaleft;
+}
+#kamichaavadiv {
+	top:$kamichacardtop;
+	left:$kamichaavaleft;
+}
+#shimochaavadiv {
+	top:$shimochacardtop;
+	right:$shimochaavaright;
+}
+.avatarimg
+{
+	width: 150px;
+	height: 150px;
+	display:inline-block;
+}
+
+
+
+// animation for avatar image
+// try
+@-webkit-keyframes webkitbigBox {
+	to {
+		width: 300px;
+		height: 300px;
+	}
+}
+@-moz-keyframes mozbigBox {
+	to {
+		width: 300px;
+		height: 300px;
+	}
+}
+.change-size {
+	-webkit-animation: webkitbigBox 1s linear 0s 1 normal;
+	-moz-animation: mozbigBox 1s linear 0s 1 normal;
+}
+
+
+// animation for cardmeguri
+@-webkit-keyframes webkitcardmeguri {
+	0% {
+		width: 100px;
+		height: 150px;
+	}
+	50% {
+		width: 5px;
+		height: 150px;
+	}
+	100% {
+		width: 100px;
+		height: 150px;
+	}
+}
+@-moz-keyframes mozcardmeguri {
+	0% {
+		width: 100px;
+		height: 150px;
+	}
+	50% {
+		width: 5px;
+		height: 150px;
+	}
+	100% {
+		width: 100px;
+		height: 150px;
+	}
+}
+.cardmeguri {
+	-webkit-animation: webkitcardmeguri .3s ease-in-out 0s 1 normal;
+	-moz-animation: mozcardmeguri .3s ease-in-out 0s 1 normal;
+}
+// animation for cardkubari
+@-webkit-keyframes webkitcardkubari1 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		top:$kamichacardtop;
+		left:$gamewidth / 2 - 75px + 75px;
+		opacity:0.2;
+	}
+}
+@-moz-keyframes mozcardkubari1 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		top:$kamichacardtop;
+		left:$gamewidth / 2 - 50px + 75px;
+		opacity:0.2;
+	}
+}
+@-webkit-keyframes webkitcardkubari2 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		top:$gameheight - $selfcardheight - $selfcardbottom;
+		left:$gamewidth / 2 - 75px -75px;
+		opacity:0.2;
+	}
+}
+@-moz-keyframes mozcardkubari2 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		top:$gameheight - $selfcardheight - $selfcardbottom;
+		left:$gamewidth / 2 - 75px - 75px;
+		opacity:0.2;
+	}
+}
+@-webkit-keyframes webkitcardkubari3 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		left:$gamewidth - $shimochaarearight - $cardwidth;
+		opacity:0.2;
+	}
+}
+@-moz-keyframes mozcardkubari3 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		left:$gamewidth - $shimochaarearight - $cardwidth;
+		opacity:0.2;
+	}
+}
+@-webkit-keyframes webkitcardkubari4 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		left:$toimenarealeft + $toimenareawidth - $cardwidth;
+		opacity:0.2;
+	}
+}
+@-moz-keyframes mozcardkubari4 { 
+	75% {
+		opacity:1.0;
+	}
+	to {
+		left:$toimenarealeft + $toimenareawidth - $cardwidth;
+		opacity:0.2;
+	}
+}
+.cardkubari1 {//kami!
+	-webkit-animation: webkitcardkubari1 .4s ease-in 0s 10 normal;
+	-moz-animation: mozcardkubari1 .4s ease-in 0s 10 normal;
+}
+.cardkubari2 {//self!
+	-webkit-animation: webkitcardkubari2 .4s ease-in .1s 9 normal;
+	-moz-animation: mozcardkubari2 .4s ease-in .1s 9 normal;
+}
+.cardkubari3 {//shimo!
+	-webkit-animation: webkitcardkubari3 .4s ease-in .2s 9 normal;
+	-moz-animation: mozcardkubari3 .4s ease-in .2s 9 normal;
+}
+.cardkubari4 {//toimen!
+	-webkit-animation: webkitcardkubari4 .4s ease-in .3s 9 normal;
+	-moz-animation: mozcardkubari4 .4s ease-in .3s 9 normal;
+}
+
+// animation for cardremove and cardcreate
+@-webkit-keyframes webkitcardremove { 
+	0% {
+		opacity:1.0;
+		width:100px;
+	}
+	75% {
+		opacity:1.0;
+		width:75px;
+	}
+	100% {
+		opacity:0.0;
+		width:0px;
+	}
+}
+@-moz-keyframes mozcardremove { 
+	0% {
+		opacity:1.0;
+		width:100px;
+	}
+	75% {
+		opacity:1.0;
+		width:75px;
+	}
+	100% {
+		opacity:0.0;
+		width:0px;
+	}
+}
+@-webkit-keyframes webkitcardcreate {
+	0% {
+		opacity:0.0;
+		width:0px;
+	}
+	75% {
+		opacity:0.0;
+		width:75px;
+	}
+	100% {
+		opacity:1.0;
+		width:100px;
+	}
+}
+@-moz-keyframes mozcardcreate {
+	0% {
+		opacity:0.0;
+		width:0px;
+	}
+	75% {
+		opacity:0.0;
+		width:75px;
+	}
+	100% {
+		opacity:1.0;
+		width:100px;
+	}
+}
+.cardremove {//for carddiv and cardimg
+	-webkit-animation: webkitcardremove .4s linear 0s 1 normal;
+	-moz-animation: mozcardremove .4s linear 0s 1 normal;
+}
+.cardcreate {//for carddiv and cardimg
+	-webkit-animation: webkitcardcreate .4s linear 0s 1 normal;
+	-moz-animation: mozcardcreate .4s linear 0s 1 normal;
+}
+
+// animation for cardselectup
+@-webkit-keyframes webkitcardselectup {
+	from {
+		top: 0px;
+	}
+	to {
+		top: - $cardselectupdis;
+	}
+}
+@-moz-keyframes mozcardselectup {
+	from {
+		top: 0px;
+	}
+	to {
+		top: - $cardselectupdis;
+	}
+}
+.cardselectup {
+	-webkit-animation: webkitcardselectup .1s ease-in 0s 1 normal;
+	-moz-animation: mozcardselectup .1s ease-in 0s 1 normal;
+}
+.cardselectupstatic {
+	top: - $cardselectupdis;
+}
+
+
+// animation for cardselectdown
+@-webkit-keyframes webkitcardselectdown {
+	from {
+		top: - $cardselectupdis;
+	}
+	to {
+		top: 0px;
+	}
+}
+@-moz-keyframes mozcardselectdown {
+	from {
+		top: - $cardselectupdis;
+	}
+	to {
+		top: 0px;
+	}
+}
+.cardselectdown {
+	-webkit-animation: webkitcardselectdown .1s ease-in 0s 1 normal;
+	-moz-animation: mozcardselectdown .1s ease-in 0s 1 normal;
+}
+
+.cellol {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select:none;
+	user-select:none;
+}
