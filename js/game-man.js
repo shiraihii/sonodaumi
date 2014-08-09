@@ -519,7 +519,7 @@ function fcKamichaClick(index) {
 			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
 			document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
 			document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
-		}, 1900, index);
+		}, 1890, index);
 		setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
 		setTimeout(function(varindex) {
 			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
