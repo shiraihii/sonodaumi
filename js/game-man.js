@@ -114,7 +114,7 @@ function del1CardSelf(deli)
 // Func: Delete 2 Cards in CardSelf
 // Para: deli, delj(the index of card to delete in CardSelf)
 // Ret : Null
-function del2cardself(deli, delj)
+function del2CardSelf(deli, delj)
 {
 	if (deli == delj) {
 		del1cardself(deli);
@@ -126,6 +126,23 @@ function del2cardself(deli, delj)
 			cardself.splice(delF, 1);
 		if (delL >= 0 && delL < cardself.length)
 			cardself.splice(delL, 1);
+	}
+}
+
+// Func: Update Render of Card Self
+// Para: Null
+// Ret : Null
+function reshowCardSelf()
+{
+	for (var i = 0; i < 10; i++) {
+		document.getElementById("selfcard" + i + "in").classList.remove("cardselectupstatic");
+		if (i < cardself.length) {
+			document.getElementById("selfcard" + i + "img").src = getcardimgurl(cardself[i]);
+			document.getElementById("selfcard" + i).style.display = "inline-block";
+		}
+		else {
+			document.getElementById("selfcard" + i).style.display = "none";
+		}
 	}
 }
 
@@ -173,6 +190,9 @@ function showselfcard() {
 		setTimeout(function (varnum) {
 			document.getElementById("selfcard" + varnum + "img").src = getcardimgurl(cardself[varnum]);
 		}, 150, num);
+		setTimeout(function (varnum) {
+			document.getElementById("selfcard" + varnum + "img").classList.remove("cardmeguri");
+		}, 300, num);
 	}
 }
 
@@ -517,6 +537,10 @@ function fcSelfClick(index) {
 						document.getElementById("selfcard"+varindexj+"img").classList.remove("cardremove");
 						document.getElementById("selfcard"+varindexj+"in").classList.remove("cardremove");
 						document.getElementById("selfcard"+varindexj).classList.remove("cardremove");
+					}, 900, seqCardSel[i], seqCardSel[j]);
+					setTimeout(function(varindexi, varindexj) {
+						del2CardSelf(varindexi, varindexj);
+						reshowCardSelf();
 					}, 900, seqCardSel[i], seqCardSel[j]);
 					if (qCardSel == 3) {
 						document.getElementById("selfcard"+seqCardSel[3-i-j]+"in").classList.add("cardselectdown");
