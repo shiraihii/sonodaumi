@@ -192,6 +192,24 @@ function reshowCardSelf(mask)
 	}
 }
 
+// Func: Active a Player's Area and Set Others Inactive
+// Para: player(value ranges from {"self", "shimocha", "toimen", "kamicha"})
+// Ret : Null
+function activeAva(player) {
+	document.getElementById("selfareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("shimochaareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("toimenareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("kamichaareadiv").classList.remove("avaacintivestatic");
+
+	document.getElementById(player + "areadiv").classList.add("avaactive");
+	setTimeout(function (dom1) {
+		dom1.classList.remove("avaactive");
+		dom1.classList.remove("avaacintivestatic");
+		dom1.classList.add("avaactivestatic");
+		//document.getElementById("selfareadiv").style.backgroundColor="#"
+	}, 600, document.getElementById(player + "areadiv"));
+}
+
 // Func: Shuffled Card by Swapping Cards,
 //     Generating Arrays of 3 COM-Players and a Sorted Array of Player's Hand,
 //     Storing in Global Variables
@@ -363,13 +381,7 @@ function init() {
 	}, 1000);
 	setTimeout(function () {
 		showselfcard();
-		document.getElementById("selfareadiv").classList.add("avaactive");
-		setTimeout(function () {
-			document.getElementById("selfareadiv").classList.remove("avaactive");
-			document.getElementById("selfareadiv").classList.remove("avaacintivestatic");
-			document.getElementById("selfareadiv").classList.add("avaactivestatic");
-			//document.getElementById("selfareadiv").style.backgroundColor="#"
-		}, 600);
+		activeAva("self");
 	}, 1000 + 10 * 400)
 }
 
