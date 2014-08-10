@@ -349,7 +349,7 @@ function init() {
 	document.getElementById("selfareadiv").classList.add("avainactivestatic");
 	document.getElementById("toimenareadiv").classList.add("avainactivestatic");
 	document.getElementById("kamichaareadiv").classList.add("avainactivestatic");
-	document.getElementById("shimochacarddiv").classList.add("avainactivestatic");
+	document.getElementById("shimochaareadiv").classList.add("avainactivestatic");
 
 	document.getElementById("selfavaimg").addEventListener("click", function(e) {
 		document.getElementById("selfavaimg").classList.add("change-size");
