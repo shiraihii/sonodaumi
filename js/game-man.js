@@ -346,6 +346,11 @@ function init() {
 	document.getElementById("shimochaavaimg").src="image/person/nico/seijou.png";
 	document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png";
 
+	document.getElementById("selfareadiv").classList.add("avainactivestatic");
+	document.getElementById("toimenareadiv").classList.add("avainactivestatic");
+	document.getElementById("kamichaareadiv").classList.add("avainactivestatic");
+	document.getElementById("shimochacarddiv").classList.add("avainactivestatic");
+
 	document.getElementById("selfavaimg").addEventListener("click", function(e) {
 		document.getElementById("selfavaimg").classList.add("change-size");
 		setTimeout(function() {
@@ -358,6 +363,13 @@ function init() {
 	}, 1000);
 	setTimeout(function () {
 		showselfcard();
+		document.getElementById("selfareadiv").classList.add("avaactive");
+		setTimeout(function () {
+			document.getElementById("selfareadiv").classList.remove("avaactive");
+			document.getElementById("selfareadiv").classList.remove("avaacintivestatic");
+			document.getElementById("selfareadiv").classList.add("avaactivestatic");
+			//document.getElementById("selfareadiv").style.backgroundColor="#"
+		}, 600);
 	}, 1000 + 10 * 400)
 }
 
