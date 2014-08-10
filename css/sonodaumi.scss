@@ -64,6 +64,7 @@ $gamedivbk:#DDD;
 $selfdivbk:#0F3;
 $otherplayerdivbk:#03F;
 $areadivbk:#222;
+$areadivbkactive:#4D4;
 $bodyback:#000;
 // =====================
 
@@ -99,33 +100,32 @@ div.cardavaarea{
     -khtml-opacity: 0.6;  
     opacity: 0.6;  
 }
+.avainactivestatic{
+	background-color:$areadivbk;
+}
 #selfareadiv{
 	left:$selfarealeft;
 	bottom:$selfareabottom;
 	height:$selfareaheight;
 	width:$selfareawidth;
-	background-color:$areadivbk;
 }
 #toimenareadiv{
 	left:$toimenarealeft;
 	top:$toimenareatop;
 	height:$toimenareaheight;
 	width:$toimenareawidth;
-	background-color:$areadivbk;
 }
 #kamichaareadiv{
 	left:$kamichaarealeft;
 	top:$kamichaareatop;
 	height:$kamichaareaheight;
 	width:$kamichaareawidth;
-	background-color:$areadivbk;
 }
 #shimochaareadiv{
 	right:$shimochaarearight;
 	top:$shimochaareatop;
 	height:$shimochaareaheight;
 	width:$shimochaareawidth;
-	background-color:$areadivbk;
 }
 #kubariareadiv{
 	top:$toimencardtop - $areamargin;
@@ -266,6 +266,26 @@ div.avatar {
 	-webkit-animation: webkitbigBox 1s linear 0s 1 normal;
 	-moz-animation: mozbigBox 1s linear 0s 1 normal;
 }
+
+// animation for areadiv
+@-webkit-keyframes webkitavaactive {
+	to {
+		background-color: $areadivbkactive;
+	}
+}
+@-moz-keyframes mozavaactive {
+	to {
+		background-color: $areadivbkactive;
+	}
+}
+.avaactive {
+	-webkit-animation: webkitavaactive 0.6s linear 0s 1 normal;
+	-moz-animation: mozavaactive 0.6s linear 0s 1 normal;
+}
+.avaactivestatic {
+	background-color: $areadivbkactive;
+}
+
 
 
 // animation for cardmeguri

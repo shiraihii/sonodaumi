@@ -22,33 +22,32 @@ div.cardavaarea {
   -khtml-opacity: 0.6;
   opacity: 0.6; }
 
+.avainactivestatic {
+  background-color: #222222; }
+
 #selfareadiv {
   left: 25px;
   bottom: 20.83333px;
   height: 160px;
-  width: 1190px;
-  background-color: #222222; }
+  width: 1190px; }
 
 #toimenareadiv {
   left: 25px;
   top: 20.83333px;
   height: 160px;
-  width: 515px;
-  background-color: #222222; }
+  width: 515px; }
 
 #kamichaareadiv {
   left: 25px;
   top: 230px;
   height: 160px;
-  width: 1190px;
-  background-color: #222222; }
+  width: 1190px; }
 
 #shimochaareadiv {
   right: 25px;
   top: 20.83333px;
   height: 160px;
-  width: 515px;
-  background-color: #222222; }
+  width: 515px; }
 
 #kubariareadiv {
   top: 20.83333px;
@@ -169,6 +168,19 @@ div.avatar {
 .change-size {
   -webkit-animation: webkitbigBox 1s linear 0s 1 normal;
   -moz-animation: mozbigBox 1s linear 0s 1 normal; }
+
+@-webkit-keyframes webkitavaactive {
+  to {
+    background-color: #44dd44; } }
+@-moz-keyframes mozavaactive {
+  to {
+    background-color: #44dd44; } }
+.avaactive {
+  -webkit-animation: webkitavaactive 0.6s linear 0s 1 normal;
+  -moz-animation: mozavaactive 0.6s linear 0s 1 normal; }
+
+.avaactivestatic {
+  background-color: #44dd44; }
 
 @-webkit-keyframes webkitcardmeguri {
   0% {
