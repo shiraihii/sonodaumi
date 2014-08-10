@@ -78,6 +78,21 @@ function isCardPair(a, b) {
 		return false;
 }
 
+// Func: To Determine whether Their is Any Pair in Card
+// Para: !SORTED! Array of Card
+// Ret : Index of The FIRST Card of The FIRST Pair in Card, If not Find, It Returns -1
+//   	i.e, findCardPair({1,2,2,3,4,4}) return 1, which is the index of the first "2";
+function findCardPair(card2find) {
+	var ret = -1;
+	for (var i = 0; i < card2find.length - 1; i++) {
+		if (isCardPair(card2find[i], card2find[i+1])) {
+			ret = i;
+			break;
+		}
+	}		
+	return ret;
+}
+
 // Func: Generate a Random Integer Ranges from {0, num - 1}
 // Para: num (Sup-Limit of Random Integer)
 // Ret : the Random Integer
