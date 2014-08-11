@@ -37,6 +37,12 @@ var timerhandler2;
 var timerhandler3;
 var timerhandler4;
 
+// Flag Variables Indicating States
+// whether fcSelfClick Workes
+var listenSelfCard = 0;
+// whether fcKamichaClick Workes
+var listenKamichaCard = 0;
+
 // Func: To Compare which Card is After
 // Para: a (CardIndex of Card A), b (CardIndex of Card B)
 // Ret : whether Card A is after
@@ -76,6 +82,21 @@ function isCardPair(a, b) {
 		return true;
 	else
 		return false;
+}
+
+// Func: To Determine whether Their is Any Pair in Card
+// Para: card2find(!SORTED! Array of Card)
+// Ret : Index of The FIRST Card of The FIRST Pair in Card, If not Find, It Returns -1
+//   	i.e, findCardPair({1,2,2,3,4,4}) return 1, which is the index of the first "2";
+function findCardPair(card2find) {
+	var ret = -1;
+	for (var i = 0; i < card2find.length - 1; i++) {
+		if (isCardPair(card2find[i], card2find[i+1])) {
+			ret = i;
+			break;
+		}
+	}
+	return ret;
 }
 
 // Func: Generate a Random Integer Ranges from {0, num - 1}
@@ -192,6 +213,55 @@ function reshowCardSelf(mask)
 	}
 }
 
+// Func: Update Render of Card Kamicha
+// Para: Null
+// Ret : Null
+function reshowCardKamicha()
+{
+	for (var i = 0; i < 10; i++) {
+		if (i < cardumi.length) {
+			document.getElementById("kamichacard" + i + "img").src = "image/card/bk.png"
+			document.getElementById("kamichacard" + i).style.display = "inline-block";
+		}
+		else {
+			document.getElementById("kamichacard" + i).style.display = "none";
+		}
+	}
+}
+
+// Func: Active a Player's Area and Set Others Inactive
+// Para: player(value ranges from {"self", "shimocha", "toimen", "kamicha"})
+// Ret : Null
+function activeAva(player) {
+	document.getElementById("selfareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("shimochaareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("toimenareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("kamichaareadiv").classList.remove("avaacintivestatic");
+
+	document.getElementById(player + "areadiv").classList.add("avaactive");
+	setTimeout(function (dom1) {
+		dom1.classList.remove("avaactive");
+		dom1.classList.remove("avaacintivestatic");
+		dom1.classList.add("avaactivestatic");
+		//document.getElementById("selfareadiv").style.backgroundColor="#"
+	}, 600, document.getElementById(player + "areadiv"));
+}
+
+// Func: Shuffle an Array by Swapping
+// Para: array2sw(Array to Shuffle), times(Swapping Times)
+// Ret : An Swapped Array
+function shuffleArray(array2sw, times) {
+	var length = array2sw.length;
+	for (var i = 0; i < times; i++) {
+		var swpi = randomInt(length);
+		var swpj = randomInt(length);
+		var tmpswp = array2sw[swpj];
+		array2sw[swpj] = card[swpi];
+		array2sw[swpi] = tmpswp;
+	}
+	return array2sw;
+}
+
 // Func: Shuffled Card by Swapping Cards,
 //     Generating Arrays of 3 COM-Players and a Sorted Array of Player's Hand,
 //     Storing in Global Variables
@@ -201,13 +271,7 @@ function shufflesw() {
 	card = [];
 	for (var i = 0; i < 37; i++)
 		card.push(i);
-	for (var i = 0; i < 500; i++) {
-		var swpi = randomInt(37);
-		var swpj = randomInt(37);
-		var tmpswp = card[swpj];
-		card[swpj] = card[swpi];
-		card[swpi] = tmpswp;
-	}
+	card = shuffleArray(card, 500);
 	cardumi = card.slice(0,10);
 	cardself = sort(card.slice(10,19));
 	cardnico = card.slice(19,28);
@@ -300,6 +364,35 @@ function animateDiscard() {
 	}, 10);
 }
 
+// Func: Show Meguri and Remove Animation on Kamicha's Card, and Then Delete It
+// Para: index(Index of the Card to be Removed in Kamicha's Card)
+// Ret : Null
+function del1CardKamicha(index) {
+	// Show Animation of Meguri
+	document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
+	// Show Card's Face
+	setTimeout(function(url, varindex) {
+		document.getElementById("kamichacard"+varindex+"img").src=url;
+	}, 150, getcardimgurl(cardumi[index]), index);
+	// Delete the Card in Array
+	cardumi.splice(index, 1);
+	// Show Animation of Remove after 1.5 seconds
+	setTimeout(function(varindex) {
+		document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
+		document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
+		document.getElementById("kamichacard"+varindex).classList.add("cardremove");
+	}, 1500, index);
+	// Hidden Object and Remove ClassList
+	setTimeout(function(varindex) {
+		document.getElementById("kamichacard"+varindex).style.display="none";
+		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
+		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
+		document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
+		document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
+		reshowCardKamicha();
+	}, 1890, index);
+}
+
 // Func: Initialization
 // Para: Null
 // Ret : Null
@@ -357,19 +450,15 @@ function init() {
 			document.getElementById("selfavaimg").classList.remove("change-size");
 		} ,1000);
 	});
+	// Shuffle Card and Discarding them
 	shufflesw();
 	setTimeout(function () {
 		animateDiscard();
 	}, 1000);
+	// Start from Self (to Get Card from Umi SONODA)
 	setTimeout(function () {
 		showselfcard();
-		document.getElementById("selfareadiv").classList.add("avaactive");
-		setTimeout(function () {
-			document.getElementById("selfareadiv").classList.remove("avaactive");
-			document.getElementById("selfareadiv").classList.remove("avaacintivestatic");
-			document.getElementById("selfareadiv").classList.add("avaactivestatic");
-			//document.getElementById("selfareadiv").style.backgroundColor="#"
-		}, 600);
+		SelfHandler();
 	}, 1000 + 10 * 400)
 }
 
@@ -452,6 +541,16 @@ function timer3()
 	tm3 ++;
 }
 
+// Func: Handle Process in Self's Turn
+//		Including Getting Card from Kamicha and Discard Pairs
+//		After Which It will Call the Function to Handle Process in Shimocha(Nico YAZAWA)'s Turn
+// Para: Null
+// Ret : Null
+function SelfHandler()
+{
+	activeAva("self");
+}
+
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
 // Para: Null
 // Ret : Null
@@ -477,7 +576,7 @@ function timer4()
 // Para: Null
 // Ret : Null
 function fcKamichaMouseOver(index) {
-	if (!makeda) {
+	if (listenKamichaCard) {
 		if (index == 3) {
 			sndplayreq = true;
 			lastkamichacardsel = index;
@@ -504,7 +603,7 @@ function fcKamichaMouseOver(index) {
 // Para: Null
 // Ret : Null
 function fcKamichaMouseOut(index) {
-	if (!makeda) {
+	if (listenKamichaCard) {
 		sndplayreq = false;
 		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png";
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk.png";
@@ -518,25 +617,12 @@ function fcKamichaClick(index) {
 	if (!makeda) {
 		sndplayreq = false;
 		document.getElementById("sndei").play();
-		document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
-		setTimeout(function(varindex) {
-			document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
-			document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
-			document.getElementById("kamichacard"+varindex).classList.add("cardremove");
-			ins1CardSelf(cardumi[varindex]);
-		}, 1500, index);
-		setTimeout(function(varindex) {
-			document.getElementById("kamichacard"+varindex).style.display="none";
-			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
-			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
-			document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
-			document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
-		}, 1890, index);
 		setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
-		setTimeout(function(varindex) {
-			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
-			document.getElementById("kamichacard"+varindex+"img").src=getcardimgurl(cardumi[varindex]);
-		}, 150, index);
+		document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
+		setTimeout(function(card2ins) {
+			ins1CardSelf(card2ins);
+		}, 1500, cardumi[index]);
+		del1CardKamicha(index);
 	}
 	makeda = true;
 	setTimeout("makeda = false;", 2000);
