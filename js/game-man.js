@@ -37,6 +37,12 @@ var timerhandler2;
 var timerhandler3;
 var timerhandler4;
 
+// Flag Variables Indicating States
+// whether fcSelfClick Workes
+var listenSelfCard = 0;
+// whether fcKamichaClick Workes
+var listenKamichaCard = 0;
+
 // Func: To Compare which Card is After
 // Para: a (CardIndex of Card A), b (CardIndex of Card B)
 // Ret : whether Card A is after
@@ -390,13 +396,15 @@ function init() {
 			document.getElementById("selfavaimg").classList.remove("change-size");
 		} ,1000);
 	});
+	// Shuffle Card and Discarding them
 	shufflesw();
 	setTimeout(function () {
 		animateDiscard();
 	}, 1000);
+	// Start from Self (to Get Card from Umi SONODA)
 	setTimeout(function () {
 		showselfcard();
-		activeAva("self");
+		SelfHandler();
 	}, 1000 + 10 * 400)
 }
 
@@ -477,6 +485,16 @@ function timer3()
 		window.clearInterval(timerhandler3);
 	}
 	tm3 ++;
+}
+
+// Func: Handle Process in Self's Turn
+//		Including Getting Card from Kamicha and Discard Pairs
+//		After Which It will Call the Function to Handle Process in Shimocha(Nico YAZAWA)'s Turn
+// Para: Null
+// Ret : Null
+function SelfHandler()
+{
+	activeAva("self");
 }
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
