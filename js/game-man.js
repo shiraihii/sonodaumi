@@ -339,6 +339,33 @@ function animateDiscard() {
 	}, 10);
 }
 
+// Func: Show Meguri and Remove Animation on Kamicha's Card, and Then Delete It
+// Para: index(Index of the Card to be Removed in Kamicha's Card)
+// Ret : Null
+function del1CardKamicha(index) {
+	// Show Animation of Meguri
+	document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
+	// Show Card's Face
+	setTimeout(function(varindex) {
+		document.getElementById("kamichacard"+varindex+"img").src=getcardimgurl(cardumi[varindex]);
+	}, 150, index);
+	// Show Animation of Remove after 1.5 seconds
+	setTimeout(function(varindex) {
+		document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
+		document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
+		document.getElementById("kamichacard"+varindex).classList.add("cardremove");
+		ins1CardSelf(cardumi[varindex]);
+	}, 1500, index);
+	// Hidden Object and Remove ClassList
+	setTimeout(function(varindex) {
+		document.getElementById("kamichacard"+varindex).style.display="none";
+		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
+		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
+		document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
+		document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
+	}, 1890, index);
+}
+
 // Func: Initialization
 // Para: Null
 // Ret : Null
