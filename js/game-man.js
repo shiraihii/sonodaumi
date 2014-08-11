@@ -522,7 +522,7 @@ function timer4()
 // Para: Null
 // Ret : Null
 function fcKamichaMouseOver(index) {
-	if (!makeda) {
+	if (listenKamichaCard) {
 		if (index == 3) {
 			sndplayreq = true;
 			lastkamichacardsel = index;
@@ -549,7 +549,7 @@ function fcKamichaMouseOver(index) {
 // Para: Null
 // Ret : Null
 function fcKamichaMouseOut(index) {
-	if (!makeda) {
+	if (listenKamichaCard) {
 		sndplayreq = false;
 		document.getElementById("kamichaavaimg").src="image/person/umi/seijou.png";
 		document.getElementById("kamichacard"+index+"img").src="image/card/bk.png";
