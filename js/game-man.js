@@ -79,7 +79,7 @@ function isCardPair(a, b) {
 }
 
 // Func: To Determine whether Their is Any Pair in Card
-// Para: !SORTED! Array of Card
+// Para: card2find(!SORTED! Array of Card)
 // Ret : Index of The FIRST Card of The FIRST Pair in Card, If not Find, It Returns -1
 //   	i.e, findCardPair({1,2,2,3,4,4}) return 1, which is the index of the first "2";
 function findCardPair(card2find) {
@@ -89,7 +89,7 @@ function findCardPair(card2find) {
 			ret = i;
 			break;
 		}
-	}		
+	}
 	return ret;
 }
 
