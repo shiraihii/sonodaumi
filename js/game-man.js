@@ -213,6 +213,22 @@ function reshowCardSelf(mask)
 	}
 }
 
+// Func: Update Render of Card Kamicha
+// Para: Null
+// Ret : Null
+function reshowCardKamicha()
+{
+	for (var i = 0; i < 10; i++) {
+		if (i < cardumi.length) {
+			document.getElementById("kamichacard" + i + "img").src = "image/card/bk.png"
+			document.getElementById("kamichacard" + i).style.display = "inline-block";
+		}
+		else {
+			document.getElementById("kamichacard" + i).style.display = "none";
+		}
+	}
+}
+
 // Func: Active a Player's Area and Set Others Inactive
 // Para: player(value ranges from {"self", "shimocha", "toimen", "kamicha"})
 // Ret : Null
@@ -231,6 +247,21 @@ function activeAva(player) {
 	}, 600, document.getElementById(player + "areadiv"));
 }
 
+// Func: Shuffle an Array by Swapping
+// Para: array2sw(Array to Shuffle), times(Swapping Times)
+// Ret : An Swapped Array
+function shuffleArray(array2sw, times) {
+	var length = array2sw.length;
+	for (var i = 0; i < times; i++) {
+		var swpi = randomInt(length);
+		var swpj = randomInt(length);
+		var tmpswp = array2sw[swpj];
+		array2sw[swpj] = card[swpi];
+		array2sw[swpi] = tmpswp;
+	}
+	return array2sw;
+}
+
 // Func: Shuffled Card by Swapping Cards,
 //     Generating Arrays of 3 COM-Players and a Sorted Array of Player's Hand,
 //     Storing in Global Variables
@@ -240,13 +271,7 @@ function shufflesw() {
 	card = [];
 	for (var i = 0; i < 37; i++)
 		card.push(i);
-	for (var i = 0; i < 500; i++) {
-		var swpi = randomInt(37);
-		var swpj = randomInt(37);
-		var tmpswp = card[swpj];
-		card[swpj] = card[swpi];
-		card[swpi] = tmpswp;
-	}
+	card = shuffleArray(card, 500);
 	cardumi = card.slice(0,10);
 	cardself = sort(card.slice(10,19));
 	cardnico = card.slice(19,28);
@@ -346,15 +371,16 @@ function del1CardKamicha(index) {
 	// Show Animation of Meguri
 	document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
 	// Show Card's Face
-	setTimeout(function(varindex) {
-		document.getElementById("kamichacard"+varindex+"img").src=getcardimgurl(cardumi[varindex]);
-	}, 150, index);
+	setTimeout(function(url, varindex) {
+		document.getElementById("kamichacard"+varindex+"img").src=url;
+	}, 150, getcardimgurl(cardumi[index]), index);
+	// Delete the Card in Array
+	cardumi.splice(index, 1);
 	// Show Animation of Remove after 1.5 seconds
 	setTimeout(function(varindex) {
 		document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
 		document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
 		document.getElementById("kamichacard"+varindex).classList.add("cardremove");
-		ins1CardSelf(cardumi[varindex]);
 	}, 1500, index);
 	// Hidden Object and Remove ClassList
 	setTimeout(function(varindex) {
@@ -363,6 +389,7 @@ function del1CardKamicha(index) {
 		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
 		document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
 		document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
+		reshowCardKamicha();
 	}, 1890, index);
 }
 
@@ -590,25 +617,12 @@ function fcKamichaClick(index) {
 	if (!makeda) {
 		sndplayreq = false;
 		document.getElementById("sndei").play();
-		document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
-		setTimeout(function(varindex) {
-			document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
-			document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
-			document.getElementById("kamichacard"+varindex).classList.add("cardremove");
-			ins1CardSelf(cardumi[varindex]);
-		}, 1500, index);
-		setTimeout(function(varindex) {
-			document.getElementById("kamichacard"+varindex).style.display="none";
-			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
-			document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
-			document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
-			document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
-		}, 1890, index);
 		setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
-		setTimeout(function(varindex) {
-			document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
-			document.getElementById("kamichacard"+varindex+"img").src=getcardimgurl(cardumi[varindex]);
-		}, 150, index);
+		document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
+		setTimeout(function(card2ins) {
+			ins1CardSelf(card2ins);
+		}, 1500, cardumi[index]);
+		del1CardKamicha(index);
 	}
 	makeda = true;
 	setTimeout("makeda = false;", 2000);
