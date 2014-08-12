@@ -65,6 +65,7 @@ function cardArrayGetLength(cha) {
 		case "Umi": return cardumi.length;
 		case "Nico": return cardnico.length;
 		case "Honoka": return cardhonoka.length;
+		default: return 0;
 	}
 }
 
@@ -90,6 +91,7 @@ function cardArrayItem(cha, index) {
 		case "Umi": return cardumi[index];
 		case "Nico": return cardnico[index];
 		case "Honoka": return cardhonoka[index];
+		default: return null;
 	}
 }
 
