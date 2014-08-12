@@ -43,6 +43,56 @@ var listenSelfCard = 0;
 // whether fcKamichaClick Workes
 var listenKamichaCard = 0;
 
+// Func: Assign a New Array to Card Array According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), a2a(array to assgin)
+// Ret : Null
+function cardArrayAssign(cha, a2a) {
+	switch (cha) {
+		case "Umi": cardumi = a2a;
+					break;
+		case "Nico": cardnico = a2a;
+					 break;
+		case "Honoka": cardhonoka = a2a;
+					   break;
+	}
+}
+
+// Func: Get the Length of Card Array According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen})
+// Ret : length of card array
+function cardArrayGetLength(cha) {
+	switch (cha) {
+		case "Umi": return cardumi.length;
+		case "Nico": return cardnico.length;
+		case "Honoka": return cardhonoka.length;
+	}
+}
+
+// Func: Splice from Card Array According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), start(arg of splice), length(arg of splice)
+// Ret : Null
+function cardArraySplice(cha, start, length) {
+	switch (cha) {
+		case "Umi": cardumi.splice(start, length)
+					break;
+		case "Nico": cardnico.splice(start, length)
+					 break;
+		case "Honoka": cardhonoka.splice(start, length)
+					   break;
+	}
+}
+
+// Func: Get Item of Card Array According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), index
+// Ret : item of card array
+function cardArrayItem(cha, index) {
+	switch (cha) {
+		case "Umi": return cardumi[index];
+		case "Nico": return cardnico[index];
+		case "Honoka": return cardhonoka[index];
+	}
+}
+
 // Func: To Compare which Card is After
 // Para: a (CardIndex of Card A), b (CardIndex of Card B)
 // Ret : whether Card A is after
@@ -219,7 +269,7 @@ function reshowCardSelf(mask)
 function reshowCardKamicha()
 {
 	for (var i = 0; i < 10; i++) {
-		if (i < cardumi.length) {
+		if (i < cardArrayGetLength(pKamicha)) {
 			document.getElementById("kamichacard" + i + "img").src = "image/card/bk.png"
 			document.getElementById("kamichacard" + i).style.display = "inline-block";
 		}
@@ -272,10 +322,10 @@ function shufflesw() {
 	for (var i = 0; i < 37; i++)
 		card.push(i);
 	card = shuffleArray(card, 500);
-	cardumi = card.slice(0,10);
+	cardArrayAssign(pKamicha, card.slice(0,10));
 	cardself = sort(card.slice(10,19));
-	cardnico = card.slice(19,28);
-	cardhonoka = card.slice(28,37);
+	cardArrayAssign(pShimocha, card.slice(19,28));
+	cardArrayAssign(pToimen, card.slice(28,37));
 }
 
 // Func: Get A Card's image's url
@@ -373,9 +423,9 @@ function del1CardKamicha(index) {
 	// Show Card's Face
 	setTimeout(function(url, varindex) {
 		document.getElementById("kamichacard"+varindex+"img").src=url;
-	}, 150, getcardimgurl(cardumi[index]), index);
+	}, 150, getcardimgurl(cardArrayItem(pKamicha, index)), index);
 	// Delete the Card in Array
-	cardumi.splice(index, 1);
+	cardArraySplice(pKamicha, index, 1);
 	// Show Animation of Remove after 1.5 seconds
 	setTimeout(function(varindex) {
 		document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
@@ -621,7 +671,7 @@ function fcKamichaClick(index) {
 		document.getElementById("kamichaavaimg").src="image/person/umi/kaoge.png";
 		setTimeout(function(card2ins) {
 			ins1CardSelf(card2ins);
-		}, 1500, cardumi[index]);
+		}, 1500, cardArrayItem(pKamicha, index));
 		del1CardKamicha(index);
 	}
 	makeda = true;
