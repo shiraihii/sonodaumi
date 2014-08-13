@@ -281,7 +281,7 @@ function reshowCardOther(chastr, cha)
 		}
 	}
 	if (chastr == "shimocha" || chastr == "toimen")
-		;// TODO Recal When Playing
+		recalWidth(chastr, cha);
 }
 
 // Func: Active a Player's Area and Set Others Inactive
@@ -448,20 +448,22 @@ function del1CardOtherShow(chastr, cha, index) {
 	// Delete the Card in Array
 	cardArraySplice(cha, index, 1);
 	// Show Animation of Remove after 1.5 seconds
-	setTimeout(function(varindex) {
+	setTimeout(function(varindex, chastr) {
 		document.getElementById(chastr+"card"+varindex+"img").classList.add("cardremove");
-		document.getElementById(chastr+"card"+varindex+"in").classList.add("cardremove");
+		if (chastr == "kamicha")
+			document.getElementById(chastr+"card"+varindex+"in").classList.add("cardremove");
 		document.getElementById(chastr+"card"+varindex).classList.add("cardremove");
-	}, 1500, index);
+	}, 1500, index, chastr);
 	// Hidden Object and Remove ClassList
-	setTimeout(function(varindex) {
+	setTimeout(function(varindex, chastr, cha) {
 		document.getElementById(chastr+"card"+varindex).style.display="none";
 		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardremove");
 		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardmeguri");
-		document.getElementById(chastr+"card"+varindex+"in").classList.remove("cardremove");
+		if (chastr == "kamicha")
+			document.getElementById(chastr+"card"+varindex+"in").classList.remove("cardremove");
 		document.getElementById(chastr+"card"+varindex).classList.remove("cardremove");
 		reshowCardOther(chastr, cha);
-	}, 1890, index);
+	}, 1890, index, chastr, cha);
 }
 
 // Func: Initialization
@@ -693,6 +695,8 @@ function fcKamichaClick(index) {
 			ins1CardSelf(card2ins);
 		}, 1500, cardArrayItem(pKamicha, index));
 		del1CardOtherShow("kamicha", pKamicha, index);
+		// TODO: delete line below
+		del1CardOtherShow("toimen", pToimen, index);
 	}
 	makeda = true;
 	setTimeout("makeda = false;", 2000);
