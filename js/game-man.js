@@ -386,6 +386,29 @@ function recalWidthDiscard(chastr) {
 	}
 }
 
+// Func: Recalculate the Width of Card-Div of Shimocha and Toimen when Playing
+// Para: chastr(string of player ranges from {"toimen", "shimocha"}), 
+//		 cha(mapping of player, ranges from {pShimocha, pToimen}),
+// Ret : Null
+function recalWidth(chastr, cha) {
+	var divw;
+	var length = cardArrayGetLength(cha);
+	if (length <= 2)
+		divw = 100;
+	else
+		divw = (325 - 100) / (length);
+	switch (chastr) {
+		case "shimocha":
+			for (var ii = 0; ii < 10; ii++)
+				document.getElementById("shimochacard" + ii).style.width = divw + "px";
+			break;
+		case "toimen":
+			for (var ii = 0; ii < 10; ii++)
+				document.getElementById("toimencard" + ii).style.width = divw + "px";
+			break;
+	}
+}
+
 // Func: Add an Animation of Discarding Cards
 // Para: Null
 // Ret : Null
