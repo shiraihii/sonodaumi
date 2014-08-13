@@ -280,6 +280,8 @@ function reshowCardOther(chastr, cha)
 			document.getElementById(chastr+"card" + i).style.display = "none";
 		}
 	}
+	if (chastr == "shimocha" || chastr == "toimen")
+		;// TODO Recal When Playing
 }
 
 // Func: Active a Player's Area and Set Others Inactive
@@ -359,37 +361,28 @@ function showselfcard() {
 	}
 }
 
-// Func: Recalculate the Width of Card-Div of Shimocha and Toimen
-// Para: Null
+// Func: Recalculate the Width of Card-Div of Shimocha and Toimen when Discarding Cards
+// Para: chastr(string of player ranges from {"toimen", "shimocha"}), 
 // Ret : Null
-function recal() {
-	var divwShimocha;
-	var divwToimen;
-	switch (pShimocha) {
-		case "Nico":
-			if (qHandNico <= 2)
-				divwShimocha = 100;
+function recalWidthDiscard(chastr) {
+	var divw;
+	switch (chastr) {
+		case "shimocha":
+			if (tm3 <= 2)
+				divw = 100;
 			else
-				divwShimocha = (325 - 100) / (qHandNico);
+				divw = (325 - 100) / (tm3);
+			for (var ii = 0; ii < 10; ii++)
+				document.getElementById("shimochacard" + ii).style.width = divw + "px";
 			break;
-		default:
-			divwShimocha = 100;
-			break;
-	}
-	switch (pToimen) {
-		case "Honoka":
-			if (qHandHonoka <= 2)
-				divwToimen = 100;
+		case "toimen":
+			if (tm4 <= 2)
+				divw = 100;
 			else
-				divwToimen = (325 - 100) / (qHandHonoka);
+				divw = (325 - 100) / (tm4);
+			for (var ii = 0; ii < 10; ii++)
+				document.getElementById("toimencard" + ii).style.width = divw + "px";
 			break;
-		default:
-			divwToimen = 100;
-			break;
-	}
-	for (var ii = 0; ii < 10; ii++) {
-		document.getElementById("toimencard" + ii).style.width = divwToimen + "px";
-		document.getElementById("shimochacard" + ii).style.width = divwShimocha + "px";
 	}
 }
 
@@ -543,7 +536,6 @@ function timer1()
 		document.getElementById("sndcard1").volume = "0.3";
 		qHandUmi = tm1;
 		document.getElementById("kamichacard"+tm1).style.display="inline-block";
-		recal();
 	}
 	if (tm1 == 9)
 	{
@@ -585,7 +577,7 @@ function timer3()
 		document.getElementById("sndcard3").volume = "0.3";
 		qHandNico = tm3;
 		document.getElementById("shimochacard"+tm3).style.display="block";
-		recal();
+		recalWidthDiscard("shimocha");
 	}
 	if (tm3 == 8)
 	{
@@ -616,7 +608,7 @@ function timer4()
 		document.getElementById("sndcard4").volume = "0.3";
 		qHandHonoka = tm4;
 		document.getElementById("toimencard"+tm4).style.display="block";
-		recal();
+		recalWidthDiscard("toimen");
 	}
 	if (tm4 == 8)
 	{
