@@ -265,18 +265,19 @@ function reshowCardSelf(mask)
 	}
 }
 
-// Func: Update Render of Card Kamicha
-// Para: Null
+// Func: Update Render of Card Other
+// Para: chastr(string of player ranges from {"kamicha", "toimen", "shimocha"}), 
+//		 cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}),
 // Ret : Null
-function reshowCardKamicha()
+function reshowCardOther(chastr, cha)
 {
 	for (var i = 0; i < 10; i++) {
-		if (i < cardArrayGetLength(pKamicha)) {
-			document.getElementById("kamichacard" + i + "img").src = "image/card/bk.png"
-			document.getElementById("kamichacard" + i).style.display = "inline-block";
+		if (i < cardArrayGetLength(cha)) {
+			document.getElementById(chastr+"card" + i + "img").src = "image/card/bk.png"
+			document.getElementById(chastr+"card" + i).style.display = "inline-block";
 		}
 		else {
-			document.getElementById("kamichacard" + i).style.display = "none";
+			document.getElementById(chastr+"card" + i).style.display = "none";
 		}
 	}
 }
@@ -416,32 +417,34 @@ function animateDiscard() {
 	}, 10);
 }
 
-// Func: Show Meguri and Remove Animation on Kamicha's Card, and Then Delete It
-// Para: index(Index of the Card to be Removed in Kamicha's Card)
+// Func: Show Meguri and Remove Animation on Other's Card, and Then Delete It
+// Para: chastr(string of player ranges from {"kamicha", "toimen", "shimocha"}), 
+//		 cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}),
+//		 index(Index of the Card to be Removed in Kamicha's Card)
 // Ret : Null
-function del1CardKamicha(index) {
+function del1CardOtherShow(chastr, cha, index) {
 	// Show Animation of Meguri
-	document.getElementById("kamichacard"+index+"img").classList.add("cardmeguri");
+	document.getElementById(chastr+"card"+index+"img").classList.add("cardmeguri");
 	// Show Card's Face
 	setTimeout(function(url, varindex) {
-		document.getElementById("kamichacard"+varindex+"img").src=url;
-	}, 150, getcardimgurl(cardArrayItem(pKamicha, index)), index);
+		document.getElementById(chastr+"card"+varindex+"img").src=url;
+	}, 150, getcardimgurl(cardArrayItem(cha, index)), index);
 	// Delete the Card in Array
-	cardArraySplice(pKamicha, index, 1);
+	cardArraySplice(cha, index, 1);
 	// Show Animation of Remove after 1.5 seconds
 	setTimeout(function(varindex) {
-		document.getElementById("kamichacard"+varindex+"img").classList.add("cardremove");
-		document.getElementById("kamichacard"+varindex+"in").classList.add("cardremove");
-		document.getElementById("kamichacard"+varindex).classList.add("cardremove");
+		document.getElementById(chastr+"card"+varindex+"img").classList.add("cardremove");
+		document.getElementById(chastr+"card"+varindex+"in").classList.add("cardremove");
+		document.getElementById(chastr+"card"+varindex).classList.add("cardremove");
 	}, 1500, index);
 	// Hidden Object and Remove ClassList
 	setTimeout(function(varindex) {
-		document.getElementById("kamichacard"+varindex).style.display="none";
-		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardremove");
-		document.getElementById("kamichacard"+varindex+"img").classList.remove("cardmeguri");
-		document.getElementById("kamichacard"+varindex+"in").classList.remove("cardremove");
-		document.getElementById("kamichacard"+varindex).classList.remove("cardremove");
-		reshowCardKamicha();
+		document.getElementById(chastr+"card"+varindex).style.display="none";
+		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardremove");
+		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardmeguri");
+		document.getElementById(chastr+"card"+varindex+"in").classList.remove("cardremove");
+		document.getElementById(chastr+"card"+varindex).classList.remove("cardremove");
+		reshowCardOther(chastr, cha);
 	}, 1890, index);
 }
 
@@ -674,7 +677,7 @@ function fcKamichaClick(index) {
 		setTimeout(function(card2ins) {
 			ins1CardSelf(card2ins);
 		}, 1500, cardArrayItem(pKamicha, index));
-		del1CardKamicha(index);
+		del1CardOtherShow("kamicha", pKamicha, index);
 	}
 	makeda = true;
 	setTimeout("makeda = false;", 2000);
