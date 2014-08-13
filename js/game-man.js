@@ -393,10 +393,10 @@ function recalWidthDiscard(chastr) {
 function recalWidth(chastr, cha) {
 	var divw;
 	var length = cardArrayGetLength(cha);
-	if (length <= 2)
+	if (length <= 3)
 		divw = 100;
 	else
-		divw = (325 - 100) / (length);
+		divw = (325 - 100) / (length - 1);
 	switch (chastr) {
 		case "shimocha":
 			for (var ii = 0; ii < 10; ii++)
@@ -450,18 +450,20 @@ function del1CardOtherShow(chastr, cha, index) {
 	// Show Animation of Remove after 1.5 seconds
 	setTimeout(function(varindex, chastr) {
 		document.getElementById(chastr+"card"+varindex+"img").classList.add("cardremove");
-		if (chastr == "kamicha")
+		if (chastr == "kamicha") {
 			document.getElementById(chastr+"card"+varindex+"in").classList.add("cardremove");
-		document.getElementById(chastr+"card"+varindex).classList.add("cardremove");
+			document.getElementById(chastr+"card"+varindex).classList.add("cardremove");
+		}
 	}, 1500, index, chastr);
 	// Hidden Object and Remove ClassList
 	setTimeout(function(varindex, chastr, cha) {
 		document.getElementById(chastr+"card"+varindex).style.display="none";
 		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardremove");
 		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardmeguri");
-		if (chastr == "kamicha")
+		if (chastr == "kamicha") {
 			document.getElementById(chastr+"card"+varindex+"in").classList.remove("cardremove");
-		document.getElementById(chastr+"card"+varindex).classList.remove("cardremove");
+			document.getElementById(chastr+"card"+varindex).classList.remove("cardremove");
+		}
 		reshowCardOther(chastr, cha);
 	}, 1890, index, chastr, cha);
 }
