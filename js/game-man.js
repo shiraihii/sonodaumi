@@ -39,9 +39,11 @@ var timerhandler4;
 
 // Flag Variables Indicating States
 // whether fcSelfClick Workes
-var listenSelfCard = 0;
+var listenSelfCard = false;
 // whether fcKamichaClick Workes
-var listenKamichaCard = 0;
+var listenKamichaCard = false;
+// whether fcKamichaClick Donw
+var doneKamichaCard = true;
 
 // Func: Assign a New Array to Card Array According to Mapping Table of Players
 // Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), a2a(array to assgin)
@@ -623,6 +625,8 @@ function timer3()
 function SelfHandler()
 {
 	activeAva("self");
+	doneKamichaCard = false;
+	listenKamichaCard = true;
 }
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
@@ -688,7 +692,8 @@ function fcKamichaMouseOut(index) {
 // Para: Null
 // Ret : Null
 function fcKamichaClick(index) {
-	if (!makeda) {
+	if (listenKamichaCard) {
+		listenKamichaCard = false;
 		sndplayreq = false;
 		document.getElementById("sndei").play();
 		setTimeout("document.getElementById(\"sndkaoge\").play()", 120);
@@ -697,12 +702,7 @@ function fcKamichaClick(index) {
 			ins1CardSelf(card2ins);
 		}, 1500, cardArrayItem(pKamicha, index));
 		del1CardOtherShow("kamicha", pKamicha, index);
-		// TODO: delete line below
-		del1CardOtherShow("toimen", pToimen, index);
 	}
-	makeda = true;
-	setTimeout("makeda = false;", 2000);
-			
 }
 
 function fcSelfClick(index) {
