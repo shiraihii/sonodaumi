@@ -204,6 +204,47 @@ function del2CardSelf(deli, delj)
 	}
 }
 
+// Func: Delete 2 Cards in CardSelf and Show an animation
+// Para: deli, delj(the index of card to delete in CardSelf)
+// Ret : Null
+function del2CardSelfShow(deli, delj)
+{
+	setTimeout(function(varindexi, varindexj) {
+		document.getElementById("selfcard"+varindexi+"in").classList.add("cardselectup");
+		document.getElementById("selfcard"+varindexj+"in").classList.add("cardselectup");
+	}, 300, deli, delj);
+	setTimeout(function(varindexi, varindexj) {
+		document.getElementById("selfcard"+varindexi+"in").classList.remove("cardselectup");
+		document.getElementById("selfcard"+varindexi+"in").classList.add("cardselectupstatic");
+		document.getElementById("selfcard"+varindexj+"in").classList.remove("cardselectup");
+		document.getElementById("selfcard"+varindexj+"in").classList.add("cardselectupstatic");
+	}, 400, deli, delj);
+	setTimeout(function(varindexi, varindexj) {
+		document.getElementById("selfcard"+varindexi+"img").classList.add("cardremove");
+		document.getElementById("selfcard"+varindexi+"in").classList.add("cardremove");
+		document.getElementById("selfcard"+varindexi).classList.add("cardremove");
+		document.getElementById("selfcard"+varindexj+"img").classList.add("cardremove");
+		document.getElementById("selfcard"+varindexj+"in").classList.add("cardremove");
+		document.getElementById("selfcard"+varindexj).classList.add("cardremove");
+	}, 1100, deli, delj);
+	setTimeout(function(varindexi, varindexj) {
+		document.getElementById("selfcard"+varindexi).style.display="none";
+		document.getElementById("selfcard"+varindexi+"img").classList.remove("cardremove");
+		document.getElementById("selfcard"+varindexi+"in").classList.remove("cardremove");
+		document.getElementById("selfcard"+varindexi).classList.remove("cardremove");
+		document.getElementById("selfcard"+varindexi+"in").classList.remove("cardselectupstatic");
+		document.getElementById("selfcard"+varindexj).style.display="none";
+		document.getElementById("selfcard"+varindexj+"img").classList.remove("cardremove");
+		document.getElementById("selfcard"+varindexj+"in").classList.remove("cardremove");
+		document.getElementById("selfcard"+varindexj).classList.remove("cardremove");
+		document.getElementById("selfcard"+varindexj+"in").classList.remove("cardselectupstatic");
+	}, 1500, deli, delj);
+	setTimeout(function(varindexi, varindexj) {
+		del2CardSelf(varindexi, varindexj);
+		reshowCardSelf(-1);
+	}, 1500, deli, delj);
+}
+
 // Func: Remove Select on Hand
 // Para: Null
 // Ret : Null
@@ -617,8 +658,10 @@ function timer3()
 	tm3 ++;
 }
 
-// Func: Handle Process in Self's Turn
+// Func:The 2 Functions below:
+//		Handle Process in Self's Turn
 //		Including Getting Card from Kamicha and Discard Pairs
+//			with fcKamichaClick;
 //		After Which It will Call the Function to Handle Process in Shimocha(Nico YAZAWA)'s Turn
 // Para: Null
 // Ret : Null
@@ -627,7 +670,16 @@ function SelfHandler()
 	activeAva("self");
 	doneKamichaCard = false;
 	listenKamichaCard = true;
+	// wait for player select a card from kamicha;
 }
+function SelfHandler2() {
+	// after player click a card from kamicha
+	var pair2del;
+	if((pair2del = findCardPair(cardself)) != -1) {
+		del2CardSelfShow(pair2del, pair2del + 1);
+	}
+}
+
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
 // Para: Null
@@ -702,86 +754,90 @@ function fcKamichaClick(index) {
 			ins1CardSelf(card2ins);
 		}, 1500, cardArrayItem(pKamicha, index));
 		del1CardOtherShow("kamicha", pKamicha, index);
+		setTimeout(function() {
+			doneKamichaCard = true;
+			SelfHandler2();
+		}, 2000);
 	}
 }
 
 function fcSelfClick(index) {
-	if (isSelHandSelf[index]) {
-		document.getElementById("selfcard"+index+"in").classList.add("cardselectdown");
-		setTimeout(function(varindex) {
-			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
-			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
-		}, 100, index);
-		isSelHandSelf[index] = false;
-		if (seqCardSel[0] == index) {
-			seqCardSel[0] = seqCardSel[1];
-			seqCardSel[1] = seqCardSel[2];
-		}
-		if (seqCardSel[1] == index) {
-			seqCardSel[1] = seqCardSel[2];
-		}
-		qCardSel --;
-	}
-	else {
-		var removed = false;
-		document.getElementById("selfcard"+index+"in").classList.add("cardselectup");
-		setTimeout(function(varindex) {
-			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectup");
-			document.getElementById("selfcard"+varindex+"in").classList.add("cardselectupstatic");
-		}, 100, index);
-		seqCardSel[qCardSel] = index;
-		qCardSel ++;
-		for (var i = 0; i < qCardSel; i++) {
-			for (var j = i + 1; j < qCardSel; j++) {
-				if (isCardPair(cardself[seqCardSel[i]], cardself[seqCardSel[j]])) {
-					setTimeout(function(varindexi, varindexj) {
-						document.getElementById("selfcard"+varindexi+"img").classList.add("cardremove");
-						document.getElementById("selfcard"+varindexi+"in").classList.add("cardremove");
-						document.getElementById("selfcard"+varindexi).classList.add("cardremove");
-						document.getElementById("selfcard"+varindexj+"img").classList.add("cardremove");
-						document.getElementById("selfcard"+varindexj+"in").classList.add("cardremove");
-						document.getElementById("selfcard"+varindexj).classList.add("cardremove");
-					}, 500, seqCardSel[i], seqCardSel[j]);
-					setTimeout(function(varindexi, varindexj) {
-						document.getElementById("selfcard"+varindexi).style.display="none";
-						document.getElementById("selfcard"+varindexi+"img").classList.remove("cardremove");
-						document.getElementById("selfcard"+varindexi+"in").classList.remove("cardremove");
-						document.getElementById("selfcard"+varindexi).classList.remove("cardremove");
-						document.getElementById("selfcard"+varindexj).style.display="none";
-						document.getElementById("selfcard"+varindexj+"img").classList.remove("cardremove");
-						document.getElementById("selfcard"+varindexj+"in").classList.remove("cardremove");
-						document.getElementById("selfcard"+varindexj).classList.remove("cardremove");
-					}, 900, seqCardSel[i], seqCardSel[j]);
-					setTimeout(function(varindexi, varindexj) {
-						del2CardSelf(varindexi, varindexj);
-						reshowCardSelf(-1);
-					}, 900, seqCardSel[i], seqCardSel[j]);
-					if (qCardSel == 3) {
-						document.getElementById("selfcard"+seqCardSel[3-i-j]+"in").classList.add("cardselectdown");
-						setTimeout(function(varindex) {
-							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
-							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
-						}, 100, seqCardSel[3-i-j]); // if 3 cards selected, putdown the other.
-					}
-					setTimeout("document.getElementById(\"sndyatta\").play()", 200);
-					removed = true;
-					rmSelectCardSelf();
-				}
-			}
-		}
-		if (qCardSel == 3) {
-			document.getElementById("selfcard"+seqCardSel[0]+"in").classList.add("cardselectdown");
-			setTimeout(function(varindex) {
-				document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
-				document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
-			}, 100, seqCardSel[0]);
-			isSelHandSelf[seqCardSel[0]] = false;
-			seqCardSel[0] = seqCardSel[1];
-			seqCardSel[1] = seqCardSel[2];
-			qCardSel = 2;
-		}
-		if (!removed)
-			isSelHandSelf[index] = true;
-	}
+//	if (isSelHandSelf[index]) {
+//		document.getElementById("selfcard"+index+"in").classList.add("cardselectdown");
+//		setTimeout(function(varindex) {
+//			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
+//			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
+//		}, 100, index);
+//		isSelHandSelf[index] = false;
+//		if (seqCardSel[0] == index) {
+//			seqCardSel[0] = seqCardSel[1];
+//			seqCardSel[1] = seqCardSel[2];
+//		}
+//		if (seqCardSel[1] == index) {
+//			seqCardSel[1] = seqCardSel[2];
+//		}
+//		qCardSel --;
+//	}
+//	else {
+//		var removed = false;
+//		document.getElementById("selfcard"+index+"in").classList.add("cardselectup");
+//		setTimeout(function(varindex) {
+//			document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectup");
+//			document.getElementById("selfcard"+varindex+"in").classList.add("cardselectupstatic");
+//		}, 100, index);
+//		seqCardSel[qCardSel] = index;
+//		qCardSel ++;
+//		for (var i = 0; i < qCardSel; i++) {
+//			for (var j = i + 1; j < qCardSel; j++) {
+//				if (isCardPair(cardself[seqCardSel[i]], cardself[seqCardSel[j]])) {
+//					setTimeout(function(varindexi, varindexj) {
+//						document.getElementById("selfcard"+varindexi+"img").classList.add("cardremove");
+//						document.getElementById("selfcard"+varindexi+"in").classList.add("cardremove");
+//						document.getElementById("selfcard"+varindexi).classList.add("cardremove");
+//						document.getElementById("selfcard"+varindexj+"img").classList.add("cardremove");
+//						document.getElementById("selfcard"+varindexj+"in").classList.add("cardremove");
+//						document.getElementById("selfcard"+varindexj).classList.add("cardremove");
+//					}, 500, seqCardSel[i], seqCardSel[j]);
+//					setTimeout(function(varindexi, varindexj) {
+//						document.getElementById("selfcard"+varindexi).style.display="none";
+//						document.getElementById("selfcard"+varindexi+"img").classList.remove("cardremove");
+//						document.getElementById("selfcard"+varindexi+"in").classList.remove("cardremove");
+//						document.getElementById("selfcard"+varindexi).classList.remove("cardremove");
+//						document.getElementById("selfcard"+varindexj).style.display="none";
+//						document.getElementById("selfcard"+varindexj+"img").classList.remove("cardremove");
+//						document.getElementById("selfcard"+varindexj+"in").classList.remove("cardremove");
+//						document.getElementById("selfcard"+varindexj).classList.remove("cardremove");
+//					}, 900, seqCardSel[i], seqCardSel[j]);
+//					setTimeout(function(varindexi, varindexj) {
+//						del2CardSelf(varindexi, varindexj);
+//						reshowCardSelf(-1);
+//					}, 900, seqCardSel[i], seqCardSel[j]);
+//					if (qCardSel == 3) {
+//						document.getElementById("selfcard"+seqCardSel[3-i-j]+"in").classList.add("cardselectdown");
+//						setTimeout(function(varindex) {
+//							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
+//							document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
+//						}, 100, seqCardSel[3-i-j]); // if 3 cards selected, putdown the other.
+//					}
+//					setTimeout("document.getElementById(\"sndyatta\").play()", 200);
+//					removed = true;
+//					rmSelectCardSelf();
+//				}
+//			}
+//		}
+//		if (qCardSel == 3) {
+//			document.getElementById("selfcard"+seqCardSel[0]+"in").classList.add("cardselectdown");
+//			setTimeout(function(varindex) {
+//				document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectdown");
+//				document.getElementById("selfcard"+varindex+"in").classList.remove("cardselectupstatic");
+//			}, 100, seqCardSel[0]);
+//			isSelHandSelf[seqCardSel[0]] = false;
+//			seqCardSel[0] = seqCardSel[1];
+//			seqCardSel[1] = seqCardSel[2];
+//			qCardSel = 2;
+//		}
+//		if (!removed)
+//			isSelHandSelf[index] = true;
+//	}
 }
 
