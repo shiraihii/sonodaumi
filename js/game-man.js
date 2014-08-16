@@ -680,10 +680,18 @@ function SelfHandler2() {
 		setTimeout("document.getElementById(\"sndyatta\").play()", 200);
 	}
 	setTimeout(function() {
-		SelfHandler();
+		ShimochaHandler();
 	}, 2000);
 }
 
+// Func: Handle Process in Shimocha's Turn
+//		 Including Getting Card from Self and Discard Pairs
+//		 After Which It will Call the Function to Handle Process in Toimen(Honoka KOUSAKA)'s Turn
+// Para: Null
+// Ret : Null
+function ShimochaHandler() {
+	activeAva("shimocha");
+}
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
 // Para: Null
