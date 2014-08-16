@@ -677,7 +677,11 @@ function SelfHandler2() {
 	var pair2del;
 	if((pair2del = findCardPair(cardself)) != -1) {
 		del2CardSelfShow(pair2del, pair2del + 1);
+		setTimeout("document.getElementById(\"sndyatta\").play()", 200);
 	}
+	setTimeout(function() {
+		SelfHandler();
+	}, 2000);
 }
 
 
