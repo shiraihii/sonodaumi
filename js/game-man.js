@@ -331,15 +331,19 @@ function reshowCardOther(chastr, cha)
 // Para: player(value ranges from {"self", "shimocha", "toimen", "kamicha"})
 // Ret : Null
 function activeAva(player) {
-	document.getElementById("selfareadiv").classList.remove("avaacintivestatic");
-	document.getElementById("shimochaareadiv").classList.remove("avaacintivestatic");
-	document.getElementById("toimenareadiv").classList.remove("avaacintivestatic");
-	document.getElementById("kamichaareadiv").classList.remove("avaacintivestatic");
+	document.getElementById("selfareadiv").classList.remove("avaactivestatic");
+	document.getElementById("shimochaareadiv").classList.remove("avaactivestatic");
+	document.getElementById("toimenareadiv").classList.remove("avaactivestatic");
+	document.getElementById("kamichaareadiv").classList.remove("avaactivestatic");
+	document.getElementById("selfareadiv").classList.add("avainactivestatic");
+	document.getElementById("shimochaareadiv").classList.add("avainactivestatic");
+	document.getElementById("toimenareadiv").classList.add("avainactivestatic");
+	document.getElementById("kamichaareadiv").classList.add("avainactivestatic");
 
 	document.getElementById(player + "areadiv").classList.add("avaactive");
 	setTimeout(function (dom1) {
 		dom1.classList.remove("avaactive");
-		dom1.classList.remove("avaacintivestatic");
+		dom1.classList.remove("avainactivestatic");
 		dom1.classList.add("avaactivestatic");
 		//document.getElementById("selfareadiv").style.backgroundColor="#"
 	}, 600, document.getElementById(player + "areadiv"));
