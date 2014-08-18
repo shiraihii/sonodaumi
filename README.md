@@ -1,11 +1,15 @@
 Sonodaumi
 =========
 
-A Love-Live "Babanuki" game. 
+A Love-Live "Babanuki" game.
+
 Love-Live的抽鬼牌垃圾游戏
+
 ラブライブババ抜きゲーム
 
+
 Good Good A Person
+
 好好的一个人啊
 
 
