@@ -85,6 +85,20 @@ function cardArraySplice(cha, start, length) {
 	}
 }
 
+// Func: Push a Card to Card Array According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), card2push
+// Ret : Null
+function cardArrayPush(cha, card2push) {
+	switch (cha) {
+		case "Umi": cardumi.push(card2push)
+					break;
+		case "Nico": cardnico.push(card2push)
+					 break;
+		case "Honoka": cardhonoka.push(card2push)
+					   break;
+	}
+}
+
 // Func: Get Item of Card Array According to Mapping Table of Players
 // Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), index
 // Ret : item of card array
@@ -695,6 +709,20 @@ function SelfHandler2() {
 // Ret : Null
 function ShimochaHandler() {
 	activeAva("shimocha");
+	var carddeltmp;
+	var carddeltmpindex;
+	// Generate a Random Index of Deleting Self's Card
+	carddeltmpindex = randomInt(cardself.length);
+	carddeltmp = cardself[carddeltmpindex];
+	// Delete a Card from CardSelf
+	setTimeout(function(index) {
+		del2CardSelfShow(index, index);
+	}, 600, carddeltmpindex);
+	setTimeout(function(c) {
+		cardArrayPush(pShimocha, c);
+		recalWidthDiscard("shimocha");
+		reshowCardOther("shimocha", pShimocha);
+	}, 600 + 1500, carddeltmp);
 }
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
