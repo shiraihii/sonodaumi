@@ -45,6 +45,17 @@ var listenKamichaCard = false;
 // whether fcKamichaClick Donw
 var doneKamichaCard = true;
 
+// Func: Return a Copy of Card Array According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen})
+// Ret : Array of Player's Hand
+function cardArrayReturn(cha) {
+	switch (cha) {
+		case "Umi": return cardumi;
+		case "Nico": return cardnico;
+		case "Honoka": return cardhonoka;
+	}
+}
+
 // Func: Assign a New Array to Card Array According to Mapping Table of Players
 // Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}), a2a(array to assgin)
 // Ret : Null
@@ -206,7 +217,7 @@ function del1CardSelf(deli)
 function del2CardSelf(deli, delj)
 {
 	if (deli == delj) {
-		del1cardself(deli);
+		del1Cardself(deli);
 	}
 	else {
 		var delF = (deli > delj) ? delj : deli;
@@ -388,10 +399,10 @@ function shufflesw() {
 	for (var i = 0; i < 37; i++)
 		card.push(i);
 	card = shuffleArray(card, 500);
-	cardArrayAssign(pKamicha, card.slice(0,10));
+	cardArrayAssign(pKamicha, sort(card.slice(0,10)));
 	cardself = sort(card.slice(10,19));
-	cardArrayAssign(pShimocha, card.slice(19,28));
-	cardArrayAssign(pToimen, card.slice(28,37));
+	cardArrayAssign(pShimocha, sort(card.slice(19,28)));
+	cardArrayAssign(pToimen, sort(card.slice(28,37)));
 }
 
 // Func: Get A Card's image's url
@@ -497,36 +508,57 @@ function animateDiscard() {
 // Func: Show Meguri and Remove Animation on Other's Card, and Then Delete It
 // Para: chastr(string of player ranges from {"kamicha", "toimen", "shimocha"}), 
 //		 cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen}),
-//		 index(Index of the Card to be Removed in Kamicha's Card)
+//		 indexi(Index of the Card to be Removed in Kamicha's Card)
+//		 indexj(Index of the Card to be Removed in Kamicha's Card)
 // Ret : Null
-function del1CardOtherShow(chastr, cha, index) {
+function del2CardOtherShow(chastr, cha, indexi, indexj) {
 	// Show Animation of Meguri
-	document.getElementById(chastr+"card"+index+"img").classList.add("cardmeguri");
+	document.getElementById(chastr+"card"+indexi+"img").classList.add("cardmeguri");
+	document.getElementById(chastr+"card"+indexj+"img").classList.add("cardmeguri");
 	// Show Card's Face
-	setTimeout(function(url, varindex) {
-		document.getElementById(chastr+"card"+varindex+"img").src=url;
-	}, 150, getcardimgurl(cardArrayItem(cha, index)), index);
+	setTimeout(function(urli, varindexi, urlj, varindexj) {
+		document.getElementById(chastr+"card"+varindexi+"img").src=urli;
+		document.getElementById(chastr+"card"+varindexj+"img").src=urlj;
+	}, 150, getcardimgurl(cardArrayItem(cha, indexi)), indexi, getcardimgurl(cardArrayItem(cha, indexj)), indexj);
 	// Delete the Card in Array
-	cardArraySplice(cha, index, 1);
+	if (indexi == indexj) {
+		cardArraySplice(cha, indexi, 1);
+	}
+	else {
+		var delF = (indexi > indexj) ? indexj : indexi;
+		var delL = ((indexi > indexj) ? indexi : indexj) - 1;
+		if (delF >= 0 && delF < cardArrayGetLength(cha))
+			cardArraySplice(cha, delF, 1);
+		if (delL >= 0 && delL < cardArrayGetLength(cha))
+			cardArraySplice(cha, delL, 1);
+	}
 	// Show Animation of Remove after 1.5 seconds
-	setTimeout(function(varindex, chastr) {
-		document.getElementById(chastr+"card"+varindex+"img").classList.add("cardremove");
+	setTimeout(function(varindexi, varindexj, chastr) {
+		document.getElementById(chastr+"card"+varindexi+"img").classList.add("cardremove");
+		document.getElementById(chastr+"card"+varindexj+"img").classList.add("cardremove");
 		if (chastr == "kamicha") {
-			document.getElementById(chastr+"card"+varindex+"in").classList.add("cardremove");
-			document.getElementById(chastr+"card"+varindex).classList.add("cardremove");
+			document.getElementById(chastr+"card"+varindexi+"in").classList.add("cardremove");
+			document.getElementById(chastr+"card"+varindexi).classList.add("cardremove");
+			document.getElementById(chastr+"card"+varindexj+"in").classList.add("cardremove");
+			document.getElementById(chastr+"card"+varindexj).classList.add("cardremove");
 		}
-	}, 1500, index, chastr);
+	}, 1500, indexi, indexj, chastr);
 	// Hidden Object and Remove ClassList
-	setTimeout(function(varindex, chastr, cha) {
-		document.getElementById(chastr+"card"+varindex).style.display="none";
-		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardremove");
-		document.getElementById(chastr+"card"+varindex+"img").classList.remove("cardmeguri");
+	setTimeout(function(varindexi, varindexj, chastr, cha) {
+		document.getElementById(chastr+"card"+varindexi).style.display="none";
+		document.getElementById(chastr+"card"+varindexi+"img").classList.remove("cardremove");
+		document.getElementById(chastr+"card"+varindexi+"img").classList.remove("cardmeguri");
+		document.getElementById(chastr+"card"+varindexj).style.display="none";
+		document.getElementById(chastr+"card"+varindexj+"img").classList.remove("cardremove");
+		document.getElementById(chastr+"card"+varindexj+"img").classList.remove("cardmeguri");
 		if (chastr == "kamicha") {
-			document.getElementById(chastr+"card"+varindex+"in").classList.remove("cardremove");
-			document.getElementById(chastr+"card"+varindex).classList.remove("cardremove");
+			document.getElementById(chastr+"card"+varindexi+"in").classList.remove("cardremove");
+			document.getElementById(chastr+"card"+varindexi).classList.remove("cardremove");
+			document.getElementById(chastr+"card"+varindexj+"in").classList.remove("cardremove");
+			document.getElementById(chastr+"card"+varindexj).classList.remove("cardremove");
 		}
 		reshowCardOther(chastr, cha);
-	}, 1890, index, chastr, cha);
+	}, 1890, indexi, indexj, chastr, cha);
 }
 
 // Func: Initialization
@@ -718,11 +750,24 @@ function ShimochaHandler() {
 	setTimeout(function(index) {
 		del2CardSelfShow(index, index);
 	}, 600, carddeltmpindex);
+	// Add a Card to Shimocha's Hand
 	setTimeout(function(c) {
 		cardArrayPush(pShimocha, c);
 		recalWidthDiscard("shimocha");
 		reshowCardOther("shimocha", pShimocha);
 	}, 600 + 1500, carddeltmp);
+
+	// Find a pair in Shimocha's Hand and Delete It
+	setTimeout(function() {
+		var pair2del;
+		if((pair2del = findCardPair(cardArrayReturn(pShimocha))) != -1) {
+			// delete in the same Position to Delete 2 Cards in Pair
+			del2CardOtherShow("shimocha", pShimocha, pair2del, pair2del + 1);
+			// TODO add an sndof niconiconi
+			// Mapping to pKamicha
+			// setTimeout("document.getElementById(\"sndniconiconi\").play()", 200);
+		}
+	}, 600 + 1500 + 400);
 }
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
@@ -797,7 +842,7 @@ function fcKamichaClick(index) {
 		setTimeout(function(card2ins) {
 			ins1CardSelf(card2ins);
 		}, 1500, cardArrayItem(pKamicha, index));
-		del1CardOtherShow("kamicha", pKamicha, index);
+		del2CardOtherShow("kamicha", pKamicha, index, index);
 		setTimeout(function() {
 			doneKamichaCard = true;
 			SelfHandler2();
