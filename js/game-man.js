@@ -768,6 +768,47 @@ function ShimochaHandler() {
 			// setTimeout("document.getElementById(\"sndniconiconi\").play()", 200);
 		}
 	}, 600 + 1500 + 400);
+
+	// Call ToimenHandler
+	setTimeout(function() {
+		ToimenHandler();
+	}, 600 + 1500 + 2000);
+}
+
+// Func: Handle Process in Toimen's Turn
+//		 Including Getting Card from Shimocha and Discard Pairs
+//		 After Which It will Call the Function to Handle Process in Kamicha(Umi SONODA)'s Turn
+// Para: Null
+// Ret : Null
+function ToimenHandler() {
+	activeAva("toimen");
+	var carddeltmp;
+	var carddeltmpindex;
+	// Generate a Random Index of Deleting Shimocha's Card
+	carddeltmpindex = randomInt(cardArrayGetLength(pShimocha));
+	carddeltmp = cardArrayItem(carddeltmpindex);
+	// Delete a Card from CardKamicha
+	setTimeout(function(index) {
+		del2CardOtherShow("shimocha", pShimocha, index, index);
+	}, 600, carddeltmpindex);
+	// Add a Card to Toimen's Hand
+	setTimeout(function(c) {
+		cardArrayPush(pToimen, c);
+		recalWidthDiscard("toimen");
+		reshowCardOther("toimen", pToimen);
+	}, 600 + 1500, carddeltmp);
+
+	// Find a pair in Toimen's Hand and Delete It
+	setTimeout(function() {
+		var pair2del;
+		if((pair2del = findCardPair(cardArrayReturn(pToimen))) != -1) {
+			// delete in the same Position to Delete 2 Cards in Pair
+			del2CardOtherShow("toimen", pToimen, pair2del, pair2del + 1);
+			// TODO add an sndof mayakusaikou
+			// Mapping to pToimen
+			// setTimeout("document.getElementById(\"sndniconiconi\").play()", 200);
+		}
+	}, 600 + 1500 + 400);
 }
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
