@@ -122,6 +122,20 @@ function cardArrayItem(cha, index) {
 	}
 }
 
+// Func: Sort the Hand of Players According to Mapping Table of Players
+// Para: cha(mapping of player, ranges from {pKamicha, pShimocha, pToimen})
+// Ret : Null
+function cardArraySort(cha) {
+	switch (cha) {
+		case "Umi": cardumi = sort(cardumi);
+					break;
+		case "Nico": cardnico = sort(cardnico);
+					 break;
+		case "Honoka": cardhonoka = sort(cardhonoka);
+					   break;
+	}
+}
+
 // Func: To Compare which Card is After
 // Para: a (CardIndex of Card A), b (CardIndex of Card B)
 // Ret : whether Card A is after
@@ -753,6 +767,7 @@ function ShimochaHandler() {
 	// Add a Card to Shimocha's Hand
 	setTimeout(function(c) {
 		cardArrayPush(pShimocha, c);
+		cardArraySort(pShimocha);
 		recalWidthDiscard("shimocha");
 		reshowCardOther("shimocha", pShimocha);
 	}, 600 + 1500, carddeltmp);
@@ -794,6 +809,7 @@ function ToimenHandler() {
 	// Add a Card to Toimen's Hand
 	setTimeout(function(c) {
 		cardArrayPush(pToimen, c);
+		cardArraySort(pToimen);
 		recalWidthDiscard("toimen");
 		reshowCardOther("toimen", pToimen);
 	}, 600 + 1500, carddeltmp);
@@ -835,6 +851,7 @@ function KamichaHandler() {
 	// Add a Card to Kamicha's Hand
 	setTimeout(function(c) {
 		cardArrayPush(pKamicha, c);
+		cardArraySort(pKamicha);
 		recalWidthDiscard("kamicha");
 		reshowCardOther("kamicha", pKamicha);
 	}, 600 + 1500, carddeltmp);
