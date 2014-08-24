@@ -217,7 +217,7 @@ function del1CardSelf(deli)
 function del2CardSelf(deli, delj)
 {
 	if (deli == delj) {
-		del1Cardself(deli);
+		del1CardSelf(deli);
 	}
 	else {
 		var delF = (deli > delj) ? delj : deli;
