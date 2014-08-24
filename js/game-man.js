@@ -801,7 +801,7 @@ function ToimenHandler() {
 	var carddeltmpindex;
 	// Generate a Random Index of Deleting Shimocha's Card
 	carddeltmpindex = randomInt(cardArrayGetLength(pShimocha));
-	carddeltmp = cardArrayItem(carddeltmpindex);
+	carddeltmp = cardArrayItem(pShimocha, carddeltmpindex);
 	// Delete a Card from CardToimen
 	setTimeout(function(index) {
 		del2CardOtherShow("shimocha", pShimocha, index, index);
@@ -843,7 +843,7 @@ function KamichaHandler() {
 	var carddeltmpindex;
 	// Generate a Random Index of Deleting Toimen's Card
 	carddeltmpindex = randomInt(cardArrayGetLength(pToimen));
-	carddeltmp = cardArrayItem(carddeltmpindex);
+	carddeltmp = cardArrayItem(pToimen, carddeltmpindex);
 	// Delete a Card from CardToimen
 	setTimeout(function(index) {
 		del2CardOtherShow("toimen", pToimen, index, index);
