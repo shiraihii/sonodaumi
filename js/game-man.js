@@ -809,6 +809,52 @@ function ToimenHandler() {
 			// setTimeout("document.getElementById(\"sndniconiconi\").play()", 200);
 		}
 	}, 600 + 1500 + 400);
+
+	// Call KamichaHandler
+	setTimeout(function() {
+		KamichaHandler();
+	}, 600 + 1500 + 2000);
+}
+
+// Func: Handle Process in Kamicha's Turn
+//		 Including Getting Card from Toimen and Discard Pairs
+//		 After Which It will Call the Function to Handle Process in Player(Kotori MINAMI)'s Turn
+// Para: Null
+// Ret : Null
+function KamichaHandler() {
+	activeAva("Kamicha");
+	var carddeltmp;
+	var carddeltmpindex;
+	// Generate a Random Index of Deleting Kamicha's Card
+	carddeltmpindex = randomInt(cardArrayGetLength(pKamicha));
+	carddeltmp = cardArrayItem(carddeltmpindex);
+	// Delete a Card from CardToimen
+	setTimeout(function(index) {
+		del2CardOtherShow("toimen", pToimen, index, index);
+	}, 600, carddeltmpindex);
+	// Add a Card to Kamicha's Hand
+	setTimeout(function(c) {
+		cardArrayPush(pKamicha, c);
+		recalWidthDiscard("kamicha");
+		reshowCardOther("kamicha", pKamicha);
+	}, 600 + 1500, carddeltmp);
+
+	// Find a pair in Kamicha's Hand and Delete It
+	setTimeout(function() {
+		var pair2del;
+		if((pair2del = findCardPair(cardArrayReturn(pKamicha))) != -1) {
+			// delete in the same Position to Delete 2 Cards in Pair
+			del2CardOtherShow("kamicha", pKamicha, pair2del, pair2del + 1);
+			// TODO add an sndof Umiumiu~
+			// Mapping to pKamicha
+			// setTimeout("document.getElementById(\"sndniconiconi\").play()", 200);
+		}
+	}, 600 + 1500 + 400);
+
+	// Call SelfHandler
+	setTimeout(function() {
+		SelfHandler();
+	}, 600 + 1500 + 2000);
 }
 
 // Func: Interval Timer for Discarding Cards to Toimen (Honoka Kousaka)
