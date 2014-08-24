@@ -822,7 +822,7 @@ function ToimenHandler() {
 // Para: Null
 // Ret : Null
 function KamichaHandler() {
-	activeAva("Kamicha");
+	activeAva("kamicha");
 	var carddeltmp;
 	var carddeltmpindex;
 	// Generate a Random Index of Deleting Kamicha's Card
