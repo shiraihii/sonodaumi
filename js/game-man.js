@@ -825,8 +825,8 @@ function KamichaHandler() {
 	activeAva("kamicha");
 	var carddeltmp;
 	var carddeltmpindex;
-	// Generate a Random Index of Deleting Kamicha's Card
-	carddeltmpindex = randomInt(cardArrayGetLength(pKamicha));
+	// Generate a Random Index of Deleting Toimen's Card
+	carddeltmpindex = randomInt(cardArrayGetLength(pToimen));
 	carddeltmp = cardArrayItem(carddeltmpindex);
 	// Delete a Card from CardToimen
 	setTimeout(function(index) {
