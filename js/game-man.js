@@ -31,6 +31,10 @@ var isSelHandSelf = new Array(false, false, false, false, false, false, false, f
 var qCardSel = 0; // Quantity of Selected Hand
 var seqCardSel = new Array(null, null, null); //[2] for last;
 
+var isClearSelf = false;
+var isClearShimocha = false;
+var isClearToimen = false;
+var isClearKamicha = false;
 // Handlers of Discarding Interval Timers
 var timerhandler1;
 var timerhandler2;
@@ -366,6 +370,48 @@ function reshowCardOther(chastr, cha)
 		recalWidth(chastr, cha);
 }
 
+// Func: Delete All Pairs of Players' Hands
+// Para: Null
+// Ret : Null
+function delPairs()
+{
+	function delPairSelfRecu() {
+		if((pair2del = findCardPair(cardself)) != -1) {
+			del2CardSelfShow(pair2del, pair2del + 1);
+			setTimeout(delPairSelfRecu, 1550);
+		}
+		else isClearSelf = true;
+	}
+	function delPairShimochaRecu() {
+		var pair2del;
+		if((pair2del = findCardPair(cardArrayReturn(pShimocha))) != -1) {
+			del2CardOtherShow("shimocha", pShimocha, pair2del, pair2del + 1);
+			setTimeout(delPairShimochaRecu, 1550);
+		}
+		else isClearShimocha = true;
+	}
+	function delPairToimenRecu() {
+		var pair2del;
+		if((pair2del = findCardPair(cardArrayReturn(pToimen))) != -1) {
+			del2CardOtherShow("toimen", pToimen, pair2del, pair2del + 1);
+			setTimeout(delPairToimenRecu, 1550);
+		}
+		else isClearToimen = true;
+	}
+	function delPairKamichaRecu() {
+		var pair2del;
+		if((pair2del = findCardPair(cardArrayReturn(pKamicha))) != -1) {
+			del2CardOtherShow("kamicha", pKamicha, pair2del, pair2del + 1);
+			setTimeout(delPairKamichaRecu, 1550);
+		}
+		else isClearKamicha = true;
+	}
+	delPairSelfRecu();
+	delPairShimochaRecu();
+	delPairToimenRecu();
+	delPairKamichaRecu();
+}
+
 // Func: Active a Player's Area and Set Others Inactive
 // Para: player(value ranges from {"self", "shimocha", "toimen", "kamicha"})
 // Ret : Null
@@ -642,6 +688,10 @@ function init() {
 		showselfcard();
 		SelfHandler();
 	}, 1000 + 10 * 400)
+	// Discard All Pairs of Every Player of Hand
+	setTimeout(function () {
+		delPairs();
+	}, 1000 + 10 * 400 + 400);
 }
 
 // Func: Load Image for Speeding Up
@@ -937,7 +987,7 @@ function fcKamichaMouseOut(index) {
 // Para: Null
 // Ret : Null
 function fcKamichaClick(index) {
-	if (listenKamichaCard) {
+	if (listenKamichaCard && isClearSelf && isClearShimocha && isClearToimen && isClearKamicha) {
 		listenKamichaCard = false;
 		sndplayreq = false;
 		document.getElementById("sndei").play();
