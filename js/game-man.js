@@ -421,7 +421,7 @@ function shufflesw() {
 
 // Func: Get A Card's image's url
 // Para: cardnum (CardIndex Ranging from 0 to 36)
-// Ret : Url of Iimage
+// Ret : Url of Image
 function getcardimgurl(cardnum) {
 	var suit = Math.floor(cardnum / 9) + 1;
 	var num = cardnum % 9 + 1;
