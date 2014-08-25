@@ -378,7 +378,7 @@ function delPairs()
 	function delPairSelfRecu() {
 		if((pair2del = findCardPair(cardself)) != -1) {
 			del2CardSelfShow(pair2del, pair2del + 1);
-			setTimeout(delPairSelfRecu, 1550);
+			setTimeout(delPairSelfRecu, 2000);
 		}
 		else isClearSelf = true;
 	}
@@ -386,7 +386,7 @@ function delPairs()
 		var pair2del;
 		if((pair2del = findCardPair(cardArrayReturn(pShimocha))) != -1) {
 			del2CardOtherShow("shimocha", pShimocha, pair2del, pair2del + 1);
-			setTimeout(delPairShimochaRecu, 1550);
+			setTimeout(delPairShimochaRecu, 2000);
 		}
 		else isClearShimocha = true;
 	}
@@ -394,7 +394,7 @@ function delPairs()
 		var pair2del;
 		if((pair2del = findCardPair(cardArrayReturn(pToimen))) != -1) {
 			del2CardOtherShow("toimen", pToimen, pair2del, pair2del + 1);
-			setTimeout(delPairToimenRecu, 1550);
+			setTimeout(delPairToimenRecu, 2000);
 		}
 		else isClearToimen = true;
 	}
@@ -402,7 +402,7 @@ function delPairs()
 		var pair2del;
 		if((pair2del = findCardPair(cardArrayReturn(pKamicha))) != -1) {
 			del2CardOtherShow("kamicha", pKamicha, pair2del, pair2del + 1);
-			setTimeout(delPairKamichaRecu, 1550);
+			setTimeout(delPairKamichaRecu, 2000);
 		}
 		else isClearKamicha = true;
 	}
