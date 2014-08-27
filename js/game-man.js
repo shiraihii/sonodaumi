@@ -20,6 +20,10 @@ var cardhonoka;
 var pKamicha = "Umi";
 var pShimocha = "Nico";
 var pToimen = "Honoka";
+var pnKamicha = "Self";
+var pnSelf = "Shimocha";
+var pnShimocha = "Toimen";
+var pnToimen = "Kamicha";
 // Quantity of Hand of Player;
 var qHandUmi = 0;
 var qHandNico = 0;
@@ -137,6 +141,22 @@ function cardArraySort(cha) {
 					 break;
 		case "Honoka": cardhonoka = sort(cardhonoka);
 					   break;
+	}
+}
+
+// Func: Exceed Handler of Player Next According to The Mapping of Players
+// Para: chastr(string of player ranges from {"kamicha", "toimen", "shimocha", "self"})
+// Ret : Null
+function exPlayerNext(chastr) {
+	switch (chastr) {
+		case "kamicha": eval(pnKamicha + "Handler()");
+						break;
+		case "toimen": eval(pnToimen + "Handler()");
+					   break;
+		case "shimocha": eval(pnShimocha + "Handler()");
+						 break;
+		case "self": eval(pnSelf + "Handler()");
+					 break;
 	}
 }
 
@@ -793,8 +813,12 @@ function SelfHandler2() {
 		del2CardSelfShow(pair2del, pair2del + 1);
 		setTimeout("document.getElementById(\"sndyatta\").play()", 200);
 	}
+	if (cardself.length == 0) {
+		// TODO
+		// Gameover!	
+	}
 	setTimeout(function() {
-		ShimochaHandler();
+		exPlayerNext("self");
 	}, 2000);
 }
 
@@ -836,7 +860,7 @@ function ShimochaHandler() {
 
 	// Call ToimenHandler
 	setTimeout(function() {
-		ToimenHandler();
+		exPlayerNext("shimocha");
 	}, 600 + 1500 + 2000);
 }
 
@@ -878,7 +902,7 @@ function ToimenHandler() {
 
 	// Call KamichaHandler
 	setTimeout(function() {
-		KamichaHandler();
+		exPlayerNext("toimen");
 	}, 600 + 1500 + 2000);
 }
 
@@ -920,7 +944,7 @@ function KamichaHandler() {
 
 	// Call SelfHandler
 	setTimeout(function() {
-		SelfHandler();
+		exPlayerNext("kamicha");
 	}, 600 + 1500 + 2000);
 }
 
